@@ -1,0 +1,308 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
+using System.Web;
+using System.Net;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using GeoSI.Website.Common;
+using Ext.Net;
+using System.Data.SqlClient;
+using System.Data;
+using System.Xml.Linq;
+
+using System.Globalization;
+
+namespace GeoSI.Website.Modules.Historique
+{
+    public partial class LoadHistoriqueTrajet : Page
+    {
+        public String adress = "";
+
+        //Recuperation de la session user
+        protected UserInfo getCurrentUser()
+        {
+
+            UserInfo retVal = null;
+            object o = Session["UserInfo"];
+            if (o != null)
+            {
+                retVal = new UserInfo();
+                retVal = ((UserInfo)Session["UserInfo"]);
+            }
+            return retVal;
+
+
+        }
+
+        protected void FillStore(string sql, Store _store)
+        {
+            using (SqlDataAdapter da = new SqlDataAdapter(sql, _Global.CurrentConnection))
+            {
+                DataSet ds = new DataSet();
+                da.SelectCommand.CommandTimeout = 120;
+                da.Fill(ds);
+                _store.DataSource = ds.Tables[0];
+                _store.DataBind();
+            }
+        }
+        // Accès à la base de Données 
+        protected SqlDataReader Select(string _Requette)
+        {
+            SqlDataReader dr;
+            try
+            {
+                SqlConnection cnx = _Global.CurrentConnection;
+                SqlCommand cmd = new SqlCommand(_Requette, cnx);
+                dr = cmd.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                dr = null;
+                ex.ToString();
+            }
+            return dr;
+        }
+        private string racine = null;
+
+        //Chergement de la page 
+        protected void Page_Load(object sender, EventArgs e)
+        {
+           
+            string _reqVeh = "select * from (select aff.* from ( select  v.matricule ,v.vehiculeid from vehicules v  inner join affectation_vehicule_boitier abv on abv.vehiculeid=v.vehiculeid  inner join boitier b on b.boitierid=abv.boitierid inner join Datatracker d on d.imei=b.imei  inner join groupe_vehicule gv on gv.vehiculeid = v.vehiculeid and gv.actif = '1' where v.clientid =" + this.getCurrentUser().getClientId() + " and v.actif = '1' )aff union select v.matricule, v.vehiculeid from vehicules v  inner join affectation_vehicule_boitier abv on abv.vehiculeid=v.vehiculeid  inner join boitier b on b.boitierid=abv.boitierid inner join Datatracker d on d.imei=b.imei  inner join profil_vehicule gp on gp.vehiculeid =v.vehiculeid and gp.actif = '1' inner join profil p on p.profilid = gp.profilid and p.actif = '1' inner join profil_user pu on pu.actif = '1' and pu.profilid = p.profilid where v.clientid = " + this.getCurrentUser().getClientId() + " and v.actif = '1' and pu.utilisateurid =" + this.getCurrentUser().getUserId() + " ) aff2      ";
+            this.FillStore(_reqVeh, Store2);
+            // txt1.Text = RetrieveFormatedAddress("33.5992364201655", "-7.570799214941417");
+
+        }
+
+
+
+
+
+        List<Htrajet> Listtrajet = new List<Htrajet>();
+        Datatracker track = new Datatracker();
+        List<Datatracker> Listtrack = new List<Datatracker>();
+        Htrajet trajet = new Htrajet();
+        int vitesse = 0;
+        int nbrtrajet = 0;
+        string[] color = { "#008000", "#0963fc", "#808a7e", "#fca109", "#e8e727", "#ac1dad", "#158180", "#77f5ac", "#dd6c6c", "#0f0c15" };
+        static int col = 0;
+
+        [DirectMethod]
+        protected void HistoriqueTrajetbis(object sender, EventArgs e)
+        {
+            string userDate1 = this.DateField1.Value.ToString();
+            string[] du = userDate1.Split(' ');
+            userDate1 = du[0] + " " + this.TimeField1.Value.ToString();
+
+            string userDate2 = this.DateField2.Value.ToString();
+            string[] du2 = userDate1.Split(' ');
+            userDate2 = du2[0] + " " + this.TimeField2.Value.ToString();
+            int Compt = 0;
+            string vehiculeid = this.MultiCombo1.SelectedItem.Value;
+
+            //  DateTime dateUser;
+            ArrayList List = new ArrayList();
+
+            //string _req = "select d.GPSDateTime,d.latitude,d.longitude ,p.nom+' '+p.prenom as conducteur,d.contact from Datatracker d inner join boitier b on b.imei=d.imei inner join affectation_vehicule_boitier abv on abv.boitierid=b.boitierid inner join vehicules  v on v.vehiculeid = abv.vehiculeid inner join vehicule_personnel vp on vp.vehiculeid=v.vehiculeid inner join personnel p on p.personnelid=vp.personnelid where d.GPSDateTime like '%" + userDate + "%' and v.vehiculeid='" + vehiculeid + "'";
+            string _req = "select * from ( select ISNULL(t.latitude, l.latitude) as latitude ,ISNULL(t.longitude, l.longitude) as longitude, "
++ " ISNULL(t.GPSDateTime, l.GPSDateTime) as GPSDateTime, datediff (minute, CAST(t.gpsDateTime as datetime) , CAST(l.gpsDateTime as datetime)) as temp_arret,"
++ " ISNULL(t.speed, l.speed) as v ,l.conducteur as conducteur from  (SELECT *, ROW_NUMBER() OVER (partition BY aff1.imei ORDER BY datatrackerid DESC) AS num2"
+ + " FROM (SELECT  d.*, ROW_NUMBER() OVER (partition BY latitude, longitude ORDER BY datatrackerid ASC) AS num ,p.nom+' '+p.prenom as conducteur  FROM"
++ " Datatracker d  inner join boitier b on b.imei=d.imei inner join affectation_vehicule_boitier abv on abv.boitierid=b.boitierid inner join vehicules  v on v.vehiculeid = abv.vehiculeid "
++ " inner join vehicule_personnel vp on vp.vehiculeid=v.vehiculeid inner join personnel p on p.personnelid=vp.personnelid WHERE  "
++ " cast(GPSDateTime AS datetime) >= '07/07/2014 09:00:00' AND cast(GPSDateTime AS datetime) < '07/07/2014 19:30:00' and abv.vehiculeid='" + vehiculeid + "') aff1  WHERE num = 1) l  "
++ " left outer join   (SELECT *, ROW_NUMBER() OVER (partition BY aff1.imei ORDER BY datatrackerid DESC) AS num2 FROM     (SELECT  d.*, ROW_NUMBER() OVER (partition BY latitude, longitude ORDER BY datatrackerid ASC) AS num  FROM    Datatracker d inner join boitier b on b.imei=d.imei  inner join affectation_vehicule_boitier avb on b.boitierid= avb.boitierid  WHERE   cast(GPSDateTime AS datetime) >= '" + userDate1 + "' AND cast(GPSDateTime AS datetime) < '" + userDate2 + "' and avb.vehiculeid='" + vehiculeid + "') aff1 WHERE num = 1)t on l.num2 = t.num2-1) aff where (temp_arret > 5  or temp_arret is null)"
++ " union "
++ " select d.latitude,d.longitude ,d.GPSDateTime,0 as temps_arret,d.speed as v ,p.nom+' '+p.prenom as conducteur from Datatracker d "
++ " inner join boitier b on b.imei=d.imei inner join affectation_vehicule_boitier abv on abv.boitierid=b.boitierid "
++ "  inner join vehicules  v on v.vehiculeid = abv.vehiculeid inner join vehicule_personnel vp on vp.vehiculeid=v.vehiculeid "
+  + " inner join personnel p on p.personnelid=vp.personnelid where  cast(d.GPSDateTime AS datetime) >= '" + userDate1 + "' AND cast(d.GPSDateTime AS datetime) < '" + userDate2 + "'' and v.vehiculeid='" + vehiculeid + "'";
+            SqlDataReader dr = Select(_req);
+        }
+        [DirectMethod]
+
+        protected void HistoriqueTrajet(object sender, EventArgs e)
+        {
+
+            //   string userDate = DateTime.ParseExact(this.DateField1.Value.ToString(), "dd'/'MM'/'yyyy ", CultureInfo.InvariantCulture).ToString();
+            string userDate1 = this.DateField1.Value.ToString();
+            string[] du = userDate1.Split(' ');
+            userDate1 = du[0] + " " + this.TimeField1.Value.ToString();
+
+            string userDate2 = this.DateField2.Value.ToString();
+            string[] du2 = userDate1.Split(' ');
+            userDate2 = du2[0] + " " + this.TimeField2.Value.ToString();
+            int Compt = 0;
+            string vehiculeid = this.MultiCombo1.SelectedItem.Value;
+
+            //  DateTime dateUser;
+            ArrayList List = new ArrayList();
+
+            string _req = "select d.GPSDateTime,d.latitude,d.longitude ,p.nom+' '+p.prenom as conducteur,d.speed from Datatracker d inner join boitier b on b.imei=d.imei inner join affectation_vehicule_boitier abv on abv.boitierid=b.boitierid inner join vehicules  v on v.vehiculeid = abv.vehiculeid inner join vehicule_personnel vp on vp.vehiculeid=v.vehiculeid inner join personnel p on p.personnelid=vp.personnelid where  cast(d.GPSDateTime AS datetime) >= '" + userDate1 + "' AND cast(d.GPSDateTime AS datetime) < '" + userDate2 + "' and v.vehiculeid='" + vehiculeid + "'";
+            SqlDataReader dr = Select(_req);
+            string c = "";
+            string dt = DateTime.Now.ToString("dd'/'MM'/'yyyy HH:mm:ss.ffffff");
+                //DateTime.ParseExact(DateTime.Now.ToString(), "dd'/'MM'/'yyyy HH:mm:ss.ffffff", CultureInfo.InvariantCulture);
+
+            while (dr.Read())
+            {
+                Datatracker t = new Datatracker();
+
+                t.GPSDateTime = dr[0].ToString();
+                t.latitude = (double)dr[1];
+                t.longitude = (double)dr[2];
+                t.speed = (int)dr[4];
+                c = dr[3].ToString();
+                Listtrack.Add(t);
+
+
+            }
+            dr.Close();
+            track = Listtrack[0];
+
+            trajet.setConducteur(c);
+            trajet.setvitesse(vitesse);
+            trajet.Setvehicule(vehiculeid);
+            trajet.SetDateD(DateTime.ParseExact(track.GPSDateTime, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture));
+            DateTime date = trajet.GetDateD();
+            for (int i = 0; i < Listtrack.Count; i++)
+            {
+
+                trajet.position.Add(Listtrack[i]);
+                vitesse += (int)Listtrack[i].speed;
+                DateTime d = date.AddMinutes(1);
+                DateTime dd = DateTime.ParseExact(Listtrack[i].GPSDateTime, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                if (dd >= d)
+                {
+                    if (Listtrack[i].latitude == track.latitude && Listtrack[i].longitude == track.longitude)
+                        Compt++;
+                    track = Listtrack[i];
+                    date = DateTime.ParseExact(Listtrack[i].GPSDateTime, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                }
+
+
+                if (Compt >= 5)
+                {
+
+                    trajet.SetDateF(DateTime.ParseExact(Listtrack[i].GPSDateTime, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture));
+
+                    Listtrajet.Add(trajet);
+                    //initialisation du nv trajet
+                    int j = 0;
+                    for (j = i; j < Listtrack.Count - 1; j++)
+                    {
+                        if (Listtrack[j].latitude != Listtrack[j + 1].latitude)
+                            break;
+                        else
+                        {
+                            if (Listtrack[j].longitude != Listtrack[j + 1].longitude)
+                                break;
+                        }
+                    }
+                    i = j;
+                    trajet.setvitesse(vitesse / Listtrajet[Listtrajet.Count - 1].position.Count);
+                    track = Listtrack[i];
+                    trajet = new Htrajet();
+                    trajet.setConducteur(c);
+
+                    vitesse = 0;
+                    trajet.SetDateD(DateTime.ParseExact(Listtrack[i].GPSDateTime, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture));
+                    Compt = 0;
+
+                }
+
+            }
+
+            List<object> lo = new List<object>();
+            //Store Store1 = this.GridPanelVoyage.GetStore();
+            for (int i = 0; i < Listtrajet.Count; i++)
+            {
+                DateTime d = DateTime.ParseExact(Listtrajet[i].position[0].GPSDateTime, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                DateTime dd = DateTime.ParseExact(Listtrajet[i].position[Listtrajet[i].position.Count - 1].GPSDateTime, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+
+                string lat = Listtrajet[i].position[0].latitude.ToString().Replace(",", ".");
+                string lng = Listtrajet[i].position[0].longitude.ToString().Replace(",", ".");
+                string adrD = RetrieveFormatedAddress(lat, lng);
+
+                // string adrF = RetrieveFormatedAddress("33.5992364201655", "-7.570799214941417");
+                lat = Listtrajet[i].position[Listtrajet[i].position.Count - 1].latitude.ToString().Replace(",", ".");
+                lng = Listtrajet[i].position[Listtrajet[i].position.Count - 1].longitude.ToString().Replace(",", ".");
+                string adrF = RetrieveFormatedAddress(lat, lng);
+                //  Address[] addresses = geoCoder.ReverseGeoCode(38.8976777, -77.036517);
+                float duree = dd.Minute - d.Minute;
+                string polyline = " ";
+
+                for (int p = 0; p < Listtrajet[i].position.Count - 1; p++)
+                {
+                    polyline += "new google.maps.LatLng(" + Listtrajet[i].position[p].latitude.ToString().Replace(",", ".") + "," + Listtrajet[i].position[p].longitude.ToString().Replace(",", ".") + ");";
+
+                }
+
+                polyline += "new google.maps.LatLng(" + Listtrajet[i].position[Listtrajet[i].position.Count - 1].latitude.ToString().Replace(",", ".") + "," + Listtrajet[i].position[Listtrajet[i].position.Count - 1].longitude.ToString().Replace(",", ".") + ")";
+                lo.Add(new object[] { c, adrD, Listtrajet[i].position[0].GPSDateTime, adrF, Listtrajet[i].position[Listtrajet[i].position.Count - 1].GPSDateTime, duree + " min", Listtrajet[i].vitesse + " Km/H", polyline, color[col] }
+    );
+
+                if (col == 10)
+                    col = 0;
+                else col++;
+            }
+
+
+            Store1.Add(lo);
+            Store1.CommitChanges();
+
+            //else
+            //{
+            //    Store1.Add(new object[] { "", "", "", "", "Trajet innexistant", "", "", "", "" }
+            //        );
+            //    Store1.CommitChanges();
+
+            //}
+          
+//
+                //DateTime.ParseExact(DateTime.Now.ToString(), "dd'/'MM'/'yyyy HH:mm:ss.ffffff", CultureInfo.InvariantCulture);
+
+          
+        }
+
+
+        static string baseUri = "http://maps.googleapis.com/maps/api/" + "geocode/xml?latlng={0},{1}&sensor=false";
+
+        public string RetrieveFormatedAddress(string lat, string lng)
+        {
+            string requestUri = string.Format(baseUri, lat, lng);
+            using (WebClient wc = new WebClient())
+            {
+                wc.DownloadStringCompleted += new DownloadStringCompletedEventHandler(wc_DownloadStringCompleted);
+
+                return wc.DownloadString(new Uri(requestUri));
+
+
+            }
+        }
+        public void wc_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+            string add = "";
+            var xmlElm = XElement.Parse(e.Result);
+            var status = (from elm in xmlElm.Descendants() where elm.Name == "status" select elm).FirstOrDefault();
+            if (status.Value.ToLower() == "ok")
+            {
+                var res = (from elm in xmlElm.Descendants() where elm.Name == "formatted_address" select elm).FirstOrDefault();
+                add = res.Value;
+
+                // Console.WriteLine(res.Value); 
+            }
+            else
+            {
+                //Console.WriteLine("No Address Found");
+                add = "NOOOOOOO";
+            }
+        }
+
+        
+
+      
+    }
+}

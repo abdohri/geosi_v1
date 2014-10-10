@@ -1,0 +1,907 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EE9A1EA7-EEFF-4CDD-9EDE-C8851CA7B2E5}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GeoSI.Website</RootNamespace>
+    <AssemblyName>GeoSI.Website</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInProjectFolder</FilesToIncludeForPublish>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ext.Net, Version=2.4.0.30091, Culture=neutral, PublicKeyToken=2e12ce3d0176cd87, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\WebApplication16\WebApplication16\bin\Dll\Ext.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Ext.Net.Utilities, Version=2.3.0.0, Culture=neutral, PublicKeyToken=2c34ac34702a3c23, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\WebApplication16\WebApplication16\bin\Dll\Ext.Net.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="GeoSI.Website, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\GeoSI.Website.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=4.1.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\..\..\..\..\Desktop\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="MSCaptcha, Version=4.0.4250.31585, Culture=neutral, PublicKeyToken=b9ff12f28cdcf412, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\MSCaptcha.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="Transformer.NET, Version=2.1.1.22883, Culture=neutral, PublicKeyToken=e274d618e7c603a7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\WebApplication16\WebApplication16\bin\Dll\Transformer.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="URLRewriter, Version=1.0.1495.18710, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\URLRewriter.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data Base\TextFile1.txt" />
+    <Content Include="Modules\Alarme\Alarme.aspx" />
+    <Content Include="Modules\Boitier\Boitier.aspx" />
+    <Content Include="Modules\Boitier\GeoForm.aspx" />
+    <Content Include="Modules\CarteSim\CarteSim.aspx" />
+    <Content Include="Modules\CarteSim\GeoForm.aspx" />
+    <Content Include="Modules\Carte\loadTempsReel.aspx" />
+    <Content Include="Modules\Carte\TempsReel.aspx" />
+    <Content Include="Modules\Client\Client.aspx" />
+    <Content Include="Modules\Client\GeoForm.aspx" />
+    <Content Include="Modules\Deconnexion\Deconnexion.aspx" />
+    <Content Include="Modules\Groupe\GeoForm.aspx" />
+    <Content Include="Modules\Groupe\Groupe.aspx" />
+    <Content Include="Modules\HistoriqueArret\HistoriqueArret.aspx" />
+    <Content Include="Modules\HistoriqueArret\LoadHistoriqueArret.aspx" />
+    <Content Include="Modules\HistoriqueTrajet\HistoriqueTrajet.aspx" />
+    <Content Include="Modules\HistoriqueTrajet\LoadHistoriqueTrajet.aspx" />
+    <Content Include="Modules\Login\BackOffice.aspx" />
+    <Content Include="Modules\Login\Login.aspx" />
+    <Content Include="Modules\Login\Revendeur.aspx" />
+    <Content Include="Modules\Personnel\GeoForm.aspx" />
+    <Content Include="Modules\Personnel\Personnel.aspx" />
+    <Content Include="Modules\Poi\LoadPoi.aspx" />
+    <Content Include="Modules\Poi\Poi.aspx" />
+    <Content Include="Modules\Profil\GeoForm.aspx" />
+    <Content Include="Modules\Profil\Profil.aspx" />
+    <Content Include="Modules\RapportActiv\GenererExcel.aspx" />
+    <Content Include="Modules\RapportActiv\GenererPdf.aspx" />
+    <Content Include="Modules\RapportActiv\RapportActiv.aspx" />
+    <Content Include="Modules\Revendeur\GeoForm.aspx" />
+    <Content Include="Modules\Revendeur\Revendeur.aspx" />
+    <Content Include="Modules\Trajet\LoadTrajet.aspx" />
+    <Content Include="Modules\Trajet\Trajet.aspx" />
+    <Content Include="Modules\UserBackOffice\GeoForm.aspx" />
+    <Content Include="Modules\UserBackOffice\UserBackOffice.aspx" />
+    <Content Include="Modules\Utilisateur\GeoForm.aspx" />
+    <Content Include="Modules\Utilisateur\Utilisateur.aspx" />
+    <Content Include="Modules\VehiculeConfiguration\conForm.aspx" />
+    <Content Include="Modules\VehiculeConfiguration\VehiculeConf.aspx" />
+    <Content Include="Modules\VehiculeProche\LoadVehicule.aspx" />
+    <Content Include="Modules\VehiculeProche\VehiculeProche.aspx" />
+    <Content Include="Modules\VehiculeProche\WebServ_data.asmx" />
+    <Content Include="Modules\Vehicules\GeoForm.aspx" />
+    <Content Include="Modules\Vehicules\Vehicules.aspx" />
+    <Content Include="Modules\Zone\LoadZone.aspx" />
+    <Content Include="Modules\Zone\Zone.aspx" />
+    <Content Include="PagesMaster\fonts\iconic\iconic_stroke.svg" />
+    <Content Include="PagesMaster\iconic.css" />
+    <Content Include="PagesMaster\img\denim.png" />
+    <Content Include="PagesMaster\img\light_alu.png" />
+    <Content Include="PagesMaster\prefix-free.js" />
+    <Content Include="PagesMaster\style.css" />
+    <Content Include="Ressources\Images\1frlang.png" />
+    <Content Include="Ressources\Images\alerte1.png" />
+    <Content Include="Ressources\Images\alerte2.png" />
+    <Content Include="Ressources\Images\alerte3.png" />
+    <Content Include="Ressources\Images\B_Bleu.png" />
+    <Content Include="Ressources\Images\B_Orange.png" />
+    <Content Include="Ressources\Images\B_rouge.png" />
+    <Content Include="Ressources\Images\B_Vert.png" />
+    <Content Include="Ressources\Images\Cam_Bleu.png" />
+    <Content Include="Ressources\Images\Cam_Jaune.png" />
+    <Content Include="Ressources\Images\Cam_Vert.png" />
+    <Content Include="Ressources\Images\contactOFF.png" />
+    <Content Include="Ressources\Images\contactON.png" />
+    <Content Include="Ressources\Images\aide.png" />
+    <Content Include="Ressources\Images\ajax-loader.gif" />
+    <Content Include="Ressources\Images\appplus.png" />
+    <Content Include="Ressources\Images\appplushover.png" />
+    <Content Include="Ressources\Images\arrow.png" />
+    <Content Include="Ressources\Images\backtest.png" />
+    <Content Include="Ressources\Images\back_win.png" />
+    <Content Include="Ressources\Images\back_winb.png" />
+    <Content Include="Ressources\Images\camiontree.png" />
+    <Content Include="Ressources\Images\Cam_Rouge.png" />
+    <Content Include="Ressources\Images\close_icon.png" />
+    <Content Include="Ressources\Images\close_tabpanel.png" />
+    <Content Include="Ressources\Images\coca.png" />
+    <Content Include="Ressources\Images\collapse.png" />
+    <Content Include="Ressources\Images\contact.png" />
+    <Content Include="Ressources\Images\deconn.png" />
+    <Content Include="Ressources\Images\deconnexion.png" />
+    <Content Include="Ressources\Images\Drapeau_Bleu.png" />
+    <Content Include="Ressources\Images\Drapeau_Orange.png" />
+    <Content Include="Ressources\Images\Drapeau_Rouge.png" />
+    <Content Include="Ressources\Images\Drapeau_vert.png" />
+    <Content Include="Ressources\Images\es.png" />
+    <Content Include="Ressources\Images\exclamation.png" />
+    <Content Include="Ressources\Images\forward.png" />
+    <Content Include="Ressources\Images\frlang.png" />
+    <Content Include="Ressources\Images\gprs.png" />
+    <Content Include="Ressources\Images\iconetransparant.png" />
+    <Content Include="Ressources\Images\icone\Alarm1.png" />
+    <Content Include="Ressources\Images\icone\chart.png" />
+    <Content Include="Ressources\Images\icone\geofencing.png" />
+    <Content Include="Ressources\Images\icone\historique.png" />
+    <Content Include="Ressources\Images\icone\icone_cercle\clock %282%29.png" />
+    <Content Include="Ressources\Images\icone\icone_cercle\Compass.png" />
+    <Content Include="Ressources\Images\icone\icone_cercle\decona.png" />
+    <Content Include="Ressources\Images\icone\icone_cercle\geofencing.png" />
+    <Content Include="Ressources\Images\icone\icone_cercle\geofencinga.png" />
+    <Content Include="Ressources\Images\icone\icone_cercle\historique.png" />
+    <Content Include="Ressources\Images\icone\icone_cercle\icon%402x %282%29.png" />
+    <Content Include="Ressources\Images\icone\icone_cercle\mails.png" />
+    <Content Include="Ressources\Images\icone\icone_cercle\Nouveau dossier\contact.png" />
+    <Content Include="Ressources\Images\icone\icone_cercle\Nouveau dossier\Help.png" />
+    <Content Include="Ressources\Images\icone\icone_cercle\Nouveau dossier\Info.png" />
+    <Content Include="Ressources\Images\icone\icone_cercle\Nouveau dossier\Shutdown.png" />
+    <Content Include="Ressources\Images\icone\icone_cercle\parametrage.png" />
+    <Content Include="Ressources\Images\icone\icone_cercle\parametre.png" />
+    <Content Include="Ressources\Images\icone\icone_cercle\poi.png" />
+    <Content Include="Ressources\Images\icone\icone_cercle\poii.png" />
+    <Content Include="Ressources\Images\icone\icone_cercle\rapport.png" />
+    <Content Include="Ressources\Images\icone\icone_cercle\rapportt.png" />
+    <Content Include="Ressources\Images\icone\icone_cercle\safari.png" />
+    <Content Include="Ressources\Images\icone\icone_cercle\statistique.png" />
+    <Content Include="Ressources\Images\icone\icone_cercle\tempreel.png" />
+    <Content Include="Ressources\Images\icone\icone_cercle\tempreelhover.png" />
+    <Content Include="Ressources\Images\icone\icone_cercle\trajet.png" />
+    <Content Include="Ressources\Images\icone\Nouveau dossier\chart.png" />
+    <Content Include="Ressources\Images\icone\Nouveau dossier\geofencing.png" />
+    <Content Include="Ressources\Images\icone\Nouveau dossier\historique.png" />
+    <Content Include="Ressources\Images\icone\Nouveau dossier\map.png" />
+    <Content Include="Ressources\Images\icone\Nouveau dossier\rapport.png" />
+    <Content Include="Ressources\Images\icone\Nouveau dossier\reglage.png" />
+    <Content Include="Ressources\Images\icone\Nouveau dossier\tempsreel.png" />
+    <Content Include="Ressources\Images\icone\Nouveau dossier\trajet.png" />
+    <Content Include="Ressources\Images\icone\nouveau Icone\geofencing.png" />
+    <Content Include="Ressources\Images\icone\nouveau Icone\historique1.png" />
+    <Content Include="Ressources\Images\icone\nouveau Icone\parametre.png" />
+    <Content Include="Ressources\Images\icone\nouveau Icone\poi.png" />
+    <Content Include="Ressources\Images\icone\nouveau Icone\rapport.png" />
+    <Content Include="Ressources\Images\icone\nouveau Icone\tempsReel.png" />
+    <Content Include="Ressources\Images\icone\nouveau Icone\trajet.png" />
+    <Content Include="Ressources\Images\icone\parametrage.png" />
+    <Content Include="Ressources\Images\icone\poi.png" />
+    <Content Include="Ressources\Images\icone\rapport.png" />
+    <Content Include="Ressources\Images\icone\tempsreel.png" />
+    <Content Include="Ressources\Images\icone\trajet.png" />
+    <Content Include="Ressources\Images\icone_camion1.png" />
+    <Content Include="Ressources\Images\icone_camion2.png" />
+    <Content Include="Ressources\Images\icone_vehicule.png" />
+    <Content Include="Ressources\Images\icone_vehicule2.png" />
+    <Content Include="Ressources\Images\icon_by_jackietran-d4bq0ik.png" />
+    <Content Include="Ressources\Images\imagesupload\0112e0ec-56eb-41b3-bc8f-f7faed9831a009042014231127.png" />
+    <Content Include="Ressources\Images\imagesupload\0631c050-1f52-4b23-9297-3a04134d5a3024042014161532.jpg" />
+    <Content Include="Ressources\Images\imagesupload\1f96fea6-1cf2-4dbb-8c1f-7ec52005868d28042014163421.png" />
+    <Content Include="Ressources\Images\imagesupload\23cef272-847a-41b9-93f6-f906219b4fb030042014092845.jpg" />
+    <Content Include="Ressources\Images\imagesupload\2462a126-2e00-462c-8536-45f14011feb909042014223810.png" />
+    <Content Include="Ressources\Images\imagesupload\3139dfe9-9c58-4a71-98c8-d633a6992c9425042014115134.png" />
+    <Content Include="Ressources\Images\imagesupload\39a428aa-7d6b-4dc2-b0c4-63609f07262925042014120322.png" />
+    <Content Include="Ressources\Images\imagesupload\39f37076-6a70-4b02-850f-ed957a2f1c0909042014224434.png" />
+    <Content Include="Ressources\Images\imagesupload\3d399416-3789-4134-852b-984753809f3a07042014061119.jpg" />
+    <Content Include="Ressources\Images\imagesupload\3e51dd2c-3187-4ab8-b6f1-de2c0c5f5ef524042014090134.jpg" />
+    <Content Include="Ressources\Images\imagesupload\48b68473-8441-424f-b36a-4e2815d1d8a625042014110645.jpg" />
+    <Content Include="Ressources\Images\imagesupload\4f2aee14-3087-42f4-b920-b221343a364609042014224140.png" />
+    <Content Include="Ressources\Images\imagesupload\5c9b58e5-355e-495c-a374-a24e14c20a3d24042014090354.jpg" />
+    <Content Include="Ressources\Images\imagesupload\6a9b0cd2-14b8-4b51-9f25-0304ca23ac0025042014114711.jpg" />
+    <Content Include="Ressources\Images\imagesupload\6bb15b34-2235-4ea5-ab5f-064b627bfd1a09042014144215.png" />
+    <Content Include="Ressources\Images\imagesupload\7deeb35f-e28d-4483-b171-6f513771f67010042014001456.png" />
+    <Content Include="Ressources\Images\imagesupload\89b846bd-0c7c-4a4f-986f-fde15380565709042014231613.png" />
+    <Content Include="Ressources\Images\imagesupload\9c98836d-37ee-417f-9471-a1ec76f83b5016042014152416.png" />
+    <Content Include="Ressources\Images\imagesupload\a12af033-a1f3-4ff8-8046-360adea7d43e05042014231401.jpg" />
+    <Content Include="Ressources\Images\imagesupload\ab6991e5-cead-4c09-ad5c-b7e8e1b636ad24042014092825.jpg" />
+    <Content Include="Ressources\Images\imagesupload\b182727a-ba37-44e7-8644-0c9dcefc49e405042014231209.jpg" />
+    <Content Include="Ressources\Images\imagesupload\ba91f46b-9ed8-40a8-b1b7-848a19107d6324042014091154.png" />
+    <Content Include="Ressources\Images\imagesupload\c4fe8b46-bd15-41d4-a97a-02763cd1b83430042014113006.jpg" />
+    <Content Include="Ressources\Images\imagesupload\cd3a7c82-6b64-4687-8451-ccc844c250bd28042014163455.jpg" />
+    <Content Include="Ressources\Images\imagesupload\cd65a97b-c615-4283-87dd-f1e0be5bae1e28042014150306.jpg" />
+    <Content Include="Ressources\Images\imagesupload\e167c816-d565-49d6-be82-c0c8e62877e528042014121300.png" />
+    <Content Include="Ressources\Images\imagesupload\faee5f3f-7d0f-47ed-95af-0d05acdb52e809042014222022.png" />
+    <Content Include="Ressources\Images\imagesupload\image1.jpg" />
+    <Content Include="Ressources\Images\imagesupload\image2.jpg" />
+    <Content Include="Ressources\Images\imagesupload\vehicule2.jpg" />
+    <Content Include="Ressources\Images\imgconnexion.png" />
+    <Content Include="Ressources\Images\ImgTrajet\marker.end.png" />
+    <Content Include="Ressources\Images\ImgTrajet\marker.start.png" />
+    <Content Include="Ressources\Images\ImgTrajet\mm_20_blue.png" />
+    <Content Include="Ressources\Images\ImgTrajet\mm_20_green.png" />
+    <Content Include="Ressources\Images\ImgTrajet\mm_20_orange.png" />
+    <Content Include="Ressources\Images\ImgTrajet\mm_20_red.png" />
+    <Content Include="Ressources\Images\info.png" />
+    <Content Include="Ressources\Images\logo.png" />
+    <Content Include="Ressources\Images\mail.png" />
+    <Content Include="Ressources\Images\Moto_ Bleu.png" />
+    <Content Include="Ressources\Images\Moto_Jaune.png" />
+    <Content Include="Ressources\Images\Moto_Rouge.png" />
+    <Content Include="Ressources\Images\Moto_Vert.png" />
+    <Content Include="Ressources\Images\pause.png" />
+    <Content Include="Ressources\Images\play.png" />
+    <Content Include="Ressources\Images\poi.png" />
+    <Content Include="Ressources\Images\poi_station.png" />
+    <Content Include="Ressources\Images\regeomtec\21_gris.png" />
+    <Content Include="Ressources\Images\regeomtec\38.png" />
+    <Content Include="Ressources\Images\regeomtec\39.png" />
+    <Content Include="Ressources\Images\regeomtec\40.png" />
+    <Content Include="Ressources\Images\regeomtec\41.png" />
+    <Content Include="Ressources\Images\regeomtec\alerte1.png" />
+    <Content Include="Ressources\Images\regeomtec\alerte2.png" />
+    <Content Include="Ressources\Images\regeomtec\alerte3.png" />
+    <Content Include="Ressources\Images\regeomtec\B_Bleu.png" />
+    <Content Include="Ressources\Images\regeomtec\B_Orange.png" />
+    <Content Include="Ressources\Images\regeomtec\B_rouge.png" />
+    <Content Include="Ressources\Images\regeomtec\B_Vert.png" />
+    <Content Include="Ressources\Images\regeomtec\Cam_Bleu.png" />
+    <Content Include="Ressources\Images\regeomtec\Cam_Jaune.png" />
+    <Content Include="Ressources\Images\regeomtec\Cam_Rouge.png" />
+    <Content Include="Ressources\Images\regeomtec\Cam_Vert.png" />
+    <Content Include="Ressources\Images\regeomtec\Moto Bleu.png" />
+    <Content Include="Ressources\Images\regeomtec\Moto Jaune.png" />
+    <Content Include="Ressources\Images\regeomtec\Moto Rouge.png" />
+    <Content Include="Ressources\Images\regeomtec\Moto Vert.png" />
+    <Content Include="Ressources\Images\regeomtec\V_bleu.png" />
+    <Content Include="Ressources\Images\regeomtec\V_Jaune.png" />
+    <Content Include="Ressources\Images\regeomtec\V_Rouge.png" />
+    <Content Include="Ressources\Images\regeomtec\V_Vert.png" />
+    <Content Include="Ressources\Images\rewind.png" />
+    <Content Include="Ressources\Images\Sans titre 7.png" />
+    <Content Include="Ressources\Images\satellite.png" />
+    <Content Include="Ressources\Images\start.png" />
+    <Content Include="Ressources\Images\stop.png" />
+    <Content Include="Ressources\Images\uk.png" />
+    <Content Include="Ressources\Images\vehicule.png" />
+    <Content Include="Ressources\Images\voituretree.png" />
+    <Content Include="Ressources\Images\V_bleu.png" />
+    <Content Include="Ressources\Images\V_Jaune.png" />
+    <Content Include="Ressources\Images\V_Rouge.png" />
+    <Content Include="Ressources\Images\V_Vert.png" />
+    <Content Include="Ressources\Scripts\Boitier\js_Boitier.js" />
+    <Content Include="Ressources\Scripts\CarteSim\js_CarteSim.js" />
+    <Content Include="Ressources\Scripts\common\elabel.js" />
+    <Content Include="Ressources\Scripts\common\func.js" />
+    <Content Include="Ressources\Scripts\common\gc.js" />
+    <Content Include="Ressources\Scripts\common\GMaps.js" />
+    <Content Include="Ressources\Scripts\common\polygon.min.js" />
+    <Content Include="Ressources\Scripts\common\jquery.js" />
+    <Content Include="Ressources\Scripts\common\js_common_form.js" />
+    <Content Include="Ressources\Scripts\common\js_common_module.js" />
+    <Content Include="Ressources\Scripts\Profil\js_Profil.js" />
+    <Content Include="Ressources\Styles\Authentification\css_authentification.css" />
+    <Content Include="Ressources\Styles\Boitier\css_Boitier.css" />
+    <Content Include="Ressources\Styles\CarteSim\css_CarteSim.css" />
+    <Content Include="Ressources\Styles\common\colorbox.css" />
+    <Content Include="Ressources\Styles\common\images\border.png" />
+    <Content Include="Ressources\Styles\common\images\controls.png" />
+    <Content Include="Ressources\Styles\common\css_module.css" />
+    <Content Include="Ressources\Styles\common\images\loading.gif" />
+    <Content Include="Ressources\Styles\common\images\loading_background.png" />
+    <Content Include="Ressources\Styles\common\images\overlay.png" />
+    <Content Include="Ressources\Styles\common\Site.css" />
+    <Content Include="Ressources\Scripts\common\jquery.colorbox.js" />
+    <Content Include="Ressources\Scripts\Vehicule\js_Vehicule.js" />
+    <Content Include="Ressources\Styles\TempsReel\css_Carte.css" />
+    <Content Include="Ressources\Styles\MasterClient\css_MasterClient.css" />
+    <Content Include="Ressources\Styles\Profil\css_Profil.css" />
+    <Content Include="Ressources\Styles\TempsReel\css_TempsReel.css" />
+    <Content Include="Ressources\Styles\Vehicule\css_vehicule.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Ressources\Scripts\common\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Ressources\Scripts\common\jquery-1.4.1.js" />
+    <Content Include="Ressources\Scripts\common\jquery-1.4.1.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="WebForm1.aspx" />
+    <Content Include="WebForm2.aspx" />
+    <Content Include="WebForm3.aspx" />
+    <Content Include="WebForm4.aspx" />
+    <Content Include="WebForm5.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_GlobalResources\Resource.en-US.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.en-US.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Resource.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Resource.fr-FR.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.fr-FR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Arret.cs" />
+    <Compile Include="Common\Htrajet.cs" />
+    <Compile Include="Common\LoginGeo.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\Form.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\Global.cs" />
+    <Compile Include="Common\PageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\UserInfo.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\GetterPositionTrajet.ashx.cs">
+      <DependentUpon>GetterPositionTrajet.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\HandlerLiveTracking.ashx.cs">
+      <DependentUpon>HandlerLiveTracking.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="linq.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>linq.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Alarme\Alarme.aspx.cs">
+      <DependentUpon>Alarme.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Alarme\Alarme.aspx.designer.cs">
+      <DependentUpon>Alarme.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Boitier\Boitier.aspx.cs">
+      <DependentUpon>Boitier.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Boitier\Boitier.aspx.designer.cs">
+      <DependentUpon>Boitier.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Boitier\GeoForm.aspx.cs">
+      <DependentUpon>GeoForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Boitier\GeoForm.aspx.designer.cs">
+      <DependentUpon>GeoForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\CarteSim\CarteSim.aspx.cs">
+      <DependentUpon>CarteSim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\CarteSim\CarteSim.aspx.designer.cs">
+      <DependentUpon>CarteSim.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\CarteSim\GeoForm.aspx.cs">
+      <DependentUpon>GeoForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\CarteSim\GeoForm.aspx.designer.cs">
+      <DependentUpon>GeoForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Carte\loadTempsReel.aspx.cs">
+      <DependentUpon>loadTempsReel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Carte\loadTempsReel.aspx.designer.cs">
+      <DependentUpon>loadTempsReel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Carte\TempsReel.aspx.cs">
+      <DependentUpon>TempsReel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Carte\TempsReel.aspx.designer.cs">
+      <DependentUpon>TempsReel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Client\Client.aspx.cs">
+      <DependentUpon>Client.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Client\Client.aspx.designer.cs">
+      <DependentUpon>Client.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Client\GeoForm.aspx.cs">
+      <DependentUpon>GeoForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Client\GeoForm.aspx.designer.cs">
+      <DependentUpon>GeoForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Deconnexion\Deconnexion.aspx.cs">
+      <DependentUpon>Deconnexion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Deconnexion\Deconnexion.aspx.designer.cs">
+      <DependentUpon>Deconnexion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Groupe\GeoForm.aspx.cs">
+      <DependentUpon>GeoForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Groupe\GeoForm.aspx.designer.cs">
+      <DependentUpon>GeoForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Groupe\Groupe.aspx.cs">
+      <DependentUpon>Groupe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Groupe\Groupe.aspx.designer.cs">
+      <DependentUpon>Groupe.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HistoriqueArret\HistoriqueArret.aspx.cs">
+      <DependentUpon>HistoriqueArret.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\HistoriqueArret\HistoriqueArret.aspx.designer.cs">
+      <DependentUpon>HistoriqueArret.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HistoriqueArret\LoadHistoriqueArret.aspx.cs">
+      <DependentUpon>LoadHistoriqueArret.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\HistoriqueArret\LoadHistoriqueArret.aspx.designer.cs">
+      <DependentUpon>LoadHistoriqueArret.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HistoriqueTrajet\HistoriqueTrajet.aspx.cs">
+      <DependentUpon>HistoriqueTrajet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\HistoriqueTrajet\HistoriqueTrajet.aspx.designer.cs">
+      <DependentUpon>HistoriqueTrajet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HistoriqueTrajet\LoadHistoriqueTrajet.aspx.cs">
+      <DependentUpon>LoadHistoriqueTrajet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\HistoriqueTrajet\LoadHistoriqueTrajet.aspx.designer.cs">
+      <DependentUpon>LoadHistoriqueTrajet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Login\BackOffice.aspx.cs">
+      <DependentUpon>BackOffice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Login\BackOffice.aspx.designer.cs">
+      <DependentUpon>BackOffice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Login\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Login\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Login\Revendeur.aspx.cs">
+      <DependentUpon>Revendeur.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Login\Revendeur.aspx.designer.cs">
+      <DependentUpon>Revendeur.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Personnel\GeoForm.aspx.cs">
+      <DependentUpon>GeoForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Personnel\GeoForm.aspx.designer.cs">
+      <DependentUpon>GeoForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Personnel\Personnel.aspx.cs">
+      <DependentUpon>Personnel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Personnel\Personnel.aspx.designer.cs">
+      <DependentUpon>Personnel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Poi\LoadPoi.aspx.cs">
+      <DependentUpon>LoadPoi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Poi\LoadPoi.aspx.designer.cs">
+      <DependentUpon>LoadPoi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Poi\Poi.aspx.cs">
+      <DependentUpon>Poi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Poi\Poi.aspx.designer.cs">
+      <DependentUpon>Poi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Profil\GeoForm.aspx.cs">
+      <DependentUpon>GeoForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Profil\GeoForm.aspx.designer.cs">
+      <DependentUpon>GeoForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Profil\Profil.aspx.cs">
+      <DependentUpon>Profil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Profil\Profil.aspx.designer.cs">
+      <DependentUpon>Profil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\RapportActiv\GenererExcel.aspx.cs">
+      <DependentUpon>GenererExcel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\RapportActiv\GenererExcel.aspx.designer.cs">
+      <DependentUpon>GenererExcel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\RapportActiv\GenererPdf.aspx.cs">
+      <DependentUpon>GenererPdf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\RapportActiv\GenererPdf.aspx.designer.cs">
+      <DependentUpon>GenererPdf.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\RapportActiv\RapportActiv.aspx.cs">
+      <DependentUpon>RapportActiv.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\RapportActiv\RapportActiv.aspx.designer.cs">
+      <DependentUpon>RapportActiv.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Revendeur\GeoForm.aspx.cs">
+      <DependentUpon>GeoForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Revendeur\GeoForm.aspx.designer.cs">
+      <DependentUpon>GeoForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Revendeur\Revendeur.aspx.cs">
+      <DependentUpon>Revendeur.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Revendeur\Revendeur.aspx.designer.cs">
+      <DependentUpon>Revendeur.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Trajet\LoadTrajet.aspx.cs">
+      <DependentUpon>LoadTrajet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Trajet\LoadTrajet.aspx.designer.cs">
+      <DependentUpon>LoadTrajet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Trajet\Trajet.aspx.cs">
+      <DependentUpon>Trajet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Trajet\Trajet.aspx.designer.cs">
+      <DependentUpon>Trajet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\UserBackOffice\GeoForm.aspx.cs">
+      <DependentUpon>GeoForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\UserBackOffice\GeoForm.aspx.designer.cs">
+      <DependentUpon>GeoForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\UserBackOffice\UserBackOffice.aspx.cs">
+      <DependentUpon>UserBackOffice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\UserBackOffice\UserBackOffice.aspx.designer.cs">
+      <DependentUpon>UserBackOffice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Utilisateur\GeoForm.aspx.cs">
+      <DependentUpon>GeoForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Utilisateur\GeoForm.aspx.designer.cs">
+      <DependentUpon>GeoForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Utilisateur\Utilisateur.aspx.cs">
+      <DependentUpon>Utilisateur.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Utilisateur\Utilisateur.aspx.designer.cs">
+      <DependentUpon>Utilisateur.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\VehiculeConfiguration\conForm.aspx.cs">
+      <DependentUpon>conForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\VehiculeConfiguration\conForm.aspx.designer.cs">
+      <DependentUpon>conForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\VehiculeConfiguration\VehiculeConf.aspx.cs">
+      <DependentUpon>VehiculeConf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\VehiculeConfiguration\VehiculeConf.aspx.designer.cs">
+      <DependentUpon>VehiculeConf.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\VehiculeProche\LoadVehicule.aspx.cs">
+      <DependentUpon>LoadVehicule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\VehiculeProche\LoadVehicule.aspx.designer.cs">
+      <DependentUpon>LoadVehicule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\VehiculeProche\VehiculeProche.aspx.cs">
+      <DependentUpon>VehiculeProche.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\VehiculeProche\VehiculeProche.aspx.designer.cs">
+      <DependentUpon>VehiculeProche.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\VehiculeProche\WebServ_data.asmx.cs">
+      <DependentUpon>WebServ_data.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Modules\Vehicules\GeoForm.aspx.cs">
+      <DependentUpon>GeoForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Vehicules\GeoForm.aspx.designer.cs">
+      <DependentUpon>GeoForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Vehicules\Vehicules.aspx.cs">
+      <DependentUpon>Vehicules.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Vehicules\Vehicules.aspx.designer.cs">
+      <DependentUpon>Vehicules.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Zone\LoadZone.aspx.cs">
+      <DependentUpon>LoadZone.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Zone\LoadZone.aspx.designer.cs">
+      <DependentUpon>LoadZone.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Zone\Zone.aspx.cs">
+      <DependentUpon>Zone.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Zone\Zone.aspx.designer.cs">
+      <DependentUpon>Zone.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagesMaster\BackOffice.Master.cs">
+      <DependentUpon>BackOffice.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagesMaster\BackOffice.Master.designer.cs">
+      <DependentUpon>BackOffice.Master</DependentUpon>
+    </Compile>
+    <Compile Include="PagesMaster\Client.Master.cs">
+      <DependentUpon>Client.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagesMaster\Client.Master.designer.cs">
+      <DependentUpon>Client.Master</DependentUpon>
+    </Compile>
+    <Compile Include="PagesMaster\Revendeur.Master.cs">
+      <DependentUpon>Revendeur.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagesMaster\Revendeur.Master.designer.cs">
+      <DependentUpon>Revendeur.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm2.aspx.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm2.aspx.designer.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm3.aspx.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm3.aspx.designer.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm4.aspx.cs">
+      <DependentUpon>WebForm4.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm4.aspx.designer.cs">
+      <DependentUpon>WebForm4.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm5.aspx.cs">
+      <DependentUpon>WebForm5.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm5.aspx.designer.cs">
+      <DependentUpon>WebForm5.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PagesMaster\Client.Master" />
+    <Content Include="PagesMaster\Revendeur.Master" />
+    <Content Include="PagesMaster\BackOffice.Master" />
+    <Content Include="Handler\GetterPositionTrajet.ashx" />
+    <Content Include="Handler\HandlerLiveTracking.ashx" />
+    <Content Include="packages.config" />
+    <Content Include="linq.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>linq.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="PagesMaster\fonts\iconic\iconic_stroke.eot" />
+    <None Include="PagesMaster\fonts\iconic\iconic_stroke.otf" />
+    <None Include="PagesMaster\fonts\iconic\iconic_stroke.ttf" />
+    <None Include="Properties\PublishProfiles\ffff.pubxml" />
+    <None Include="Properties\PublishProfiles\meryem.pubxml" />
+    <None Include="Properties\PublishProfiles\Profil1.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Ressources\Images\regeomtec\38.psd" />
+    <Content Include="Ressources\Images\regeomtec\39.psd" />
+    <Content Include="Ressources\Images\regeomtec\40.psd" />
+    <Content Include="Ressources\Images\regeomtec\41.psd" />
+    <Content Include="Ressources\Images\regeomtec\bus.psd" />
+    <Content Include="Ressources\Images\regeomtec\Camion.psd" />
+    <Content Include="Ressources\Images\regeomtec\car.psd" />
+    <Content Include="Ressources\Images\regeomtec\Moto.psd" />
+    <Content Include="Ressources\Images\regeomtec\Thumbs.db" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Resource.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Resource.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Resource.en-US.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Resource.en-US.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Resource.fr-FR.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Resource.fr-FR.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="linq.dbml.layout">
+      <DependentUpon>linq.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>10106</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/GeoSI.Website</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost/GPS</IISAppRootUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

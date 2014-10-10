@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<DocumentElement>
+  <Rapport>
+    <matricule>865565</matricule>
+    <DateAlert>2014-07-26T00:00:00+01:00</DateAlert>
+    <titre>Consommation excessive</titre>
+    <Descriptione>ko</Descriptione>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <DateAlert>2014-08-22T00:00:00+01:00</DateAlert>
+    <titre>Débranchement boitier </titre>
+    <Descriptione> descriiiiiiiiiiii</Descriptione>
+  </Rapport>
+</DocumentElement>

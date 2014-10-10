@@ -1,0 +1,395 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
+using System.Web;
+using System.Net;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using GeoSI.Website.Common;
+using Ext.Net;
+using System.Data.SqlClient;
+using System.Data;
+using System.Xml.Linq;
+
+using GeoSI.Website.Common;
+using System.Globalization;
+
+
+
+namespace GeoSI.Website.Modules.TempsReel
+{
+    public partial class loadTempsReel : Page
+    {
+        public String adress = "";
+
+        //Recuperation de la session user
+        protected UserInfo getCurrentUser()
+        {
+
+            UserInfo retVal = null;
+            object o = Session["UserInfo"];
+            if (o != null)
+            {
+                retVal = ((UserInfo)Session["UserInfo"]);
+            }
+            return retVal;
+
+
+        }
+
+        protected void FillStore(string sql, Store _store)
+        {
+            using (SqlDataAdapter da = new SqlDataAdapter(sql, _Global.CurrentConnection))
+            {
+                DataSet ds = new DataSet();
+                da.SelectCommand.CommandTimeout = 120;
+                da.Fill(ds);
+                _store.DataSource = ds.Tables[0];
+                _store.DataBind();
+            }
+        }
+        // Accès à la base de Données 
+        protected SqlDataReader Select(string _Requette)
+        {
+            SqlDataReader dr;
+            try
+            {
+                SqlConnection cnx = _Global.CurrentConnection;
+                SqlCommand cmd = new SqlCommand(_Requette, cnx);
+                dr = cmd.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                dr = null;
+                ex.ToString();
+            }
+            return dr;
+        }
+        private string racine = null;
+        //Chergement de la page 
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            // recupération des des groupes et sous groupes
+            Node noderoot = this.TreePanel1.Root.ElementAt(0);
+            string _req = "select * from groupe where clientid=" + this.getCurrentUser().getClientId() + " and ssgroupeid=0";
+            SqlDataReader dr = Select(_req);
+
+            while (dr.Read())
+            {
+                noderoot.Text = dr[1].ToString();
+                noderoot.NodeID = dr[0].ToString();
+                racine = dr[0].ToString();
+            }
+
+            dr.Close();
+           // txt1.Text = RetrieveFormatedAddress("33.5992364201655", "-7.570799214941417");
+
+        }
+       
+   
+   
+
+
+        List<Htrajet> Listtrajet = new List<Htrajet>();
+        Datatracker track = new Datatracker();
+        List<Datatracker> Listtrack = new List<Datatracker>();
+        Htrajet trajet = new Htrajet();
+        int vitesse = 0;
+        int nbrtrajet=0;
+        [DirectMethod]
+        protected void HistoriqueTrajet(object sender, EventArgs e)
+        {
+
+
+
+            int Compt = 0;
+            int vehiculeid = 6;
+            //  DateTime dateUser;
+            ArrayList List = new ArrayList();
+
+            string _req = "select d.GPSDateTime,d.latitude,d.longitude ,p.nom+' '+p.prenom as conducteur,d.speed from Datatracker d inner join boitier b on b.imei=d.imei inner join affectation_vehicule_boitier abv on abv.boitierid=b.boitierid inner join vehicules  v on v.vehiculeid = abv.vehiculeid inner join vehicule_personnel vp on vp.vehiculeid=v.vehiculeid inner join personnel p on p.personnelid=vp.personnelid where d.GPSDateTime like '%07/07/2014%' and v.vehiculeid=" + vehiculeid;
+            SqlDataReader dr = Select(_req);
+            string c = "";
+           
+
+            while (dr.Read())
+            {
+                Datatracker t = new Datatracker();
+                
+                t.GPSDateTime = dr[0].ToString();
+                t.latitude = (double)dr[1];
+                t.longitude = (double)dr[2];
+                t.speed = (int)dr[4];
+                c = dr[3].ToString();
+                Listtrack.Add(t);
+              
+
+            }
+            track = Listtrack[0];
+            
+            trajet.setConducteur(c);
+            trajet.setvitesse(vitesse);
+            trajet.Setvehicule(vehiculeid);
+            trajet.SetDateD(DateTime.ParseExact(track.GPSDateTime, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture));
+            DateTime date = trajet.GetDateD();
+            for (int i = 0; i < Listtrack.Count; i++)
+            {
+                
+                trajet.position.Add(Listtrack[i]);
+                vitesse += (int)Listtrack[i].speed;
+                DateTime d = date.AddMinutes(1);
+                DateTime dd = DateTime.ParseExact(Listtrack[i].GPSDateTime, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                if (dd >= d)
+                { 
+                    if (Listtrack[i].latitude == track.latitude && Listtrack[i].longitude == track.longitude)
+                      Compt++;
+                    track = Listtrack[i];
+                        date = DateTime.ParseExact(Listtrack[i].GPSDateTime, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                    }
+
+               
+                if (Compt >=5)
+                {
+
+                    trajet.SetDateF(DateTime.ParseExact(Listtrack[i].GPSDateTime, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture));
+                    
+                    Listtrajet.Add(trajet);
+                    //initialisation du nv trajet
+                    int j = 0;
+                    for (j = i; j < Listtrack.Count-1; j++)
+                    {
+                        if (Listtrack[j].latitude != Listtrack[j + 1].latitude)
+                            break;
+                        else
+                        {
+                            if (Listtrack[j].longitude != Listtrack[j + 1].longitude)
+                                break;
+                        }
+                    }
+                    i = j;
+                    trajet.setvitesse(vitesse/Listtrajet[Listtrajet.Count-1].position.Count);
+                    track = Listtrack[i];
+                    trajet = new Htrajet();
+                    trajet.setConducteur(c);
+                   
+                    vitesse = 0; 
+                    trajet.SetDateD(DateTime.ParseExact(Listtrack[i].GPSDateTime, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture));
+                    Compt = 0;
+                    
+                }
+            
+            }
+            
+            List<object> lo = new List<object>();
+            //Store Store1 = this.GridPanelVoyage.GetStore();
+            for (int i = 0; i < Listtrajet.Count; i++)
+            {
+                DateTime d = DateTime.ParseExact(Listtrajet[i].position[0].GPSDateTime, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                DateTime dd = DateTime.ParseExact(Listtrajet[i].position[Listtrajet[i].position.Count - 1].GPSDateTime, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+               
+            string  adrD=  RetrieveFormatedAddress(Listtrajet[i].position[0].latitude.ToString(), Listtrajet[i].position[0].longitude.ToString());
+               // string adrF = RetrieveFormatedAddress("33.5992364201655", "-7.570799214941417");
+            string adrF = RetrieveFormatedAddress(Listtrajet[i].position[Listtrajet[i].position.Count - 1].latitude.ToString(), Listtrajet[i].position[Listtrajet[i].position.Count - 1].longitude.ToString());
+              //  Address[] addresses = geoCoder.ReverseGeoCode(38.8976777, -77.036517);
+            float duree = dd.Minute - d.Minute;
+            lo.Add(new object[] 
+            { c, adrD, Listtrajet[i].position[0].GPSDateTime, adrF, Listtrajet[i].position[Listtrajet[i].position.Count - 1].GPSDateTime, duree +" min", Listtrajet[i].vitesse + " Km/H" }
+);
+            }
+          
+
+            Store1.Add(lo);
+            Store1.CommitChanges();
+
+        }
+
+        String add = "aa";
+       static string baseUri = "http://maps.googleapis.com/maps/api/" + "geocode/xml?latlng={0},{1}&sensor=false"; 
+       
+        public  string RetrieveFormatedAddress(string lat, string lng) 
+        { 
+            string requestUri = string.Format(baseUri, lat, lng);
+            using (WebClient wc = new WebClient())
+            {
+                wc.DownloadStringCompleted += new DownloadStringCompletedEventHandler(wc_DownloadStringCompleted);
+              return wc.DownloadString(new Uri(requestUri));
+                
+               
+            }
+        } 
+     public    void wc_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e) 
+        { 
+            var xmlElm = XElement.Parse(e.Result); 
+            var status = (from elm in xmlElm.Descendants() where elm.Name == "status" select elm).FirstOrDefault();
+            if (status.Value.ToLower() == "ok")
+            {
+                var res = (from elm in xmlElm.Descendants() where elm.Name == "formatted_address" select elm).FirstOrDefault();
+                add = res.Value;
+                
+                // Console.WriteLine(res.Value); 
+            } else {
+                //Console.WriteLine("No Address Found");
+                add = "NOOOOOOO";
+            } 
+        } 
+    
+        [DirectMethod]
+        public string NodeLoad(string nodeID)
+        {
+            NodeCollection nodes = new Ext.Net.NodeCollection();
+            if (!string.IsNullOrEmpty(nodeID))
+            {
+                // récupérer l'id de l'uilisateur
+
+
+                // requete sql qui me retourne tous les vehicule et tous les groupes liés à cet id et que l'utilisateur  a le droit de consulter
+
+                String _reqGrp = "select g.groupeid, g.libelle from groupe g inner join Groupe_Profil gp on gp.groupeid = g.groupeid and gp.actif = '1' inner join profil p on p.profilid = gp.profilid and p.actif = '1' inner join profil_user pu on pu.actif = '1' and pu.profilid = p.profilid where g.ssgroupeid = " + nodeID + "and g.clientid = " + this.getCurrentUser().getClientId() + "   and g.actif = '1' and pu.utilisateurid =  " + this.getCurrentUser().getUserId();
+                SqlDataReader drG = Select(_reqGrp);
+
+
+                // construction du Json nodes
+                IDictionary<string, string> listGroupe = new Dictionary<string, string>();
+                while (drG.Read())
+                {
+                    listGroupe.Add(drG[0].ToString(), drG[1].ToString());
+                }
+                drG.Close();
+
+                for (int i = 0; i < listGroupe.Count; i++)
+                {
+                    Node asyncNode = new Node();
+                    asyncNode.Text = listGroupe.ElementAt(i).Value;
+                    asyncNode.NodeID = listGroupe.ElementAt(i).Key;
+                    nodes.Add(asyncNode);
+                }
+
+
+                string _reqVeh = "select * from (select aff.* from (select v.vehiculeid, v.matricule, v.typevehiculeid ,d.contact , isnull(gv.groupeid, 1) as groupeid from vehicules v left outer join groupe_vehicule gv on gv.vehiculeid = v.vehiculeid and gv.actif = '1'  inner join affectation_vehicule_boitier abv on abv.vehiculeid=v.vehiculeid inner join boitier b on b.boitierid=abv.boitierid inner join Datatracker d on d.imei=b.imei  where v.clientid = " + this.getCurrentUser().getClientId() + " and v.actif = '1' )aff union select v.vehiculeid, v.matricule, v.typevehiculeid ,d.contact , 1 as groupeid   from vehicules v inner join  profil_vehicule pv on pv.vehiculeid = v.vehiculeid and pv.actif = '1' inner join profil p on p.profilid = pv.profilid and p.actif ='1'   inner join affectation_vehicule_boitier abv on abv.vehiculeid=v.vehiculeid inner join boitier b on b.boitierid=abv.boitierid inner join Datatracker d on d.imei=b.imei inner join profil_user pu on pu.actif = '1' and pu.profilid = p.profilid where  pu.utilisateurid = " + this.getCurrentUser().getUserId() + " and  v.clientid = " + this.getCurrentUser().getClientId() + " and v.actif = '1') aff2 where groupeid =" + nodeID;
+                SqlDataReader drV = Select(_reqVeh);
+
+
+
+
+                while (drV.Read())
+                {
+                    Node asyncNode1 = new Node();
+
+                    if ((int)drV[3] == 0)
+                        asyncNode1.Text = drV[1].ToString() + " <img src=\"../../Ressources/Images/contact1.png\"";
+                    else
+                        asyncNode1.Text = drV[1].ToString() + " <img src=\"../../Ressources/Images/contact.png\"";
+                    asyncNode1.NodeID = drV[0].ToString();
+                    asyncNode1.Leaf = true;
+                    if (int.Parse(drV[2].ToString()) == 1)
+                    {
+                        asyncNode1.IconCls = "voiturecls";
+                    }
+                    else if (int.Parse(drV[2].ToString()) == 2)
+                    {
+                        asyncNode1.IconCls = "camioncls";
+                    }
+                    asyncNode1.Checked = false;
+                    nodes.Add(asyncNode1);
+                }
+
+                drV.Close();
+            }
+            else { }
+
+            return nodes.ToJson();
+        }
+
+        //Récupération des information des noeuds des groupes et sous groupes
+        [DirectMethod]
+        public string NodeLoadBis(string nodeID)
+        {
+            NodeCollection nodes = new Ext.Net.NodeCollection();
+
+            if (!string.IsNullOrEmpty(nodeID))
+            {
+                string _req = "select * from groupe where ssgroupeid=" + nodeID + " and clientid=" + this.getCurrentUser().getClientId();
+                SqlDataReader dr = Select(_req);
+                IDictionary<string, string> listGroupe = new Dictionary<string, string>();
+                while (dr.Read())
+                {
+                    listGroupe.Add(dr[0].ToString(), dr[1].ToString());
+                }
+
+                dr.Close();
+                int countgroupe = 0, countvehicule = 0;
+
+                for (int i = 0; i < listGroupe.Count; i++)
+                {
+                    Node asyncNode = new Node();
+                    asyncNode.Text = listGroupe.ElementAt(i).Value;
+                    asyncNode.NodeID = listGroupe.ElementAt(i).Key;
+                    string _req11 = "select count(*) from groupe where ssgroupeid=" + listGroupe.ElementAt(i).Key + " and clientid=" + this.getCurrentUser().getClientId();
+                    SqlDataReader dr11 = Select(_req11);
+                    if (dr11.Read()) { countgroupe = int.Parse(dr11[0].ToString()); }
+                    dr11.Close();
+
+                    string _reqvehicule = "select count(*) from groupe_vehicule gv,vehicules v where gv.vehiculeid=v.vehiculeid and gv.actif='1' and groupeid=" + listGroupe.ElementAt(i).Key + " and gv.clientid=" + this.getCurrentUser().getClientId();
+                    SqlDataReader drvehicule = Select(_reqvehicule);
+                    if (drvehicule.Read()) { countvehicule = int.Parse(drvehicule[0].ToString()); }
+                    drvehicule.Close();
+                    if (countgroupe == 0 && countvehicule == 0)
+                    {
+                        asyncNode.EmptyChildren = true;
+                    }
+
+                    nodes.Add(asyncNode);
+                }
+
+                if (nodeID == racine)
+                {
+                    string _req0 = "select vehiculeid,matricule,typevehiculeid from vehicules where actif='1' and clientid=" + this.getCurrentUser().getClientId() + " and vehiculeid not in (select vehiculeid from groupe_vehicule where actif='1' and clientid=" + this.getCurrentUser().getClientId() + ")";
+
+                    System.Data.SqlClient.SqlDataReader dr0 = Select(_req0);
+
+                    while (dr0.Read())
+                    {
+                        Node asyncNode1 = new Node();
+                        asyncNode1.Text = dr0[1].ToString() + " <img src=\"../../Ressources/Images/backtest.png\"";
+                        asyncNode1.NodeID = dr0[0].ToString();
+                        asyncNode1.Leaf = true;
+                        if (int.Parse(dr0[2].ToString()) == 1)
+                        {
+                            asyncNode1.IconCls = "voiturecls";
+                        }
+                        else if (int.Parse(dr0[2].ToString()) == 2)
+                        { asyncNode1.IconCls = "camioncls"; }
+                        asyncNode1.Checked = false;
+                        nodes.Add(asyncNode1);
+                    }
+
+                    dr0.Close();
+                }
+                //string _req1 = "select v.vehiculeid,v.matricule,v.typevehiculeid from groupe_vehicule gv,vehicules v where gv.vehiculeid=v.vehiculeid and groupeid=" + nodeID + " and gv.actif='1' and v.actif='1' and gv.clientid=" + this.getCurrentUser().getClientId();
+                string _req1 = "select b.imei,v.matricule,v.typevehiculeid from groupe_vehicule gv,vehicules v ,boitier b, affectation_vehicule_boitier avb where v.vehiculeid=avb.vehiculeid and b.boitierid=avb.boitierid and gv.vehiculeid=v.vehiculeid and groupeid=" + nodeID + " and avb.actif='1' and gv.actif='1' and v.actif='1' and gv.clientid=" + this.getCurrentUser().getClientId();
+
+                System.Data.SqlClient.SqlDataReader dr1 = Select(_req1);
+
+                while (dr1.Read())
+                {
+                    Node asyncNode1 = new Node();
+                    asyncNode1.Text = dr1[1].ToString() + " <img src=\"../../Ressources/Images/backtest.png\"";
+                    asyncNode1.NodeID = dr1[0].ToString();
+                    asyncNode1.Leaf = true;
+                    if (int.Parse(dr1[2].ToString()) == 1)
+                    {
+                        asyncNode1.IconCls = "voiturecls";
+                    }
+                    else if (int.Parse(dr1[2].ToString()) == 2) { asyncNode1.IconCls = "camioncls"; }
+                    asyncNode1.Checked = false;
+                    nodes.Add(asyncNode1);
+                }
+
+                dr1.Close();
+            }
+            else { }
+            return nodes.ToJson();
+        }
+    }
+}

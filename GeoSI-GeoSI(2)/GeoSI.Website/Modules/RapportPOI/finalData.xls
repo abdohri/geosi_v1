@@ -1,0 +1,22 @@
+<?xml version="1.0" standalone="yes"?>
+<DocumentElement>
+  <Rapport>
+    <matricule>865565</matricule>
+    <cond>alami adil</cond>
+    <libelle>Station diouri</libelle>
+    <type_poi>Dépot</type_poi>
+    <date_debut>2014-09-05T00:00:00+02:00</date_debut>
+    <date_fin>2014-09-05T00:00:00+02:00</date_fin>
+    <duree>220</duree>
+    <nbrvisite>2</nbrvisite>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <cond>alami kamal</cond>
+    <libelle>hassan 2</libelle>
+    <date_debut>2014-09-05T00:00:00+02:00</date_debut>
+    <date_fin>2014-09-05T00:00:00+02:00</date_fin>
+    <duree>24</duree>
+    <nbrvisite>1</nbrvisite>
+  </Rapport>
+</DocumentElement>

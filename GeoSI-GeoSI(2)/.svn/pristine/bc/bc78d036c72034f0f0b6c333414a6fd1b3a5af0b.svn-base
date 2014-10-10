@@ -1,0 +1,83 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Data;
+using System.Web.Security;
+
+namespace GeoSI.Website.Common
+{
+
+    public class Htrajet
+    {
+        public int vitesse;
+        public  string conducteur;
+        public DateTime dateDebut;
+        public DateTime dateFin;
+        public string vehicule;
+        public List<Datatracker> position = new List<Datatracker>();
+        public int km;
+
+        public void setkm(int km)
+        { this.km= km; }
+        public void setposition(List<Datatracker> t)
+        {
+            position = t;
+        }
+        public Htrajet()
+        {
+          
+        }
+
+        public void setvitesse(int v)
+        {
+            vitesse = v;
+        }
+        public Htrajet(DateTime db, DateTime df)
+        {
+            this.dateDebut = db;
+            this.dateFin = df;
+        }
+      
+        public void setConducteur(string c)
+        {
+            conducteur = c; 
+        }
+
+        public string getConducteur( )
+        {
+            return conducteur ;
+        }
+
+        public DateTime GetDateD()
+        {
+            return this.dateDebut;
+        }
+        public DateTime GetDateF()
+        {
+            return this.dateFin;
+        }
+        public string Getvehcicule()
+        {
+            return this.vehicule;
+        }
+        public void SetDateD(DateTime d)
+        {
+            this.dateDebut = d;
+        }
+        public void SetDateF(DateTime d)
+        {
+            this.dateFin = d;
+        }
+        public void Setvehicule(string id)
+        {
+            this.vehicule = id;
+        }
+        public int getvitesse()
+        {
+            return vitesse;
+        }
+    }
+}

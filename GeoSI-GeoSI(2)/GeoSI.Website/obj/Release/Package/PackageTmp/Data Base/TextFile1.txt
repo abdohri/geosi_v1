@@ -1,0 +1,976 @@
+﻿USE [Geomtec]
+GO
+/****** Object:  Table [dbo].[activite]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[activite](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[libelle] [varchar](50) NULL,
+	[description] [text] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[activite] ON
+INSERT [dbo].[activite] ([id], [libelle], [description]) VALUES (1, N'activite1', N'test')
+INSERT [dbo].[activite] ([id], [libelle], [description]) VALUES (2, N'activite2', N'test')
+INSERT [dbo].[activite] ([id], [libelle], [description]) VALUES (3, N'activite3', N'test')
+INSERT [dbo].[activite] ([id], [libelle], [description]) VALUES (4, N'activite4', N'test')
+INSERT [dbo].[activite] ([id], [libelle], [description]) VALUES (5, N'activite5', N'test')
+SET IDENTITY_INSERT [dbo].[activite] OFF
+/****** Object:  Table [dbo].[Marque]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Marque](
+	[MarqueId] [int] IDENTITY(1,1) NOT NULL,
+	[MarqueVehicule] [nvarchar](50) NULL,
+	[Description] [nvarchar](200) NULL,
+	[ClientId] [int] NOT NULL,
+ CONSTRAINT [PK_Marque] PRIMARY KEY CLUSTERED 
+(
+	[MarqueId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Marque] ON
+INSERT [dbo].[Marque] ([MarqueId], [MarqueVehicule], [Description], [ClientId]) VALUES (1, N'BMW', N'description1', -1)
+INSERT [dbo].[Marque] ([MarqueId], [MarqueVehicule], [Description], [ClientId]) VALUES (2, N'Mercedes', N'description2', -1)
+INSERT [dbo].[Marque] ([MarqueId], [MarqueVehicule], [Description], [ClientId]) VALUES (3, N'Golf', N'description3', -1)
+INSERT [dbo].[Marque] ([MarqueId], [MarqueVehicule], [Description], [ClientId]) VALUES (4, N'Palio', N'description4', 1)
+SET IDENTITY_INSERT [dbo].[Marque] OFF
+/****** Object:  Table [dbo].[langue]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[langue](
+	[langueid] [int] IDENTITY(1,1) NOT NULL,
+	[libelle] [nvarchar](500) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[langueid] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[langue] ON
+INSERT [dbo].[langue] ([langueid], [libelle]) VALUES (1, N'Francais')
+INSERT [dbo].[langue] ([langueid], [libelle]) VALUES (2, N'Anglais')
+INSERT [dbo].[langue] ([langueid], [libelle]) VALUES (3, N'Arabe')
+SET IDENTITY_INSERT [dbo].[langue] OFF
+/****** Object:  Table [dbo].[juridique]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[juridique](
+	[juridiqueid] [int] IDENTITY(1,1) NOT NULL,
+	[juridique] [nvarchar](100) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[juridiqueid] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[juridique] ON
+INSERT [dbo].[juridique] ([juridiqueid], [juridique]) VALUES (2, N'juridique1')
+INSERT [dbo].[juridique] ([juridiqueid], [juridique]) VALUES (3, N'juridique2')
+SET IDENTITY_INSERT [dbo].[juridique] OFF
+/****** Object:  Table [dbo].[imageVehicule]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[imageVehicule](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[imagevehicule] [varchar](max) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[imageVehicule] ON
+INSERT [dbo].[imageVehicule] ([id], [imagevehicule]) VALUES (1, N'images/vehicule/image1.jpg')
+INSERT [dbo].[imageVehicule] ([id], [imagevehicule]) VALUES (2, N'images/vehicule/image2.jpg')
+INSERT [dbo].[imageVehicule] ([id], [imagevehicule]) VALUES (3, N'images/vehicule/image3.jpg')
+SET IDENTITY_INSERT [dbo].[imageVehicule] OFF
+/****** Object:  Table [dbo].[Habilitation_Profil]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Habilitation_Profil](
+	[habilitationprofilid] [int] IDENTITY(1,1) NOT NULL,
+	[profilid] [int] NULL,
+	[habilitationid] [int] NULL,
+	[clientid] [int] NULL,
+	[actif] [bit] NULL,
+ CONSTRAINT [PK_Habilitation_Profil] PRIMARY KEY CLUSTERED 
+(
+	[habilitationprofilid] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Habilitation_Profil] ON
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (19, 24, 3, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (20, 24, 4, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (21, 24, 5, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (22, 24, 6, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (23, 24, 7, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (24, 24, 8, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (25, 24, 1, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (26, 24, 2, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (65, 37, 2, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (66, 37, 1, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (67, 37, 2, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (68, 37, 1, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (69, 37, 2, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (70, 37, 2, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (71, 37, 4, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (72, 37, 3, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (73, 37, 9, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (74, 37, 7, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (75, 37, 5, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (76, 37, 6, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (77, 37, 1, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (78, 37, 7, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (79, 37, 2, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (80, 37, 1, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (81, 37, 4, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (82, 37, 3, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (83, 37, 5, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (84, 37, 6, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (85, 37, 7, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (86, 37, 2, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (87, 37, 1, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (88, 37, 5, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (89, 37, 6, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (90, 37, 2, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (91, 37, 6, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (92, 24, 11, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (93, 24, 12, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (94, 24, 13, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (95, 24, 14, 1, 0)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (96, 37, 2, 1, 1)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (97, 37, 6, 1, 1)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (98, 37, 1, 1, 1)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (99, 37, 3, 1, 1)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (100, 24, 7, 1, 1)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (101, 24, 1, 1, 1)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (102, 24, 2, 1, 1)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (103, 24, 15, 1, 1)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (104, 24, 11, 1, 1)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (105, 24, 12, 1, 1)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (106, 24, 13, 1, 1)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (107, 24, 14, 1, 1)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (108, 24, 3, 1, 1)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (109, 24, 4, 1, 1)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (110, 24, 5, 1, 1)
+INSERT [dbo].[Habilitation_Profil] ([habilitationprofilid], [profilid], [habilitationid], [clientid], [actif]) VALUES (111, 24, 6, 1, 1)
+SET IDENTITY_INSERT [dbo].[Habilitation_Profil] OFF
+/****** Object:  Table [dbo].[Habilitation]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Habilitation](
+	[habilitationid] [int] IDENTITY(1,1) NOT NULL,
+	[libelle] [nvarchar](50) NULL,
+	[action] [nvarchar](50) NOT NULL,
+	[module] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_Habilitation] PRIMARY KEY CLUSTERED 
+(
+	[habilitationid] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Habilitation] ON
+INSERT [dbo].[Habilitation] ([habilitationid], [libelle], [action], [module]) VALUES (1, N'consulter les vehicules', N'consulterVehicules', N'Vehicules')
+INSERT [dbo].[Habilitation] ([habilitationid], [libelle], [action], [module]) VALUES (2, N'ajouterVehicules', N'ajouterVehicules', N'Vehicules')
+INSERT [dbo].[Habilitation] ([habilitationid], [libelle], [action], [module]) VALUES (3, N'consulter les carte Sim', N'consulterCarteSim', N'CarteSim')
+INSERT [dbo].[Habilitation] ([habilitationid], [libelle], [action], [module]) VALUES (4, N'modifier les cartes Sim', N'modifierCarteSim', N'CarteSim')
+INSERT [dbo].[Habilitation] ([habilitationid], [libelle], [action], [module]) VALUES (5, N'ajouter  les cartes Sim', N'ajouterCarteSim', N'CarteSim')
+INSERT [dbo].[Habilitation] ([habilitationid], [libelle], [action], [module]) VALUES (6, N'supprimer  les cartes Sim', N'supprimerCarteSim', N'CarteSim')
+INSERT [dbo].[Habilitation] ([habilitationid], [libelle], [action], [module]) VALUES (7, N'modifier les vehicules', N'modifierVehicules', N'Vehicules')
+INSERT [dbo].[Habilitation] ([habilitationid], [libelle], [action], [module]) VALUES (9, N'supprimer les vehicules', N'supprimerVehicules', N'Vehicules')
+INSERT [dbo].[Habilitation] ([habilitationid], [libelle], [action], [module]) VALUES (11, N'consulterProfil', N'consulterProfil', N'Profil')
+INSERT [dbo].[Habilitation] ([habilitationid], [libelle], [action], [module]) VALUES (12, N'ajouterProfil', N'ajouterProfil', N'Profil')
+INSERT [dbo].[Habilitation] ([habilitationid], [libelle], [action], [module]) VALUES (13, N'modifier Profil', N'modifierProfil', N'Profil')
+INSERT [dbo].[Habilitation] ([habilitationid], [libelle], [action], [module]) VALUES (14, N'supprimer Profil', N'supprimerProfil', N'Profil')
+INSERT [dbo].[Habilitation] ([habilitationid], [libelle], [action], [module]) VALUES (15, N'ConsulterBoitier', N'ConsulterBoitier', N'Boitier')
+SET IDENTITY_INSERT [dbo].[Habilitation] OFF
+/****** Object:  Table [dbo].[groupepp]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[groupepp](
+	[groupeid] [int] IDENTITY(1,1) NOT NULL,
+	[libelle] [varchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[groupeid] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[groupepp] ON
+INSERT [dbo].[groupepp] ([groupeid], [libelle]) VALUES (1, N'groupe1')
+INSERT [dbo].[groupepp] ([groupeid], [libelle]) VALUES (2, N'groupe2')
+INSERT [dbo].[groupepp] ([groupeid], [libelle]) VALUES (3, N'groupe3')
+SET IDENTITY_INSERT [dbo].[groupepp] OFF
+/****** Object:  Table [dbo].[groupee]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[groupee](
+	[groupeid] [int] IDENTITY(1,1) NOT NULL,
+	[libelle] [nvarchar](50) NOT NULL,
+	[ssgroupeid] [int] NOT NULL,
+	[clientid] [int] NOT NULL,
+ CONSTRAINT [PK_groupee] PRIMARY KEY CLUSTERED 
+(
+	[groupeid] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[groupee] ON
+INSERT [dbo].[groupee] ([groupeid], [libelle], [ssgroupeid], [clientid]) VALUES (1, N'societe', 0, 1)
+INSERT [dbo].[groupee] ([groupeid], [libelle], [ssgroupeid], [clientid]) VALUES (2, N'groupe1', 1, 1)
+INSERT [dbo].[groupee] ([groupeid], [libelle], [ssgroupeid], [clientid]) VALUES (3, N'groupe2', 1, 1)
+INSERT [dbo].[groupee] ([groupeid], [libelle], [ssgroupeid], [clientid]) VALUES (4, N'groupe3', 1, 1)
+INSERT [dbo].[groupee] ([groupeid], [libelle], [ssgroupeid], [clientid]) VALUES (5, N'groupe4', 2, 1)
+INSERT [dbo].[groupee] ([groupeid], [libelle], [ssgroupeid], [clientid]) VALUES (6, N'groupe5', 2, 1)
+INSERT [dbo].[groupee] ([groupeid], [libelle], [ssgroupeid], [clientid]) VALUES (7, N'groupe6', 3, 1)
+INSERT [dbo].[groupee] ([groupeid], [libelle], [ssgroupeid], [clientid]) VALUES (8, N'groupe7', 5, 1)
+SET IDENTITY_INSERT [dbo].[groupee] OFF
+/****** Object:  Table [dbo].[groupe_vehicule]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[groupe_vehicule](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[vehiculeid] [nvarchar](100) NOT NULL,
+	[groupeid] [int] NOT NULL,
+	[clientid] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[groupe_vehicule] ON
+INSERT [dbo].[groupe_vehicule] ([id], [vehiculeid], [groupeid], [clientid]) VALUES (2, N'5', 2, 1)
+SET IDENTITY_INSERT [dbo].[groupe_vehicule] OFF
+/****** Object:  Table [dbo].[DroitClient]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DroitClient](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[ClienId] [int] NULL,
+	[droit] [int] NULL,
+ CONSTRAINT [PK_DroitClient] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[DroitClient] ON
+INSERT [dbo].[DroitClient] ([id], [ClienId], [droit]) VALUES (4, 1, 4)
+INSERT [dbo].[DroitClient] ([id], [ClienId], [droit]) VALUES (5, 1, 1)
+SET IDENTITY_INSERT [dbo].[DroitClient] OFF
+/****** Object:  Table [dbo].[Droit]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Droit](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Module] [nvarchar](50) NULL,
+	[Action] [nvarchar](50) NULL,
+	[description] [nvarchar](200) NULL,
+ CONSTRAINT [PK_Droit] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Droit] ON
+INSERT [dbo].[Droit] ([id], [Module], [Action], [description]) VALUES (1, N'Vehicule', N'Consulter', NULL)
+INSERT [dbo].[Droit] ([id], [Module], [Action], [description]) VALUES (2, N'Vehicule', N'Ajouter', NULL)
+INSERT [dbo].[Droit] ([id], [Module], [Action], [description]) VALUES (3, N'Vehicule', N'Modifier', NULL)
+INSERT [dbo].[Droit] ([id], [Module], [Action], [description]) VALUES (4, N'Vehicule', N'Supprimer', NULL)
+SET IDENTITY_INSERT [dbo].[Droit] OFF
+/****** Object:  Table [dbo].[clientdd]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[clientdd](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[libelle] [nvarchar](50) NULL,
+	[Login] [nvarchar](15) NULL,
+	[Password] [nvarchar](40) NULL,
+ CONSTRAINT [PK__client__3213E83F060DEAE8] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[clientdd] ON
+INSERT [dbo].[clientdd] ([id], [libelle], [Login], [Password]) VALUES (1, N'client1', N'geomtec', N'96C4C6D96C4C6D11D8396C4C6D11D83B')
+INSERT [dbo].[clientdd] ([id], [libelle], [Login], [Password]) VALUES (2, N'client2', N'555', N'test')
+INSERT [dbo].[clientdd] ([id], [libelle], [Login], [Password]) VALUES (3, N'client3', N'test', N'test')
+INSERT [dbo].[clientdd] ([id], [libelle], [Login], [Password]) VALUES (4, N'client4', N'test', N'(')
+SET IDENTITY_INSERT [dbo].[clientdd] OFF
+/****** Object:  Table [dbo].[client]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[client](
+	[clientid] [int] IDENTITY(1,1) NOT NULL,
+	[raison_sociale] [nvarchar](500) NOT NULL,
+	[sigle] [nvarchar](500) NULL,
+	[site_web] [nvarchar](500) NULL,
+	[email] [nvarchar](500) NULL,
+	[adresse] [nvarchar](500) NULL,
+	[tel] [nvarchar](500) NULL,
+	[fax] [nvarchar](500) NULL,
+	[logo] [nvarchar](500) NULL,
+	[capital] [nvarchar](500) NULL,
+	[annee_creation] [int] NULL,
+	[cnss] [nvarchar](500) NULL,
+	[identifiant_fiscal] [nvarchar](500) NULL,
+	[registre_commerce] [nvarchar](500) NULL,
+	[effectif] [nvarchar](500) NULL,
+	[patente] [nvarchar](500) NULL,
+	[actif] [bit] NULL,
+	[bourse] [int] NULL,
+	[juridiqueid] [int] NULL,
+	[profilclientid] [int] NULL,
+	[paysid] [int] NULL,
+	[villeid] [int] NULL,
+	[carte_data] [bit] NULL,
+	[typeabonnementid] [int] NULL,
+	[date_expiration] [datetime] NULL,
+	[date_desactiv] [datetime] NULL,
+	[langueid] [int] NULL,
+	[cartegeographieid] [int] NULL,
+	[revendeurid] [int] NULL,
+ CONSTRAINT [PK__client__819DC7691F98B2C1] PRIMARY KEY CLUSTERED 
+(
+	[clientid] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[client] ON
+INSERT [dbo].[client] ([clientid], [raison_sociale], [sigle], [site_web], [email], [adresse], [tel], [fax], [logo], [capital], [annee_creation], [cnss], [identifiant_fiscal], [registre_commerce], [effectif], [patente], [actif], [bourse], [juridiqueid], [profilclientid], [paysid], [villeid], [carte_data], [typeabonnementid], [date_expiration], [date_desactiv], [langueid], [cartegeographieid], [revendeurid]) VALUES (1, N'Geomtec', N'Geomtec', N'www.geomtec.com', N'karim@gmail.com', N'N 42 rue 30', NULL, NULL, N'a12af033-a1f3-4ff8-8046-360adea7d43e05042014231401.jpg', NULL, 1986, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 1, 1, 1, NULL, NULL, CAST(0x0000A30E00000000 AS DateTime), NULL, 2, 2, 1)
+INSERT [dbo].[client] ([clientid], [raison_sociale], [sigle], [site_web], [email], [adresse], [tel], [fax], [logo], [capital], [annee_creation], [cnss], [identifiant_fiscal], [registre_commerce], [effectif], [patente], [actif], [bourse], [juridiqueid], [profilclientid], [paysid], [villeid], [carte_data], [typeabonnementid], [date_expiration], [date_desactiv], [langueid], [cartegeographieid], [revendeurid]) VALUES (2, N'GGG', N'HHH', N'xdddddd', N'cccccc', N'ccc', N'', N'', N'3d399416-3789-4134-852b-984753809f3a07042014061119.jpg', N'', 1986, N'', N'', N'', N'', N'', 1, 1, 2, 1, 2, 1, NULL, NULL, CAST(0x0000A30F00000000 AS DateTime), NULL, 1, 1, 1)
+INSERT [dbo].[client] ([clientid], [raison_sociale], [sigle], [site_web], [email], [adresse], [tel], [fax], [logo], [capital], [annee_creation], [cnss], [identifiant_fiscal], [registre_commerce], [effectif], [patente], [actif], [bourse], [juridiqueid], [profilclientid], [paysid], [villeid], [carte_data], [typeabonnementid], [date_expiration], [date_desactiv], [langueid], [cartegeographieid], [revendeurid]) VALUES (5, N'll', N'', N'', N'', N'', N'', N'', NULL, N'', 0, N'', N'', N'', N'', N'', 1, 1, 2, 1, 1, 1, NULL, NULL, CAST(0x0000A30F00000000 AS DateTime), NULL, 1, 1, 1)
+INSERT [dbo].[client] ([clientid], [raison_sociale], [sigle], [site_web], [email], [adresse], [tel], [fax], [logo], [capital], [annee_creation], [cnss], [identifiant_fiscal], [registre_commerce], [effectif], [patente], [actif], [bourse], [juridiqueid], [profilclientid], [paysid], [villeid], [carte_data], [typeabonnementid], [date_expiration], [date_desactiv], [langueid], [cartegeographieid], [revendeurid]) VALUES (6, N'adnane', N'jajj', N'jj', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, NULL, 1, 1, 1, NULL, NULL, NULL, NULL, 1, 1, 1)
+INSERT [dbo].[client] ([clientid], [raison_sociale], [sigle], [site_web], [email], [adresse], [tel], [fax], [logo], [capital], [annee_creation], [cnss], [identifiant_fiscal], [registre_commerce], [effectif], [patente], [actif], [bourse], [juridiqueid], [profilclientid], [paysid], [villeid], [carte_data], [typeabonnementid], [date_expiration], [date_desactiv], [langueid], [cartegeographieid], [revendeurid]) VALUES (7, N'fgfgg', N'', N'', N'', N'rue 30 ', N'', N'', NULL, N'', 0, N'', N'', N'', N'', N'', 1, 0, 2, 1, 1, 1, NULL, NULL, CAST(0x0000A30800000000 AS DateTime), NULL, 2, 2, 1)
+INSERT [dbo].[client] ([clientid], [raison_sociale], [sigle], [site_web], [email], [adresse], [tel], [fax], [logo], [capital], [annee_creation], [cnss], [identifiant_fiscal], [registre_commerce], [effectif], [patente], [actif], [bourse], [juridiqueid], [profilclientid], [paysid], [villeid], [carte_data], [typeabonnementid], [date_expiration], [date_desactiv], [langueid], [cartegeographieid], [revendeurid]) VALUES (8, N'karim', N'', N'', N'', N'', N'', N'', NULL, N'', 0, N'', N'', N'', N'', N'', 1, 0, NULL, 2, NULL, NULL, NULL, NULL, CAST(0x0000000000000000 AS DateTime), NULL, 2, 3, 1)
+INSERT [dbo].[client] ([clientid], [raison_sociale], [sigle], [site_web], [email], [adresse], [tel], [fax], [logo], [capital], [annee_creation], [cnss], [identifiant_fiscal], [registre_commerce], [effectif], [patente], [actif], [bourse], [juridiqueid], [profilclientid], [paysid], [villeid], [carte_data], [typeabonnementid], [date_expiration], [date_desactiv], [langueid], [cartegeographieid], [revendeurid]) VALUES (9, N'fgfgfgfg', N'', N'', N'', N'', N'', N'', NULL, N'', 0, N'', N'', N'', N'', N'', 1, 1, 0, 1, NULL, NULL, NULL, NULL, CAST(0x0000000000000000 AS DateTime), NULL, 2, 1, 1)
+INSERT [dbo].[client] ([clientid], [raison_sociale], [sigle], [site_web], [email], [adresse], [tel], [fax], [logo], [capital], [annee_creation], [cnss], [identifiant_fiscal], [registre_commerce], [effectif], [patente], [actif], [bourse], [juridiqueid], [profilclientid], [paysid], [villeid], [carte_data], [typeabonnementid], [date_expiration], [date_desactiv], [langueid], [cartegeographieid], [revendeurid]) VALUES (10, N'eeee', N'', N'', N'', N'', N'', N'', NULL, N'', 0, N'', N'', N'', N'', N'', 1, 0, NULL, 1, NULL, NULL, NULL, NULL, CAST(0x0000000000000000 AS DateTime), NULL, 2, 2, 1)
+INSERT [dbo].[client] ([clientid], [raison_sociale], [sigle], [site_web], [email], [adresse], [tel], [fax], [logo], [capital], [annee_creation], [cnss], [identifiant_fiscal], [registre_commerce], [effectif], [patente], [actif], [bourse], [juridiqueid], [profilclientid], [paysid], [villeid], [carte_data], [typeabonnementid], [date_expiration], [date_desactiv], [langueid], [cartegeographieid], [revendeurid]) VALUES (11, N'dddddddddddddd', N'', N'', N'', N'', N'', N'', NULL, N'', 0, N'', N'', N'', N'', N'', 1, 1, NULL, 1, NULL, NULL, NULL, NULL, CAST(0x0000000000000000 AS DateTime), NULL, 3, 3, 1)
+INSERT [dbo].[client] ([clientid], [raison_sociale], [sigle], [site_web], [email], [adresse], [tel], [fax], [logo], [capital], [annee_creation], [cnss], [identifiant_fiscal], [registre_commerce], [effectif], [patente], [actif], [bourse], [juridiqueid], [profilclientid], [paysid], [villeid], [carte_data], [typeabonnementid], [date_expiration], [date_desactiv], [langueid], [cartegeographieid], [revendeurid]) VALUES (12, N'karim', N'karim', N'wwwkarimcom', N'karim', N'Mohammedia', N'066709700', N'0667706', N'c2b4717b-757e-4859-942e-e630160420d117042014160143.png', N'445', 1985, N'4454', N'4545', N'454', N'14', N'54', 1, 2, 2, 1, 2, 3, NULL, 1, CAST(0x0000A31000000000 AS DateTime), NULL, 2, 3, 1)
+SET IDENTITY_INSERT [dbo].[client] OFF
+/****** Object:  Table [dbo].[cartesim_boitier]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[cartesim_boitier](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[boitierid] [int] NOT NULL,
+	[cartesimid] [int] NOT NULL,
+	[actif] [bit] NOT NULL,
+	[date_affectation] [datetime] NULL,
+	[date_desaffectation] [datetime] NULL,
+	[clientid] [int] NOT NULL,
+ CONSTRAINT [PK__cartesim__3213E83F75A278F5] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[cartesim_boitier] ON
+INSERT [dbo].[cartesim_boitier] ([id], [boitierid], [cartesimid], [actif], [date_affectation], [date_desaffectation], [clientid]) VALUES (1, 1, 1, 0, CAST(0x0000A30E01019EC8 AS DateTime), CAST(0x0000A30E0101B2B4 AS DateTime), 1)
+INSERT [dbo].[cartesim_boitier] ([id], [boitierid], [cartesimid], [actif], [date_affectation], [date_desaffectation], [clientid]) VALUES (2, 1, 2, 1, CAST(0x0000A31200C2DA08 AS DateTime), CAST(0x0000000000000000 AS DateTime), 1)
+SET IDENTITY_INSERT [dbo].[cartesim_boitier] OFF
+/****** Object:  Table [dbo].[cartegeographique]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[cartegeographique](
+	[cartegeographieid] [int] IDENTITY(1,1) NOT NULL,
+	[libelle] [nvarchar](100) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[cartegeographieid] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[cartegeographique] ON
+INSERT [dbo].[cartegeographique] ([cartegeographieid], [libelle]) VALUES (1, N'Google Maps')
+INSERT [dbo].[cartegeographique] ([cartegeographieid], [libelle]) VALUES (2, N'Yahou Maps')
+INSERT [dbo].[cartegeographique] ([cartegeographieid], [libelle]) VALUES (3, N'Bing Maps')
+SET IDENTITY_INSERT [dbo].[cartegeographique] OFF
+/****** Object:  Table [dbo].[carte_sim]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[carte_sim](
+	[cartesimid] [int] IDENTITY(1,1) NOT NULL,
+	[numero_serie] [nvarchar](100) NOT NULL,
+	[numero_tel] [nvarchar](200) NOT NULL,
+	[code_pin] [nvarchar](200) NULL,
+	[code_puk] [nvarchar](300) NULL,
+	[operateurid] [int] NOT NULL,
+	[date_modif] [datetime] NULL,
+	[actif] [bit] NOT NULL,
+	[clientid] [int] NOT NULL,
+ CONSTRAINT [PK__carte_si__F2D5A9A06D0D32F4] PRIMARY KEY CLUSTERED 
+(
+	[cartesimid] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[carte_sim] ON
+INSERT [dbo].[carte_sim] ([cartesimid], [numero_serie], [numero_tel], [code_pin], [code_puk], [operateurid], [date_modif], [actif], [clientid]) VALUES (1, N'112', N'11', N'11', N'11', 1, CAST(0x0000A30E01019EC8 AS DateTime), 1, 1)
+INSERT [dbo].[carte_sim] ([cartesimid], [numero_serie], [numero_tel], [code_pin], [code_puk], [operateurid], [date_modif], [actif], [clientid]) VALUES (2, N'121212', N'48888', N'444', N'454', 1, CAST(0x0000A31500E1EDE4 AS DateTime), 1, 1)
+SET IDENTITY_INSERT [dbo].[carte_sim] OFF
+/****** Object:  Table [dbo].[Boitier_Vehicule]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Boitier_Vehicule](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[BoitierId] [int] NULL,
+	[VehiculeId] [int] NULL,
+ CONSTRAINT [PK_Boitier_Vehicule] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Boitier_Vehicule] ON
+INSERT [dbo].[Boitier_Vehicule] ([id], [BoitierId], [VehiculeId]) VALUES (1, 1, 1)
+INSERT [dbo].[Boitier_Vehicule] ([id], [BoitierId], [VehiculeId]) VALUES (2, 2, 2)
+INSERT [dbo].[Boitier_Vehicule] ([id], [BoitierId], [VehiculeId]) VALUES (3, 3, 3)
+INSERT [dbo].[Boitier_Vehicule] ([id], [BoitierId], [VehiculeId]) VALUES (4, 4, 4)
+INSERT [dbo].[Boitier_Vehicule] ([id], [BoitierId], [VehiculeId]) VALUES (5, 4, 39)
+SET IDENTITY_INSERT [dbo].[Boitier_Vehicule] OFF
+/****** Object:  Table [dbo].[boitier]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[boitier](
+	[boitierid] [int] IDENTITY(1,1) NOT NULL,
+	[imei] [nvarchar](100) NOT NULL,
+	[periode_garantie] [int] NULL,
+	[typeboitierid] [int] NULL,
+	[date_achat] [datetime] NULL,
+	[date_modif] [datetime] NULL,
+	[actif] [bit] NOT NULL,
+	[clientid] [int] NULL,
+ CONSTRAINT [PK__boitier__62FC98C87F2BE32F] PRIMARY KEY CLUSTERED 
+(
+	[boitierid] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[boitier] ON
+INSERT [dbo].[boitier] ([boitierid], [imei], [periode_garantie], [typeboitierid], [date_achat], [date_modif], [actif], [clientid]) VALUES (1, N'899998', 1, 1, CAST(0x0000A2C500000000 AS DateTime), CAST(0x0000A2C500000000 AS DateTime), 1, 1)
+INSERT [dbo].[boitier] ([boitierid], [imei], [periode_garantie], [typeboitierid], [date_achat], [date_modif], [actif], [clientid]) VALUES (2, N'111112', 1, 1, CAST(0x0000A30300000000 AS DateTime), CAST(0x0000A30D0173BB48 AS DateTime), 1, 1)
+SET IDENTITY_INSERT [dbo].[boitier] OFF
+/****** Object:  Table [dbo].[affectation_vehicule_boitier]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[affectation_vehicule_boitier](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[boitierid] [int] NOT NULL,
+	[vehiculeid] [int] NOT NULL,
+	[actif] [bit] NOT NULL,
+	[clientid] [int] NULL,
+	[date_affectation] [nvarchar](50) NULL,
+	[date_desaffectation] [nvarchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[affectation_vehicule_boitier] ON
+INSERT [dbo].[affectation_vehicule_boitier] ([id], [boitierid], [vehiculeid], [actif], [clientid], [date_affectation], [date_desaffectation]) VALUES (1, 3, 2, 0, 1, N'30/03/2014 23:19:03', N'30/03/2014 23:19:17')
+INSERT [dbo].[affectation_vehicule_boitier] ([id], [boitierid], [vehiculeid], [actif], [clientid], [date_affectation], [date_desaffectation]) VALUES (2, 1, 5, 0, 1, N'20/04/2014 17:33:04', N'20/04/2014 17:33:19')
+INSERT [dbo].[affectation_vehicule_boitier] ([id], [boitierid], [vehiculeid], [actif], [clientid], [date_affectation], [date_desaffectation]) VALUES (3, 1, 6, 1, 1, N'20/04/2014 18:22:42', N'')
+SET IDENTITY_INSERT [dbo].[affectation_vehicule_boitier] OFF
+/****** Object:  Table [dbo].[voyageTest]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[voyageTest](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[accueil] [nvarchar](5) NULL,
+	[conducteur] [nvarchar](50) NULL,
+	[localisation] [nvarchar](500) NULL,
+	[fin] [nvarchar](5) NULL,
+	[localisation_final] [nvarchar](500) NULL,
+	[distance] [float] NULL,
+	[arreter] [nvarchar](5) NULL,
+	[relanti] [nvarchar](5) NULL,
+	[duree] [nvarchar](5) NULL,
+ CONSTRAINT [PK_voyageTest] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[voyageTest] ON
+INSERT [dbo].[voyageTest] ([id], [accueil], [conducteur], [localisation], [fin], [localisation_final], [distance], [arreter], [relanti], [duree]) VALUES (1, N'08:00', N'Adnane', N'Rue Khouribga N 455 CasaBlanca Maroc', N'08:30', N'Rue Khouribga N 455 CasaBlanca Maroc', 12, N'00:11', N'00:01', N'00:30')
+SET IDENTITY_INSERT [dbo].[voyageTest] OFF
+/****** Object:  Table [dbo].[ville]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ville](
+	[villeid] [int] IDENTITY(1,1) NOT NULL,
+	[ville] [nvarchar](20) NOT NULL,
+	[paysid] [int] NOT NULL,
+ CONSTRAINT [PK__ville__6D3622FC367C1819] PRIMARY KEY CLUSTERED 
+(
+	[villeid] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[ville] ON
+INSERT [dbo].[ville] ([villeid], [ville], [paysid]) VALUES (1, N'Mohammedia', 1)
+INSERT [dbo].[ville] ([villeid], [ville], [paysid]) VALUES (3, N'Casablanca', 1)
+INSERT [dbo].[ville] ([villeid], [ville], [paysid]) VALUES (4, N'Rabat', 1)
+SET IDENTITY_INSERT [dbo].[ville] OFF
+/****** Object:  Table [dbo].[VehiculeType]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[VehiculeType](
+	[TypeId] [int] IDENTITY(1,1) NOT NULL,
+	[TypeVehicule] [nvarchar](50) NULL,
+	[description] [nvarchar](200) NULL,
+	[ClientId] [int] NULL,
+ CONSTRAINT [PK_VehiculeType] PRIMARY KEY CLUSTERED 
+(
+	[TypeId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[VehiculeType] ON
+INSERT [dbo].[VehiculeType] ([TypeId], [TypeVehicule], [description], [ClientId]) VALUES (1, N'voiture', N'description1', -1)
+INSERT [dbo].[VehiculeType] ([TypeId], [TypeVehicule], [description], [ClientId]) VALUES (2, N'camion', N'description2', -1)
+INSERT [dbo].[VehiculeType] ([TypeId], [TypeVehicule], [description], [ClientId]) VALUES (3, N'bateau', N'description3', -1)
+INSERT [dbo].[VehiculeType] ([TypeId], [TypeVehicule], [description], [ClientId]) VALUES (4, N'avion', N'description4', 1)
+SET IDENTITY_INSERT [dbo].[VehiculeType] OFF
+/****** Object:  Table [dbo].[vehicules]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[vehicules](
+	[vehiculeid] [int] IDENTITY(1,1) NOT NULL,
+	[matricule] [nvarchar](30) NOT NULL,
+	[code] [nvarchar](20) NULL,
+	[typevehiculeid] [int] NOT NULL,
+	[marquevehiculeid] [int] NOT NULL,
+	[numero_chassis] [nvarchar](100) NULL,
+	[modele] [nvarchar](100) NULL,
+	[imgVehicule] [nvarchar](300) NULL,
+	[consomation] [nvarchar](100) NULL,
+	[date_modif] [datetime] NULL,
+	[actif] [bit] NULL,
+	[clientid] [int] NOT NULL,
+ CONSTRAINT [PK__vehicule__3329981504E4BC85] PRIMARY KEY CLUSTERED 
+(
+	[vehiculeid] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[vehicules] ON
+INSERT [dbo].[vehicules] ([vehiculeid], [matricule], [code], [typevehiculeid], [marquevehiculeid], [numero_chassis], [modele], [imgVehicule], [consomation], [date_modif], [actif], [clientid]) VALUES (5, N'aa', N'testo', 1, 1, N'aa', N'aa', N'7deeb35f-e28d-4483-b171-6f513771f67010042014001456.png', NULL, CAST(0x0000A31301213BC0 AS DateTime), 1, 1)
+INSERT [dbo].[vehicules] ([vehiculeid], [matricule], [code], [typevehiculeid], [marquevehiculeid], [numero_chassis], [modele], [imgVehicule], [consomation], [date_modif], [actif], [clientid]) VALUES (6, N'865565', N'478', 1, 1, N'1214', N'4545', NULL, NULL, CAST(0x0000A313012EDD98 AS DateTime), 1, 1)
+SET IDENTITY_INSERT [dbo].[vehicules] OFF
+/****** Object:  Table [dbo].[utilisateur]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[utilisateur](
+	[utilisateurid] [int] IDENTITY(1,1) NOT NULL,
+	[login] [nvarchar](100) NOT NULL,
+	[nom] [nvarchar](200) NOT NULL,
+	[prenom] [nvarchar](200) NOT NULL,
+	[email] [nvarchar](300) NULL,
+	[pwd] [nvarchar](200) NOT NULL,
+	[date_creation] [datetime] NOT NULL,
+	[date_modif] [datetime] NULL,
+	[tel] [nvarchar](100) NULL,
+	[gsm] [nvarchar](100) NULL,
+	[actif] [bit] NOT NULL,
+	[clientid] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[utilisateurid] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[utilisateur] ON
+INSERT [dbo].[utilisateur] ([utilisateurid], [login], [nom], [prenom], [email], [pwd], [date_creation], [date_modif], [tel], [gsm], [actif], [clientid]) VALUES (1, N'geomtec', N'zarouk', N'karim', N'karimzrk@gmail.com', N'96C4C6D96C4C6D11D8396C4C6D11D83B', CAST(0x0000A2D000000000 AS DateTime), NULL, N'1111', N'111', 1, 1)
+SET IDENTITY_INSERT [dbo].[utilisateur] OFF
+/****** Object:  Table [dbo].[userbackoffice]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[userbackoffice](
+	[userbackofficeid] [int] IDENTITY(1,1) NOT NULL,
+	[login] [nvarchar](100) NOT NULL,
+	[nom] [nvarchar](200) NOT NULL,
+	[prenom] [nvarchar](200) NOT NULL,
+	[email] [nvarchar](300) NULL,
+	[pwd] [nvarchar](200) NOT NULL,
+	[date_creation] [datetime] NOT NULL,
+	[date_modif] [datetime] NULL,
+	[tel] [nvarchar](100) NULL,
+	[gsm] [nvarchar](100) NULL,
+	[actif] [bit] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[userbackofficeid] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[userbackoffice] ON
+INSERT [dbo].[userbackoffice] ([userbackofficeid], [login], [nom], [prenom], [email], [pwd], [date_creation], [date_modif], [tel], [gsm], [actif]) VALUES (2, N'adnane', N'adnane', N'damil', N'damiladnane@gmail.com', N'E88DE32E88DE32AEACCE88DE32AEACC4', CAST(0x0000A30800000000 AS DateTime), NULL, NULL, NULL, 1)
+SET IDENTITY_INSERT [dbo].[userbackoffice] OFF
+/****** Object:  Table [dbo].[typevehicule]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[typevehicule](
+	[typevehiculeid] [int] IDENTITY(1,1) NOT NULL,
+	[libelle] [nvarchar](100) NOT NULL,
+	[description] [nvarchar](100) NULL,
+	[actif] [bit] NOT NULL,
+	[clientid] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[typevehiculeid] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[typevehicule] ON
+INSERT [dbo].[typevehicule] ([typevehiculeid], [libelle], [description], [actif], [clientid]) VALUES (1, N'test1', N'aaa', 1, 1)
+INSERT [dbo].[typevehicule] ([typevehiculeid], [libelle], [description], [actif], [clientid]) VALUES (2, N'test2', N'ooo', 1, 1)
+SET IDENTITY_INSERT [dbo].[typevehicule] OFF
+/****** Object:  Table [dbo].[type_boitier]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[type_boitier](
+	[typeboitierid] [int] IDENTITY(1,1) NOT NULL,
+	[libelle] [nvarchar](100) NOT NULL,
+	[actif] [bit] NOT NULL,
+	[clientid] [int] NOT NULL,
+ CONSTRAINT [PK__type_boi__18E094A409A971A2] PRIMARY KEY CLUSTERED 
+(
+	[typeboitierid] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[type_boitier] ON
+INSERT [dbo].[type_boitier] ([typeboitierid], [libelle], [actif], [clientid]) VALUES (1, N'AK1 ATrack', 1, 1)
+INSERT [dbo].[type_boitier] ([typeboitierid], [libelle], [actif], [clientid]) VALUES (2, N'AK2 ATrack', 1, 1)
+SET IDENTITY_INSERT [dbo].[type_boitier] OFF
+/****** Object:  Table [dbo].[revendeur]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[revendeur](
+	[revendeurid] [int] IDENTITY(1,1) NOT NULL,
+	[raison_sociale] [nvarchar](20) NULL,
+	[sigle] [nvarchar](20) NULL,
+	[login] [nvarchar](20) NULL,
+	[pwd] [nvarchar](200) NULL,
+	[logo] [nvarchar](500) NULL,
+	[site_web] [nvarchar](150) NULL,
+	[adresse] [nvarchar](50) NULL,
+	[paysid] [int] NULL,
+	[villeid] [int] NULL,
+	[email] [nvarchar](50) NULL,
+	[langueid] [int] NULL,
+	[actif] [bit] NULL,
+ CONSTRAINT [PK__revendeu__3123AB513E1D39E1] PRIMARY KEY CLUSTERED 
+(
+	[revendeurid] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[revendeur] ON
+INSERT [dbo].[revendeur] ([revendeurid], [raison_sociale], [sigle], [login], [pwd], [logo], [site_web], [adresse], [paysid], [villeid], [email], [langueid], [actif]) VALUES (1, N'Revendeur1', N'Revendeur1', N'karim', N'E88DE32E88DE32AEACCE88DE32AEACC4', N'6bb15b34-2235-4ea5-ab5f-064b627bfd1a09042014144215.png', N'karim', N'sssss', 1, 1, N'kk', 1, 1)
+INSERT [dbo].[revendeur] ([revendeurid], [raison_sociale], [sigle], [login], [pwd], [logo], [site_web], [adresse], [paysid], [villeid], [email], [langueid], [actif]) VALUES (2, N'hahah', N'hhmmo', N'h', N'hh', N'image2.jpg', N'hh', N'test adresseo', 1, 1, N'ee', 1, 1)
+INSERT [dbo].[revendeur] ([revendeurid], [raison_sociale], [sigle], [login], [pwd], [logo], [site_web], [adresse], [paysid], [villeid], [email], [langueid], [actif]) VALUES (3, NULL, N'a', N'a', N'5512942551294215B50551294215B506', N'faee5f3f-7d0f-47ed-95af-0d05acdb52e809042014222022.png', N'aa', N'aa', 1, 1, N'aa', 1, 1)
+INSERT [dbo].[revendeur] ([revendeurid], [raison_sociale], [sigle], [login], [pwd], [logo], [site_web], [adresse], [paysid], [villeid], [email], [langueid], [actif]) VALUES (4, NULL, N'mmm', N'mm', N'7EA4ECD7EA4ECD006B47EA4ECD006B41', N'2462a126-2e00-462c-8536-45f14011feb909042014223810.png', N'aaa', N'aaaa', 1, 1, N'aaa', 1, 1)
+INSERT [dbo].[revendeur] ([revendeurid], [raison_sociale], [sigle], [login], [pwd], [logo], [site_web], [adresse], [paysid], [villeid], [email], [langueid], [actif]) VALUES (5, NULL, N'ppp', N'pp', N'9A1F9439A1F943A6A6B9A1F943A6A6B8', N'4f2aee14-3087-42f4-b920-b221343a364609042014224140.png', N'aaa', N'a', 2, 3, N'a', 1, 1)
+INSERT [dbo].[revendeur] ([revendeurid], [raison_sociale], [sigle], [login], [pwd], [logo], [site_web], [adresse], [paysid], [villeid], [email], [langueid], [actif]) VALUES (6, NULL, N'kk', N'kk', N'41672C641672C67EC3541672C67EC350', N'39f37076-6a70-4b02-850f-ed957a2f1c0909042014224434.png', N'oo', N'oo', 2, 3, N'oo', 2, 1)
+INSERT [dbo].[revendeur] ([revendeurid], [raison_sociale], [sigle], [login], [pwd], [logo], [site_web], [adresse], [paysid], [villeid], [email], [langueid], [actif]) VALUES (7, NULL, N'a', N'a', N'731DDA2731DDA26A5D3731DDA26A5D36', NULL, N'a', N'a', 2, 3, N'a', 2, 1)
+INSERT [dbo].[revendeur] ([revendeurid], [raison_sociale], [sigle], [login], [pwd], [logo], [site_web], [adresse], [paysid], [villeid], [email], [langueid], [actif]) VALUES (8, N'kkkk', N'kkk', N'k', N'B77F89FB77F89F5C674B77F89F5C674C', NULL, N'a', N'a', 1, 1, N'a', 1, 1)
+INSERT [dbo].[revendeur] ([revendeurid], [raison_sociale], [sigle], [login], [pwd], [logo], [site_web], [adresse], [paysid], [villeid], [email], [langueid], [actif]) VALUES (9, N'karim', N'aa', N'aa', N'9DF939A9DF939AD3FBF9DF939AD3FBF3', N'89b846bd-0c7c-4a4f-986f-fde15380565709042014231613.png', N'aa', N'aa', 2, 1, N'aa', 1, 1)
+INSERT [dbo].[revendeur] ([revendeurid], [raison_sociale], [sigle], [login], [pwd], [logo], [site_web], [adresse], [paysid], [villeid], [email], [langueid], [actif]) VALUES (10, N'ytyt', N'ytyyt', N'tytyy', N'C37270FC37270F8936DC37270F8936D1', N'8d989b1d-811a-4443-9e11-8fc001d5592018042014000141.png', N'tytyk', N'tyty', 2, 1, N'tyt', 2, 1)
+INSERT [dbo].[revendeur] ([revendeurid], [raison_sociale], [sigle], [login], [pwd], [logo], [site_web], [adresse], [paysid], [villeid], [email], [langueid], [actif]) VALUES (11, N'azaaaa', N'aaaa', N'aaaa', N'7B9C80B7B9C80B96BEC7B9C80B96BEC8', NULL, N'', N'', 1, 3, N'', 1, 1)
+INSERT [dbo].[revendeur] ([revendeurid], [raison_sociale], [sigle], [login], [pwd], [logo], [site_web], [adresse], [paysid], [villeid], [email], [langueid], [actif]) VALUES (12, N'iooio', N'ioii', N'iooii', N'1D4E2DD1D4E2DD4CBE71D4E2DD4CBE71', NULL, N'ioi', N'', NULL, NULL, N'', 2, 1)
+SET IDENTITY_INSERT [dbo].[revendeur] OFF
+/****** Object:  Table [dbo].[profilclient]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[profilclient](
+	[profilclientid] [int] IDENTITY(1,1) NOT NULL,
+	[libelle] [nvarchar](500) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[profilclientid] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[profilclient] ON
+INSERT [dbo].[profilclient] ([profilclientid], [libelle]) VALUES (1, N'Client')
+INSERT [dbo].[profilclient] ([profilclientid], [libelle]) VALUES (2, N'Prosp')
+SET IDENTITY_INSERT [dbo].[profilclient] OFF
+/****** Object:  Table [dbo].[profil_vehicule]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[profil_vehicule](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[profilid] [int] NOT NULL,
+	[vehiculeid] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[profil_user]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[profil_user](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[profilid] [int] NOT NULL,
+	[utilisateurid] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[profil_user] ON
+INSERT [dbo].[profil_user] ([id], [profilid], [utilisateurid]) VALUES (1, 24, 1)
+SET IDENTITY_INSERT [dbo].[profil_user] OFF
+/****** Object:  Table [dbo].[profil]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[profil](
+	[profilid] [int] IDENTITY(1,1) NOT NULL,
+	[libelle] [nvarchar](50) NULL,
+	[description] [nvarchar](50) NULL,
+	[actif] [bit] NULL,
+	[clientid] [int] NULL,
+ CONSTRAINT [PK_profil] PRIMARY KEY CLUSTERED 
+(
+	[profilid] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[profil] ON
+INSERT [dbo].[profil] ([profilid], [libelle], [description], [actif], [clientid]) VALUES (24, N'Admin', N'admin', 1, 1)
+INSERT [dbo].[profil] ([profilid], [libelle], [description], [actif], [clientid]) VALUES (25, N'aa', N'zzz', 0, 1)
+INSERT [dbo].[profil] ([profilid], [libelle], [description], [actif], [clientid]) VALUES (26, N'zzze', N'eeee', 0, 1)
+INSERT [dbo].[profil] ([profilid], [libelle], [description], [actif], [clientid]) VALUES (27, N'Test', N'Test', 1, 1)
+INSERT [dbo].[profil] ([profilid], [libelle], [description], [actif], [clientid]) VALUES (33, N'zzz', N'zzz', 1, 1)
+INSERT [dbo].[profil] ([profilid], [libelle], [description], [actif], [clientid]) VALUES (34, N'kazim', N'kkaka', 1, 1)
+INSERT [dbo].[profil] ([profilid], [libelle], [description], [actif], [clientid]) VALUES (35, N'kazim', N'kkaka', 1, 1)
+INSERT [dbo].[profil] ([profilid], [libelle], [description], [actif], [clientid]) VALUES (36, N'HHH', N'JHHH', 1, 1)
+INSERT [dbo].[profil] ([profilid], [libelle], [description], [actif], [clientid]) VALUES (37, N'Test4', N'Test4', 1, 1)
+SET IDENTITY_INSERT [dbo].[profil] OFF
+/****** Object:  Table [dbo].[Personne]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Personne](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nom] [nvarchar](50) NULL,
+	[prenom] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Personne] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[pays]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[pays](
+	[paysid] [int] IDENTITY(1,1) NOT NULL,
+	[pays] [nvarchar](20) NOT NULL,
+ CONSTRAINT [PK__pays__804377AE32AB8735] PRIMARY KEY CLUSTERED 
+(
+	[paysid] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[pays] ON
+INSERT [dbo].[pays] ([paysid], [pays]) VALUES (1, N'Maroc')
+INSERT [dbo].[pays] ([paysid], [pays]) VALUES (2, N'France')
+INSERT [dbo].[pays] ([paysid], [pays]) VALUES (3, N'espange')
+INSERT [dbo].[pays] ([paysid], [pays]) VALUES (4, N'Italie')
+SET IDENTITY_INSERT [dbo].[pays] OFF
+/****** Object:  Table [dbo].[par_typeabonnement]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[par_typeabonnement](
+	[typeabonnementid] [int] IDENTITY(1,1) NOT NULL,
+	[typeabonnement] [nvarchar](500) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[typeabonnementid] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[par_typeabonnement] ON
+INSERT [dbo].[par_typeabonnement] ([typeabonnementid], [typeabonnement]) VALUES (1, N'typeabonnement1')
+INSERT [dbo].[par_typeabonnement] ([typeabonnementid], [typeabonnement]) VALUES (2, N'typeabonnement2')
+SET IDENTITY_INSERT [dbo].[par_typeabonnement] OFF
+/****** Object:  Table [dbo].[par_operateur]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[par_operateur](
+	[operateurid] [int] IDENTITY(1,1) NOT NULL,
+	[libelle] [nvarchar](50) NOT NULL,
+	[clientid] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[operateurid] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[par_operateur] ON
+INSERT [dbo].[par_operateur] ([operateurid], [libelle], [clientid]) VALUES (1, N'Maroc Telecom', 1)
+INSERT [dbo].[par_operateur] ([operateurid], [libelle], [clientid]) VALUES (2, N'Meditel', 1)
+SET IDENTITY_INSERT [dbo].[par_operateur] OFF
+/****** Object:  Table [dbo].[marqueVehicule]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[marqueVehicule](
+	[marquevehiculeid] [int] IDENTITY(1,1) NOT NULL,
+	[libelle] [varchar](50) NULL,
+	[icone] [varchar](max) NULL,
+	[clientid] [int] NULL,
+	[actif] [bit] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[marquevehiculeid] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[marqueVehicule] ON
+INSERT [dbo].[marqueVehicule] ([marquevehiculeid], [libelle], [icone], [clientid], [actif]) VALUES (1, N'BMW', N'images/bmw.png', 1, 1)
+INSERT [dbo].[marqueVehicule] ([marquevehiculeid], [libelle], [icone], [clientid], [actif]) VALUES (2, N'Mercedes', N'images/Mercedes.png', 1, 1)
+INSERT [dbo].[marqueVehicule] ([marquevehiculeid], [libelle], [icone], [clientid], [actif]) VALUES (3, N'Golf', N'images/Golf.png', 1, 1)
+SET IDENTITY_INSERT [dbo].[marqueVehicule] OFF
+/****** Object:  Table [dbo].[affectation_activite_groupe]    Script Date: 04/22/2014 13:59:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[affectation_activite_groupe](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[id_groupe] [int] NULL,
+	[id_activite] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[affectation_activite_groupe] ON
+INSERT [dbo].[affectation_activite_groupe] ([id], [id_groupe], [id_activite]) VALUES (1, 1, 1)
+INSERT [dbo].[affectation_activite_groupe] ([id], [id_groupe], [id_activite]) VALUES (2, 1, 2)
+INSERT [dbo].[affectation_activite_groupe] ([id], [id_groupe], [id_activite]) VALUES (4, 2, 3)
+INSERT [dbo].[affectation_activite_groupe] ([id], [id_groupe], [id_activite]) VALUES (5, 2, 4)
+SET IDENTITY_INSERT [dbo].[affectation_activite_groupe] OFF
+/****** Object:  ForeignKey [FK__affectati__id_ac__1B0907CE]    Script Date: 04/22/2014 13:59:55 ******/
+ALTER TABLE [dbo].[affectation_activite_groupe]  WITH CHECK ADD FOREIGN KEY([id_activite])
+REFERENCES [dbo].[activite] ([id])
+GO
+/****** Object:  ForeignKey [FK__affectati__id_gr__1A14E395]    Script Date: 04/22/2014 13:59:55 ******/
+ALTER TABLE [dbo].[affectation_activite_groupe]  WITH CHECK ADD FOREIGN KEY([id_groupe])
+REFERENCES [dbo].[groupepp] ([groupeid])
+GO
+/****** Object:  ForeignKey [FK__marqueVeh__id_cl__239E4DCF]    Script Date: 04/22/2014 13:59:55 ******/
+ALTER TABLE [dbo].[marqueVehicule]  WITH NOCHECK ADD  CONSTRAINT [FK__marqueVeh__id_cl__239E4DCF] FOREIGN KEY([clientid])
+REFERENCES [dbo].[clientdd] ([id])
+GO
+ALTER TABLE [dbo].[marqueVehicule] NOCHECK CONSTRAINT [FK__marqueVeh__id_cl__239E4DCF]
+GO

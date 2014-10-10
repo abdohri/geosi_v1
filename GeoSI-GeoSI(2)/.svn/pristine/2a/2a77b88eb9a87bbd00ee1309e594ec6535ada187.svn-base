@@ -1,0 +1,72 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TestForm.aspx.cs" Inherits="GeoSI.Website.Modules.Test.TestForm" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link href="../../Ressources/Styles/common/css_module.css" rel="stylesheet" type="text/css" />
+    <script src="../../Ressources/Scripts/common/js_common_form.js" type="text/javascript"></script>
+     <script type="text/javascript" src="../../Ressources/Scripts/common/jquery-1.4.1.js"></script>
+    <script type="text/javascript" src="../../Ressources/Scripts/common/func.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+
+    <style>
+        #error1
+        {
+            border: 1px solid #000;
+            color: #fff;
+            background-color: #ea5f6d;
+            padding: 5px;
+            margin: 10px;
+            text-align: center;
+            font-size: 15px;
+            display: none;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+        }
+           #error2
+        {
+            border: 1px solid #000;
+            color: #fff;
+            background-color: #ea5f6d;
+            padding: 5px;
+            margin: 10px;
+            text-align: center;
+            font-size: 15px;
+            display: none;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <form action="omar.php">
+        <ext:ResourceManager ID="ResourceManager1" runat="server" />
+
+        <ext:FormPanel StandardSubmit="true" ID="UserForm" Frame="true" runat="server" Url="TestForm.aspx"
+            Method="POST">
+            <Items>
+
+                <ext:TextField ID="pseudo" runat="server" />
+                <ext:Label ID="error1" runat="server" ></ext:Label>
+                <ext:TextField ID="password" runat="server" />
+                <ext:Label ID="error2" runat="server"></ext:Label>
+                <ext:Button ID="submit" Type="Submit" runat="server" Text="inscrire">
+                    <Listeners>
+                        <Click Handler="#{UserForm}.getForm().submit();" />
+                    </Listeners>
+                </ext:Button>
+
+            </Items>
+        </ext:FormPanel>
+    </form>
+
+   
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+
+namespace GeoSI.Website.Metier
+{
+    public class Ctrajet : ApiController
+    {
+        public DateTime dateDebut;
+        public DateTime dateFin;
+        public int vehicule;
+        Dictionary<float, float> positions = new Dictionary<float, float>();
+
+        public Ctrajet(DateTime db, DateTime df)
+        {
+            this.dateDebut = db;
+            this.dateFin = df;
+        }
+        public void addPosition(float lat, float lon)
+        {
+            this.positions.Add(lat, lon);
+        }
+        public Dictionary<float, float> GetPositions()
+        {
+            return positions;
+        }
+        public DateTime GetDateD()
+        {
+            return this.dateDebut;
+        }
+        public DateTime GetDateF()
+        {
+            return this.dateFin;
+        }
+        public int Getvehcicule()
+        {
+            return this.vehicule;
+        }
+        public void GetDateD(DateTime d)
+        {
+            this.dateDebut = d;
+        }
+        public void GetDateF(DateTime d)
+        {
+            this.dateFin = d;
+        }
+        public void Getvehcicule(int id)
+        {
+            this.vehicule = id;
+        }
+
+    }
+}

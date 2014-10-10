@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Geomtec" Class="linqDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=PC-MERYEM;Initial Catalog=Geomtec;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="GeomtecConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Datatracker" Member="Datatracker">
+    <Type Name="Datatracker">
+      <Column Name="datatrackerid" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="imei" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="contact" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="latitude" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="longitude" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="speed" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GPSDateTime" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="RTCDateTime" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SendingDateTime" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

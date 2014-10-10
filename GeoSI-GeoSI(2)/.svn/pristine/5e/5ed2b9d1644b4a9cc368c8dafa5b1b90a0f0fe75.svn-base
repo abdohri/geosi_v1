@@ -1,0 +1,79 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="BackOffice.master.cs" Inherits="GeoSI.Website.PagesMaster.BackOffice" %>
+
+<!DOCTYPE html>
+<html>
+<head id="Head1" runat="server">
+
+    <script src="../../Ressources/Scripts/common/jquery-1.4.1.js" type="text/javascript"></script>
+    <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="iconic.css" media="screen" rel="stylesheet" type="text/css" />
+    <script src="prefix-free.js"></script>
+    <script>  function Home() {
+      X.Home();
+  }
+  </script>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="Form1" runat="server">
+        <ext:ResourceManager ID="ResourceManager1" runat="server" DirectMethodNamespace="X" />
+        <ext:Viewport ID="Viewport1" runat="server" Layout="BorderLayout" Cls="test">
+            <Items>
+                <ext:Container ID="Container2" runat="server" Height="80" Region="North">
+                    <Content>
+                        <div style="position: absolute; top: 0; margin-left: 30px; margin-top: 3px; width: 210px; height: 80px;">
+                            <img src="../../Ressources/Images/logo.png" alt="" />
+                        </div>
+                     
+
+                        <div class="wrap">
+
+                           <nav>
+                              <%-- Menu--%>
+                                <ul class="menu">
+                                     <%-- Home--%>
+                                    <li><a href="#" onclick="Home();"><span class="iconic arrow-left"></span>Home</a></li>
+                                     <%-- Menu gestion client--%>
+                                    <li><a href="../Client/Client.aspx"><span class="iconic plus-alt"></span>Gestion Client</a>
+                                        <ul style="z-index: 99999999;">
+                                            <li><a href="../Client/Client.aspx?a=1">Client actif</a></li>
+                                            <li><a href="../Client/Client.aspx?a=0">client desactif</a></li>
+                                        </ul>
+                                    </li>
+                                     <%-- Gestion revendeur--%>
+                                    <li><a href="../Revendeur/Revendeur.aspx"><span class="iconic magnifying-glass"></span>Gestion Revendeur</a></li>
+                                     <%-- Menu paramètrage--%>
+                                    <li><a href="#"><span class="iconic map-pin"></span>Parametrage</a>
+                                        <ul style="z-index: 99999999;">
+                                            
+                                            <li><a href="../Boitier/Boitier.aspx">Gestion Boitier</a></li>
+                                            <li><a href="../Vehicules/Vehicules.aspx">Gestion Vehicule</a></li>
+                                            <li><a href="../CarteSim/CarteSim.aspx">Gestion Carte Sim</a></li>
+                                            <li><a href="../Profil/Profil.aspx">Gestion Profil</a></li>
+                                            <li><a href="../Utilisateur/Utilisateur.aspx">Gestion Utlisateur</a></li>
+                                            <li><a href="../Personnel/Personnel.aspx">Gestion Personnel</a></li>
+                                            <li><a href="../UserBackOffice/UserBackOffice.aspx">Gestion Utilisateur BackOffice</a></li>
+                                            <li><a href="../Groupe/Groupe.aspx">Gestion Groupe</a></li>
+                                        </ul>
+                                    </li>
+                                     <%-- Déconnexion--%>
+                                    <li><a href="../Deconnexion/Deconnexion.aspx"><span class="iconic unlocked"></span>Deconnexion</a></li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </nav>
+                            
+                        </div>
+                    </Content>
+                </ext:Container>
+                <ext:Container ID="Container1" runat="server" Layout="FitLayout" Region="Center">
+                    <Content>
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </Content>
+                </ext:Container>
+            </Items>
+        </ext:Viewport>
+    </form>
+</body>
+</html>

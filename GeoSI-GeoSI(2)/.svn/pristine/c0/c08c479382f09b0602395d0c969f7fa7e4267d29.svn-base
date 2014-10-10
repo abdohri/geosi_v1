@@ -1,0 +1,193 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Client.master.cs" Inherits="GeoSI.Website.PagesMaster.Client"  %>
+
+<!DOCTYPE html>
+<html>
+<head id="Head1" runat="server">
+    <link href="../Ressources/Styles/MasterClient/css_MasterClient.css" rel="stylesheet"
+        type="text/css" />
+    <script src="../../Ressources/Scripts/common/jquery-1.4.1.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var clic = 1;
+        $(function () {
+            $('html').click(function (e) {
+                if (e.target.id == 'appplus') {
+
+                    if (clic == 0) {
+                        $(".ss_plus").css("left", "-999em");
+                        $(".ss_plus").css("z-index", "9999");
+                        clic = 1;
+                    }
+                    else {
+                        $(".ss_plus").css("left", "auto");
+                        $(".ss_plus").css("min-height", "0");
+                        clic = 0;
+                    }
+
+                } else {
+                    $(".ss_plus").css("left", "-999em");
+                    $(".ss_plus").css("z-index", "9999");
+                    clic = 1;
+                }
+            });
+        });
+    </script>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="Form1" runat="server">
+        <ext:ResourceManager ID="ResourceManager1" runat="server" DirectMethodNamespace="X" />
+        <ext:Viewport ID="Viewport1" runat="server" Layout="BorderLayout" Cls="test">
+            <Items>
+                <ext:Container ID="Container2" runat="server" Region="North">
+                    <Content>
+                        <div style="width: 100%; height: 80px; background: #F1F1F1; background: -moz-linear-gradient(#FFF,  #F1F1F1); background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#F1F1F1)); background: -webkit-linear-gradient(#FFF,  #F1F1F1); background: -o-linear-gradient(#FFF,  #F1F1F1); background: -ms-linear-gradient(#FFF,  #F1F1F1); background: linear-gradient(#FFF,  #F1F1F1); border-bottom: 1px solid #CCC;">
+                            <div id="div_content_haut">
+                                <div id="logo">
+                                    <img src="../../Ressources/Images/logo.png" alt="" />
+                                </div>
+                                <%--  Menu client--%>
+                                <div id="divmenu">
+                                    <ul id="menu">
+                                        <%--Temp réel--%>
+                                        <li class="li_menu_tempreel1"><a href="../Carte/TempsReel.aspx" class="a_menu" style="display: block; width: 50px; padding-top: 51px; font-family: Arial; font-size: 11px; text-align: center; text-decoration: none; color: #000; position: relative;">Temp Reel</a>
+                                            <%--Sous menu temp réel--%>
+                                            <ul class="sous_menuu">
+                                                <li class="li_ss_menuu"><a class="a_ss_menuu" href="" style="">Vehicules en ligne</a></a></li>
+                                                <li class="li_ss_menuu"><a class="a_ss_menuu" href="">Vehicules hors ligne</a></li>
+                                                <li class="li_ss_menuu"><a class="a_ss_menuu" href="">Vehicules en Alarme</a></li>
+                                            </ul>
+                                        </li>
+                                        <%--POI--%>
+                                        <li class="li_menu_tempreel2"><a href="../Poi/Poi.aspx" class="a_menu">POI</a></li>
+                                        <%--Trajet--%>
+                                        <li class="li_menu_tempreel3"><a href="../Trajet/Trajet.aspx" class="a_menu">Trajet</a></li>
+                                        <%--Geofencing--%>
+                                        <li class="li_menu_tempreel4"><a href="../Zone/Zone.aspx" class="a_menu">Geofencing</a></li>
+                                        <%--Historique--%>
+                                        <li class="li_menu_tempreel5"><a href="" class="a_menu">Historique</a>
+                                            <%--Sous menu historique--%>
+                                            <ul class="sous_menu">
+                                                <li class="li_ss_menu"><a class="a_ss_menu" href="../HistoriqueTrajet/HistoriqueTrajet.aspx">Historique des Trajets</a></a></li>
+                                                <li class="li_ss_menu"><a class="a_ss_menu" href="../HistoriqueArret/HistoriqueArret.aspx">Historique des Arrêts</a></li>
+                                                <li class="li_ss_menu"><a class="a_ss_menu" href="">Historique des Poi</a></li>
+                                            </ul>
+                                        </li>
+                                        <%--Rapport--%>
+                                                                              <li class="li_menu_tempreel6"><a href="" class="a_menu">Rapport</a>
+                                             <ul class="sous_menu">
+                                                <li class="li_ss_menu"><a class="a_ss_menu" href="../RapportActiv/RapportActiv.aspx">Rapport d’activité </a></a></li>
+                                                <li class="li_ss_menu"><a class="a_ss_menu" href="../RapportJour/RapportJour.aspx">Rapport journalier </a></li>
+                                                 <li class="li_ss_menu"><a class="a_ss_menu" href="../Rapport/RapportTemp/RapportTemp.aspx">Rapport de température  </a></li>
+                                                <li class="li_ss_menu"><a class="a_ss_menu" href="../Rapport/PointVisite/PointVisite.aspx">Points de visites </a></li>
+                                                 <li class="li_ss_menu"><a class="a_ss_menu" href="../Rapport/DepassVitess/DepassVitess.aspx">Dépassement de vitesse</a></li>
+                                                 <li class="li_ss_menu"><a class="a_ss_menu" href="../Rapport/GainSI/GainSI.aspx">Gain du SI </a></li>
+                                            </ul>
+                                        </li>
+                                        <%--Paramétrage--%>
+                                        <li class="li_menu_tempreel7"><a href="" class="a_menu">Parametrage</a>
+                                            <%--Sous menu Paramétrage--%>
+                                            <ul class="sous_menu">
+                                                <li class="li_ss_menu"><a class="a_ss_menu" href="../Vehicules/Vehicules.aspx">Gestion Vehicules</a></a></li>
+                                                <li class="li_ss_menu"><a class="a_ss_menu" href="../CarteSim/CarteSim.aspx">Gestion Carte Sim</a></li>
+                                                <li class="li_ss_menu"><a class="a_ss_menu" href="../Profil/Profil.aspx">Gestion Profil</a></li>
+                                                <li class="li_ss_menu"><a class="a_ss_menu" href="../Boitier/Boitier.aspx">Gestion Boitier</a></li>
+                                                <li class="li_ss_menu"><a class="a_ss_menu" href="../Personnel/Personnel.aspx">Gestion Personnel</a></li>
+                                                <li class="li_ss_menu"><a class="a_ss_menu" href="../Utilisateur/Utilisateur.aspx">Gestion Utilisateur</a></li>
+                                                <li class="li_ss_menu"><a class="a_ss_menu" href="../Groupe/Groupe.aspx">Gestion Groupe</a></li>
+
+                                            </ul>
+                                        </li>
+                                        <%lstv = getLisVeh();%>
+                                                                              <%--notification--%>
+                                        <li class="li_menu_tempreel8"><a href="../Alarme/Alarme.aspx" class="a_menu">notification(<%=lstv.Count.ToString() %>)</a>
+                                            
+                                              <ul class="sous_menu">
+                                                  <%
+                                                      for(int i=0; i<lstv.Count;i++)
+                                                       {
+                                                           String s ="Alarme "+(i+1)+": La vehicule matriculé "+ lstv[i].matricule + " fait un "+getAlarmeById((int)lst[i].alerteid);
+                                                           
+                                                          %>
+                                                <li class="li_ss_menu" >
+                                                    <a class="a_ss_menu" href="../Alarme/Alarme.aspx">
+                                                  <%=s %>
+                                                                       </a></li>
+                                                  <%} %> 
+                                               
+                                            </ul>
+
+                                            
+                                        </li>
+                                  
+                                          </ul>
+                                </div>
+                                <div id="div_client">
+                                   
+                                </div>
+                                <%--Menu langue--%>
+                                <div id="langGeomtec">
+                                    <ul id="ul_lang">
+                                        <li class="li_lang1"><a href="" class="a_lang"></a></li>
+                                        <li class="li_lang2"><a href="" class="a_lang"><a></li>
+                                        <li class="li_lang3"><a href="" class="a_lang"><a></li>
+                                    </ul>
+                                    <div style="clear: both;">
+                                    </div>
+                                    <ul style="margin: 0; padding: 0;">
+                                        <li id="appplus"><a href=""></a>
+                                            <%-- menu plus--%>
+                                            <ul class="ss_plus">
+                                                <li><a></a></li>
+                                                <li>
+                                                    <table id="tableapp">
+
+                                                        <tr>
+                                                            <%--Déconnexion--%>
+                                                            <td>
+                                                                <a id="app1" class="app" href="../Deconnexion/Deconnexion.aspx">Deconnexion</a>
+                                                            </td>
+                                                            <%--Aide--%>
+                                                            <td>
+                                                                <a id="app2" class="app" href="#">Aide</a>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <%--  Info--%>
+                                                            <td>
+                                                                <a id="app3" class="app" href="#">Info</a>
+                                                            </td>
+                                                            <%--  Contact--%>
+                                                            <td>
+                                                                <a id="app4" class="app" href="#">Contact</a>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </Content>
+                </ext:Container>
+                <ext:Container ID="Container3" runat="server" Layout="FitLayout">
+                    <Content>
+                        <div style="width: 100%; height: 80px; background: #F1F1F1; background: -moz-linear-gradient(#FFF,  #F1F1F1); background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#F1F1F1)); background: -webkit-linear-gradient(#FFF,  #F1F1F1); background: -o-linear-gradient(#FFF,  #F1F1F1); background: -ms-linear-gradient(#FFF,  #F1F1F1); background: linear-gradient(#FFF,  #F1F1F1); border-bottom: 1px solid #CCC;">
+                        </div>
+                    </Content>
+                </ext:Container>
+                <ext:Container ID="Container1" runat="server" Layout="FitLayout" Region="Center">
+                    <Content>
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </Content>
+                </ext:Container>
+            </Items>
+        </ext:Viewport>
+    </form>
+</body>
+
+</html>

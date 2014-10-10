@@ -1,0 +1,302 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Threading;
+using System.Globalization;
+using System.Data;
+using System.Data.SqlClient;
+using Ext.Net;
+using System.Web.Security;
+using GeoSI.Website.Common;
+
+namespace GeoSI.Website.Common
+{
+    public class PageBase : Page
+    {
+        #region Variable global
+        //--------------------- Début ----------------------------
+        protected List<string> ListAction = new List<string>();
+        private GridPanel _grid = new GridPanel();
+        private Store _store = new Store();
+        private string _TableModule;
+        private string _IdTableModule = null;
+        protected string Currentmodule = null;
+        //--------------------- Fin ------------------------------
+        #endregion
+
+        #region Constructeur
+        //--------------------- Début ----------------------------
+        public PageBase()
+        {
+        }
+        //--------------------- Fin ------------------------------
+        #endregion
+        #region Methodes
+        //--------------------- Début ----------------------------
+        //Modifier le nombre de module
+        protected void SetNomModule(string Currentmodule)
+        {
+            this.Currentmodule = Currentmodule;
+        }
+        // Initialisation de la page aprés connexion
+        private void Page_PreInit(Object sender, EventArgs e)
+        {
+
+            if (!this.IsConnected())
+            {
+                Response.Redirect("../Login/Login.aspx");
+            }
+
+            int _TypeCompte = this.getCurrentUser().getTypeCompte();
+
+            if (_TypeCompte == 1)//Page Master BackOffice
+            {
+                this.MasterPageFile = "~/PagesMaster/BackOffice.Master";
+            }
+            else if (_TypeCompte == 2)//Page Master Revendeur
+            {
+                this.MasterPageFile = "~/PagesMaster/Revendeur.Master";
+            }
+            else if (_TypeCompte == 3)//Page Master Client
+            {
+                this.MasterPageFile = "~/PagesMaster/Client.Master";
+            }
+            else
+            {
+
+            }
+
+        }
+        // Vérification habilitations 
+        protected Boolean GeHabilitationAction(string _action)
+        {
+            Boolean trouve = false;
+
+            int _TypeCompte = this.getCurrentUser().getTypeCompte();
+
+            if (_TypeCompte == 1)//BackOffice
+            {
+                trouve = true;
+            }
+            else if (_TypeCompte == 2)//Revendeur
+            {
+                trouve = true;
+
+            }
+            else if (_TypeCompte == 3)//Client 
+            {
+                string _option = this.Currentmodule;
+                this.ListAction = (List<string>)Session["HabilitationAction"];
+                foreach (String Action in this.ListAction)
+                {
+                    if ((_action + _option).ToLower() == Action.ToLower())
+                    {
+                        trouve = true;
+                        break;
+                    }
+                }
+
+            }
+            else
+            {
+                trouve = false;
+
+            }
+
+            return trouve;
+
+        }
+        //Récupération de la session et application de la langue
+        protected override void InitializeCulture()
+        {
+            if (Session["Culture"] != null)
+            {
+                string _Culture = Session["Culture"].ToString();
+              //  Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(_Culture.ToString());
+                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(_Culture.ToString());
+            }
+            else
+            {
+                String _Default = CultureInfo.CurrentCulture.Name;
+              //  Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(_Default.ToString());
+                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(_Default.ToString());
+            }
+            base.InitializeCulture();
+        }
+        
+        protected void FillStore(string sql, Store _store)
+        {
+            using (SqlDataAdapter da = new SqlDataAdapter(sql, _Global.CurrentConnection))
+            {
+
+                DataSet ds = new DataSet();
+                da.SelectCommand.CommandTimeout = 120;
+                da.Fill(ds);
+                _store.DataSource = ds.Tables[0];
+                _store.DataBind();
+               
+               
+            }
+
+            
+
+        }
+        //accès à la base de données
+        public SqlDataReader Select(string _Requette)
+        {
+            SqlDataReader dr;
+            try
+            {
+                SqlConnection cnx = _Global.CurrentConnection;
+                SqlCommand cmd = new SqlCommand(_Requette, cnx);
+                dr = cmd.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                dr = null;
+                ex.ToString();
+            }
+
+            return dr;
+            
+        }
+        
+        public vehicules GetVehByID(string _Requette)
+        {
+            SqlDataReader dr = Select(_Requette);
+            vehicules v=new vehicules();
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    v.vehiculeid = (int)dr[0];
+                    v.matricule = dr[1].ToString();
+                    v.code = dr[2].ToString();
+                    v.personnelid = (int)dr[3];
+                }
+
+            }
+            dr.Close();
+            return v;
+        }
+
+
+        //Requette Insert avec retour de l'id 
+        protected int InsertRetourId(string _Requette)
+        {
+            int _NewId = -1;
+            try
+            {
+                SqlDataReader resulat = this.Select(_Requette);
+                resulat.Read();
+                _NewId = int.Parse(resulat[0].ToString());
+                resulat.Close();
+            }
+            catch (Exception ex)
+            {
+                _NewId = -1;
+                ex.ToString();
+            }
+            return _NewId;
+        }
+        //Requete Insert
+        public int Insert(string _Requette)
+        {
+            int _NewId = -1;
+            try
+            {
+                SqlConnection cnx = _Global.CurrentConnection;
+                SqlCommand cmd = new SqlCommand(_Requette, cnx);
+                _NewId = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                _NewId = -1;
+                ex.ToString();
+            }
+            return _NewId;
+        }
+        //Requete Update
+        protected int Update(string _Requette)
+        {
+            int _UpdateId = -1;
+            try
+            {
+                SqlConnection cnx = _Global.CurrentConnection;
+                SqlCommand cmd = new SqlCommand(_Requette, cnx);
+                _UpdateId = cmd.ExecuteNonQuery();
+                if (_UpdateId == 0) { _UpdateId = -1; }
+            }
+            catch (Exception ex)
+            {
+                _UpdateId = -1;
+                ex.ToString();
+            }
+            return _UpdateId;
+        }
+        //Récuperation de l'utilisateur courant
+        public UserInfo getCurrentUser()
+        {
+
+            UserInfo retVal = null;
+            object o = Session["UserInfo"];
+            if (o != null)
+            {
+                retVal = ((UserInfo)Session["UserInfo"]);
+            }
+            return retVal;
+
+
+        }
+        //Modification de l'utilisateur courant
+        public void setCurrentUser(UserInfo _UserInfo)
+        {
+
+            Session["UserInfo"] = _UserInfo;
+
+
+        }
+        //Vérification de la connexion
+        public Boolean IsConnected()
+        {
+            if (Session["UserInfo"] == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+
+
+        }
+        //--------------------- Fin ------------------------------
+        #endregion
+
+        #region Methodes
+        //--------------------- Début ----------------------------        
+        protected string Hash(string Password)
+        {
+            string chaine = "";
+            string reformulation = "asm" + Password + "tda";
+            string hashOfInput = FormsAuthentication.HashPasswordForStoringInConfigFile(reformulation, "MD5");
+            string chaine1 = hashOfInput.Substring(0, 12);
+            string chaine2 = hashOfInput.Substring(0, 13);
+            string chaine3 = hashOfInput.Substring(0, 7);
+            chaine = chaine3 + chaine1 + chaine2;
+            return chaine;
+        }
+
+
+
+
+        public void DoNo()
+        { }
+
+        //--------------------- Fin ------------------------------
+        #endregion
+    }
+}

@@ -1,0 +1,83 @@
+﻿body
+{
+    font: 12px/1.2 Verdana, sans-serif;
+    padding: 0 10px;
+}
+a:link, a:visited
+{
+    text-decoration: none;
+    color: #416CE5;
+    border-bottom: 1px solid #416CE5;
+}
+h2
+{
+    font-size: 13px;
+    margin: 15px 0 0 0;
+}
+.x-window-mc
+{
+    background-color: #F4F4F4 !important;
+}
+.label1
+{
+}
+.ligne
+{
+    margin-left: 20px;
+}
+.input1
+{
+    border: 1px solid #E5E5E5;
+    border-radius: 3px;
+    height: 29px;
+    padding-left: 5px;
+}
+.ligne
+{
+    float: left;
+    margin-top: 20px;
+    margin-left: 40px;
+}
+.ligne1
+{
+    float: left;
+    margin-top: 20px;
+    margin-left: 50px;
+}
+.btn1
+{
+    margin-left: 145px;
+    width: 100px;
+    margin-top: 30px;
+}
+.btn2
+{
+    margin-left: 10px;
+    width: 90px;
+    margin-top: 30px;
+}
+.btn3
+{
+    margin-left: 145px;
+    width: 100px;
+    margin-top: 30px;
+}
+.titre
+{
+    font-weight: bold;
+    padding-top: 8px;
+    color: #444;
+    margin-left: 30px;
+    line-height: 1.5em;
+    font-family: Arial;
+}
+
+.icon
+{
+    background-color: Aqua;
+    height: 29px;
+}
+       #button-1016, #button-1017, #button-1020,  #button-1021
+        {
+                    display:none;
+        }

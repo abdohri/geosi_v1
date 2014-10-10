@@ -1,0 +1,98 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using Ext.Net;
+using System.Threading;
+using System.Globalization;
+using GeoSI.Website.Common;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.Data;
+using System.Configuration;
+using System.Web.Security;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using System.IO;
+using System.Reflection;
+
+namespace GeoSI.Website.Modules.RapportTrajet
+{
+    public partial class GenererExcel : Form
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            
+            this.SetNomModule("Vehicules");
+            this.PreSchema("Vehicules", "VehiculeId");
+            if (!X.IsAjaxRequest)
+            {
+                string id = Request.Params.Get("id").ToString();
+                if (id != "0")
+                {
+                    this.InitForm(id, this.UserForm);
+
+
+                }
+
+                // Remplissage des combobox existant dans la forme
+                string _marque = "select marquevehiculeid,libelle from marquevehicule where actif='1' and ClientId=-1 or ClientId=" + this.getCurrentUser().getClientId();
+                this.FillStore(_marque, this.Store2);
+
+                string _type = "select typevehiculeid,libelle from typevehicule where actif='1' and clientid=-1 or clientid=" + this.getCurrentUser().getClientId();
+                this.FillStore(_type, this.Store3);
+
+
+                string _comboBoitier = "select boitierid,imei from boitier where actif='1' and ClientId=" + this.getCurrentUser().getClientId() + " and BoitierId NOT IN (select BoitierId from affectation_vehicule_boitier where ClientId=" + this.getCurrentUser().getClientId() + " and actif='1')";
+                this.FillStore(_comboBoitier, this.Store4);
+
+                string _comboPersonnel = "Select personnelid,nom+' '+prenom nom From personnel where actif='1' and clientid=" + this.getCurrentUser().getClientId() + " and personnelid not in(select personnelid from vehicule_personnel where actif='1')";
+                this.FillStore(_comboPersonnel, this.Store5);
+
+
+            }
+        }
+
+        private DataTable GetData(string query)
+        {
+
+            string conString = ConfigurationManager.ConnectionStrings["SQLConnString"].ConnectionString;
+            SqlCommand cmd = new SqlCommand(query);
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                using (SqlDataAdapter sda = new SqlDataAdapter())
+                {
+                    cmd.Connection = con;
+
+                    sda.SelectCommand = cmd;
+                    using (DataTable dt = new DataTable())
+                    {
+                        sda.Fill(dt);
+                        return dt;
+                    }
+                }
+            }
+        }
+
+
+        [DirectMethod(ShowMask = true, Msg = "Loading...")]
+        public void GenerateEXCEL()
+        {
+            string _req = "select v.vehiculeid ,v.matricule,v.code,v.numero_chassis ,v.modele ,v.consommation,v.kilometrage,m.libelle marquevehicule ,t.libelle typevehicule from vehicules v "
+                               + "left join typevehicule t on v.typevehiculeid=t.typevehiculeid "
+                                + "left join marquevehicule m on  v.marquevehiculeid=m.marquevehiculeid "
+                               + "where v.clientid=" + this.getCurrentUser().getClientId() + "and v.actif='1' order by v.vehiculeid desc";
+            DataTable dt = GetData(_req);
+
+            dt.TableName = "Rapport";
+            dt.WriteXml(Server.MapPath(".") + @"\finalData.xls", XmlWriteMode.IgnoreSchema);
+            Response.Redirect("finalData.xls");
+        }
+    }
+
+
+
+}

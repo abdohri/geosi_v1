@@ -1,0 +1,1347 @@
+<?xml version="1.0" standalone="yes"?>
+<DocumentElement>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami kamal</Column1>
+    <localiisation>khribga</localiisation>
+    <Date_Debut>2014-09-05T07:00:00+01:00</Date_Debut>
+    <dete_fin>2014-09-05T08:29:00+01:00</dete_fin>
+    <duree>89</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-01T11:15:04+01:00</Date_Debut>
+    <dete_fin>2014-09-01T11:19:04+01:00</dete_fin>
+    <duree>4</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-01T11:28:44+01:00</Date_Debut>
+    <dete_fin>2014-09-01T11:30:44+01:00</dete_fin>
+    <duree>2</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-01T11:32:35+01:00</Date_Debut>
+    <dete_fin>2014-09-01T14:15:35+01:00</dete_fin>
+    <duree>163</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-01T14:41:12+01:00</Date_Debut>
+    <dete_fin>2014-09-01T14:41:12+01:00</dete_fin>
+    <duree>0</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-01T14:42:03+01:00</Date_Debut>
+    <dete_fin>2014-09-01T15:07:03+01:00</dete_fin>
+    <duree>25</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-01T15:19:59+01:00</Date_Debut>
+    <dete_fin>2014-09-01T15:22:59+01:00</dete_fin>
+    <duree>3</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-01T15:28:21+01:00</Date_Debut>
+    <dete_fin>2014-09-01T15:32:21+01:00</dete_fin>
+    <duree>4</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-01T15:36:52+01:00</Date_Debut>
+    <dete_fin>2014-09-02T06:55:52+01:00</dete_fin>
+    <duree>919</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-02T07:22:56+01:00</Date_Debut>
+    <dete_fin>2014-09-02T08:47:56+01:00</dete_fin>
+    <duree>85</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Boulevard Abou Ali Kali, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-02T09:03:37+01:00</Date_Debut>
+    <dete_fin>2014-09-02T10:15:37+01:00</dete_fin>
+    <duree>72</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue Aarif Mehdi, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-02T10:35:19+01:00</Date_Debut>
+    <dete_fin>2014-09-02T10:45:19+01:00</dete_fin>
+    <duree>10</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue Aarif Mehdi, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-02T10:45:31+01:00</Date_Debut>
+    <dete_fin>2014-09-02T11:00:31+01:00</dete_fin>
+    <duree>15</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue Aarif Mehdi, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-02T11:02:33+01:00</Date_Debut>
+    <dete_fin>2014-09-02T11:11:33+01:00</dete_fin>
+    <duree>9</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue 18, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-02T11:40:28+01:00</Date_Debut>
+    <dete_fin>2014-09-02T11:42:28+01:00</dete_fin>
+    <duree>2</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue 18, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-02T11:42:59+01:00</Date_Debut>
+    <dete_fin>2014-09-02T12:22:59+01:00</dete_fin>
+    <duree>40</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue 18, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-02T12:22:55+01:00</Date_Debut>
+    <dete_fin>2014-09-02T12:41:55+01:00</dete_fin>
+    <duree>19</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>P3015, Morocco</localiisation>
+    <Date_Debut>2014-09-02T12:53:40+01:00</Date_Debut>
+    <dete_fin>2014-09-02T12:59:40+01:00</dete_fin>
+    <duree>6</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue Aarif Mehdi, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-02T13:27:05+01:00</Date_Debut>
+    <dete_fin>2014-09-02T17:01:05+01:00</dete_fin>
+    <duree>214</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-02T17:22:18+01:00</Date_Debut>
+    <dete_fin>2014-09-02T18:00:18+01:00</dete_fin>
+    <duree>38</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-02T18:00:13+01:00</Date_Debut>
+    <dete_fin>2014-09-02T18:06:13+01:00</dete_fin>
+    <duree>6</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-02T18:40:29+01:00</Date_Debut>
+    <dete_fin>2014-09-02T20:42:29+01:00</dete_fin>
+    <duree>122</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-02T21:27:43+01:00</Date_Debut>
+    <dete_fin>2014-09-03T07:02:43+01:00</dete_fin>
+    <duree>575</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-03T07:28:10+01:00</Date_Debut>
+    <dete_fin>2014-09-03T08:50:10+01:00</dete_fin>
+    <duree>82</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue Ibnou Faris, MaÃ¢rif, Morocco</localiisation>
+    <Date_Debut>2014-09-03T09:10:41+01:00</Date_Debut>
+    <dete_fin>2014-09-03T11:02:41+01:00</dete_fin>
+    <duree>112</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue Tarik Ibnou Ziad, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-03T11:20:53+01:00</Date_Debut>
+    <dete_fin>2014-09-03T11:33:53+01:00</dete_fin>
+    <duree>13</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue Tarik Ibnou Ziad, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-03T11:41:06+01:00</Date_Debut>
+    <dete_fin>2014-09-03T11:48:06+01:00</dete_fin>
+    <duree>7</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue Aarif Mehdi, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-03T12:04:10+01:00</Date_Debut>
+    <dete_fin>2014-09-03T12:12:10+01:00</dete_fin>
+    <duree>8</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue Aarif Mehdi, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-03T12:14:11+01:00</Date_Debut>
+    <dete_fin>2014-09-03T13:44:11+01:00</dete_fin>
+    <duree>90</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue Aarif Mehdi, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-03T13:44:42+01:00</Date_Debut>
+    <dete_fin>2014-09-03T13:45:42+01:00</dete_fin>
+    <duree>1</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue Aarif Mehdi, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-03T13:45:32+01:00</Date_Debut>
+    <dete_fin>2014-09-03T15:06:32+01:00</dete_fin>
+    <duree>81</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-03T15:07:31+01:00</Date_Debut>
+    <dete_fin>2014-09-03T15:07:31+01:00</dete_fin>
+    <duree>0</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-03T15:09:51+01:00</Date_Debut>
+    <dete_fin>2014-09-03T15:15:51+01:00</dete_fin>
+    <duree>6</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-03T15:16:52+01:00</Date_Debut>
+    <dete_fin>2014-09-03T15:17:52+01:00</dete_fin>
+    <duree>1</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-03T15:18:33+01:00</Date_Debut>
+    <dete_fin>2014-09-03T17:03:33+01:00</dete_fin>
+    <duree>105</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-03T17:22:01+01:00</Date_Debut>
+    <dete_fin>2014-09-04T06:53:01+01:00</dete_fin>
+    <duree>811</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Boulevard Ibn Tachfine, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-04T07:09:03+01:00</Date_Debut>
+    <dete_fin>2014-09-04T07:09:03+01:00</dete_fin>
+    <duree>0</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue Aarif Mehdi, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-04T07:22:14+01:00</Date_Debut>
+    <dete_fin>2014-09-04T09:37:14+01:00</dete_fin>
+    <duree>135</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Boulevard Rachdi, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-04T09:54:51+01:00</Date_Debut>
+    <dete_fin>2014-09-04T09:59:51+01:00</dete_fin>
+    <duree>5</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue de Goulmima, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-04T10:05:21+01:00</Date_Debut>
+    <dete_fin>2014-09-04T10:10:21+01:00</dete_fin>
+    <duree>5</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue Ait Baha, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-04T10:12:51+01:00</Date_Debut>
+    <dete_fin>2014-09-04T10:43:51+01:00</dete_fin>
+    <duree>31</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Boulevard Abdellatif Ben Kaddour, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-04T10:53:28+01:00</Date_Debut>
+    <dete_fin>2014-09-04T10:57:28+01:00</dete_fin>
+    <duree>4</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue Ain Chifa, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-04T11:01:29+01:00</Date_Debut>
+    <dete_fin>2014-09-04T11:06:29+01:00</dete_fin>
+    <duree>5</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Boulevard de Khouribga, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-04T11:28:03+01:00</Date_Debut>
+    <dete_fin>2014-09-04T11:46:03+01:00</dete_fin>
+    <duree>18</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Boulevard de Khouribga, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-04T11:46:26+01:00</Date_Debut>
+    <dete_fin>2014-09-04T13:51:26+01:00</dete_fin>
+    <duree>125</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Boulevard Oued Laou, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-04T14:24:52+01:00</Date_Debut>
+    <dete_fin>2014-09-04T15:31:52+01:00</dete_fin>
+    <duree>67</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-04T15:37:23+01:00</Date_Debut>
+    <dete_fin>2014-09-04T15:38:23+01:00</dete_fin>
+    <duree>1</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-04T15:42:04+01:00</Date_Debut>
+    <dete_fin>2014-09-04T15:44:04+01:00</dete_fin>
+    <duree>2</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-04T15:45:04+01:00</Date_Debut>
+    <dete_fin>2014-09-04T15:46:04+01:00</dete_fin>
+    <duree>1</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-04T15:47:44+01:00</Date_Debut>
+    <dete_fin>2014-09-04T15:50:44+01:00</dete_fin>
+    <duree>3</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-04T16:04:07+01:00</Date_Debut>
+    <dete_fin>2014-09-04T16:10:07+01:00</dete_fin>
+    <duree>6</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-04T16:28:29+01:00</Date_Debut>
+    <dete_fin>2014-09-04T16:37:29+01:00</dete_fin>
+    <duree>9</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-04T16:46:42+01:00</Date_Debut>
+    <dete_fin>2014-09-05T06:54:42+01:00</dete_fin>
+    <duree>848</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue Aarif Mehdi, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-05T07:18:06+01:00</Date_Debut>
+    <dete_fin>2014-09-05T11:32:06+01:00</dete_fin>
+    <duree>254</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-05T11:53:43+01:00</Date_Debut>
+    <dete_fin>2014-09-05T13:08:43+01:00</dete_fin>
+    <duree>75</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-05T13:25:18+01:00</Date_Debut>
+    <dete_fin>2014-09-05T13:25:18+01:00</dete_fin>
+    <duree>0</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-05T13:25:58+01:00</Date_Debut>
+    <dete_fin>2014-09-05T18:14:58+01:00</dete_fin>
+    <duree>289</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-05T18:32:24+01:00</Date_Debut>
+    <dete_fin>2014-09-05T18:34:24+01:00</dete_fin>
+    <duree>2</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-05T18:35:05+01:00</Date_Debut>
+    <dete_fin>2014-09-05T18:42:05+01:00</dete_fin>
+    <duree>7</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-05T18:55:07+01:00</Date_Debut>
+    <dete_fin>2014-09-05T18:55:07+01:00</dete_fin>
+    <duree>0</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-05T19:07:18+01:00</Date_Debut>
+    <dete_fin>2014-09-05T20:06:18+01:00</dete_fin>
+    <duree>59</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-05T20:19:07+01:00</Date_Debut>
+    <dete_fin>2014-09-05T20:19:07+01:00</dete_fin>
+    <duree>0</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-05T20:26:28+01:00</Date_Debut>
+    <dete_fin>2014-09-06T07:07:28+01:00</dete_fin>
+    <duree>641</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-06T07:27:52+01:00</Date_Debut>
+    <dete_fin>2014-09-06T11:33:52+01:00</dete_fin>
+    <duree>246</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Boulevard de TÃ©mara, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-06T11:52:01+01:00</Date_Debut>
+    <dete_fin>2014-09-06T11:52:01+01:00</dete_fin>
+    <duree>0</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Boulevard de TÃ©mara, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-06T11:53:01+01:00</Date_Debut>
+    <dete_fin>2014-09-06T12:00:01+01:00</dete_fin>
+    <duree>7</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Avenue 10 Mars 1982, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-06T12:18:11+01:00</Date_Debut>
+    <dete_fin>2014-09-06T18:23:11+01:00</dete_fin>
+    <duree>365</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-06T18:23:59+01:00</Date_Debut>
+    <dete_fin>2014-09-07T06:35:59+01:00</dete_fin>
+    <duree>732</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-07T06:49:18+01:00</Date_Debut>
+    <dete_fin>2014-09-07T07:21:18+01:00</dete_fin>
+    <duree>32</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-07T07:37:52+01:00</Date_Debut>
+    <dete_fin>2014-09-07T07:45:52+01:00</dete_fin>
+    <duree>8</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-07T07:46:03+01:00</Date_Debut>
+    <dete_fin>2014-09-07T09:39:03+01:00</dete_fin>
+    <duree>113</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-07T09:58:27+01:00</Date_Debut>
+    <dete_fin>2014-09-07T10:01:27+01:00</dete_fin>
+    <duree>3</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-07T10:17:10+01:00</Date_Debut>
+    <dete_fin>2014-09-08T06:54:10+01:00</dete_fin>
+    <duree>1237</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-08T07:24:21+01:00</Date_Debut>
+    <dete_fin>2014-09-08T09:05:21+01:00</dete_fin>
+    <duree>101</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-08T09:24:13+01:00</Date_Debut>
+    <dete_fin>2014-09-08T09:24:13+01:00</dete_fin>
+    <duree>0</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-08T09:25:03+01:00</Date_Debut>
+    <dete_fin>2014-09-08T09:45:03+01:00</dete_fin>
+    <duree>20</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-08T09:50:25+01:00</Date_Debut>
+    <dete_fin>2014-09-08T09:51:25+01:00</dete_fin>
+    <duree>1</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-08T10:02:46+01:00</Date_Debut>
+    <dete_fin>2014-09-08T10:04:46+01:00</dete_fin>
+    <duree>2</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-08T10:17:26+01:00</Date_Debut>
+    <dete_fin>2014-09-08T10:44:26+01:00</dete_fin>
+    <duree>27</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-08T10:49:19+01:00</Date_Debut>
+    <dete_fin>2014-09-08T11:05:19+01:00</dete_fin>
+    <duree>16</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Boulevard de Khouribga, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-08T11:06:12+01:00</Date_Debut>
+    <dete_fin>2014-09-08T11:18:12+01:00</dete_fin>
+    <duree>12</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Boulevard de Khouribga, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-08T11:19:13+01:00</Date_Debut>
+    <dete_fin>2014-09-08T14:38:13+01:00</dete_fin>
+    <duree>199</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Boulevard de Khouribga, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-08T14:39:00+01:00</Date_Debut>
+    <dete_fin>2014-09-08T17:04:00+01:00</dete_fin>
+    <duree>145</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Avenue 10 Mars 1982, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-08T17:25:49+01:00</Date_Debut>
+    <dete_fin>2014-09-08T17:26:49+01:00</dete_fin>
+    <duree>1</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Avenue 10 Mars 1982, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-08T17:26:30+01:00</Date_Debut>
+    <dete_fin>2014-09-09T07:03:30+01:00</dete_fin>
+    <duree>817</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-09T07:31:02+01:00</Date_Debut>
+    <dete_fin>2014-09-09T07:50:02+01:00</dete_fin>
+    <duree>19</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-09T07:50:45+01:00</Date_Debut>
+    <dete_fin>2014-09-09T08:34:45+01:00</dete_fin>
+    <duree>44</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-09T08:40:10+01:00</Date_Debut>
+    <dete_fin>2014-09-09T09:07:10+01:00</dete_fin>
+    <duree>27</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-09T09:28:55+01:00</Date_Debut>
+    <dete_fin>2014-09-09T09:42:55+01:00</dete_fin>
+    <duree>14</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-09T10:11:32+01:00</Date_Debut>
+    <dete_fin>2014-09-09T10:25:32+01:00</dete_fin>
+    <duree>14</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-09T10:54:48+01:00</Date_Debut>
+    <dete_fin>2014-09-09T13:09:48+01:00</dete_fin>
+    <duree>135</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue Mimosas, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-09T13:37:27+01:00</Date_Debut>
+    <dete_fin>2014-09-09T16:06:27+01:00</dete_fin>
+    <duree>149</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue Barathon, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-09T16:36:34+01:00</Date_Debut>
+    <dete_fin>2014-09-09T16:37:34+01:00</dete_fin>
+    <duree>1</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue Barathon, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-09T16:37:34+01:00</Date_Debut>
+    <dete_fin>2014-09-09T17:06:34+01:00</dete_fin>
+    <duree>29</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Avenue 10 Mars 1982, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-09T17:31:24+01:00</Date_Debut>
+    <dete_fin>2014-09-10T07:05:24+01:00</dete_fin>
+    <duree>814</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-10T07:26:36+01:00</Date_Debut>
+    <dete_fin>2014-09-10T08:01:36+01:00</dete_fin>
+    <duree>35</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-10T08:18:51+01:00</Date_Debut>
+    <dete_fin>2014-09-10T08:30:51+01:00</dete_fin>
+    <duree>12</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-10T08:51:55+01:00</Date_Debut>
+    <dete_fin>2014-09-10T10:16:55+01:00</dete_fin>
+    <duree>85</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-10T10:38:39+01:00</Date_Debut>
+    <dete_fin>2014-09-10T10:39:39+01:00</dete_fin>
+    <duree>1</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Boulevard de Khouribga, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-10T10:40:49+01:00</Date_Debut>
+    <dete_fin>2014-09-10T12:44:49+01:00</dete_fin>
+    <duree>124</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Boulevard de Khouribga, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-10T12:45:18+01:00</Date_Debut>
+    <dete_fin>2014-09-10T12:46:18+01:00</dete_fin>
+    <duree>1</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Boulevard de Khouribga, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-10T12:47:18+01:00</Date_Debut>
+    <dete_fin>2014-09-10T14:00:18+01:00</dete_fin>
+    <duree>73</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Avenue Taddart, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-10T14:27:17+01:00</Date_Debut>
+    <dete_fin>2014-09-10T14:30:17+01:00</dete_fin>
+    <duree>3</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Avenue de Dakhla, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-10T14:39:19+01:00</Date_Debut>
+    <dete_fin>2014-09-10T14:50:19+01:00</dete_fin>
+    <duree>11</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Avenue Tah, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-10T14:56:02+01:00</Date_Debut>
+    <dete_fin>2014-09-10T15:59:02+01:00</dete_fin>
+    <duree>63</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Avenue de Dakhla, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-10T16:04:56+01:00</Date_Debut>
+    <dete_fin>2014-09-10T16:27:56+01:00</dete_fin>
+    <duree>23</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue 187 Hay Moulay Abdellah, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-10T16:35:26+01:00</Date_Debut>
+    <dete_fin>2014-09-10T16:38:26+01:00</dete_fin>
+    <duree>3</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Avenue 10 Mars 1982, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-10T17:00:17+01:00</Date_Debut>
+    <dete_fin>2014-09-10T17:01:17+01:00</dete_fin>
+    <duree>1</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Avenue 10 Mars 1982, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-10T17:01:26+01:00</Date_Debut>
+    <dete_fin>2014-09-11T07:00:26+01:00</dete_fin>
+    <duree>839</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-11T07:19:06+01:00</Date_Debut>
+    <dete_fin>2014-09-11T10:55:06+01:00</dete_fin>
+    <duree>216</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue de Goulmima, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-11T11:19:02+01:00</Date_Debut>
+    <dete_fin>2014-09-11T11:20:02+01:00</dete_fin>
+    <duree>1</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue Ait Baha, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-11T11:23:43+01:00</Date_Debut>
+    <dete_fin>2014-09-11T11:47:43+01:00</dete_fin>
+    <duree>24</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue Ait Baha, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-11T11:48:35+01:00</Date_Debut>
+    <dete_fin>2014-09-11T11:48:35+01:00</dete_fin>
+    <duree>0</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue Bni Amir, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-11T11:53:47+01:00</Date_Debut>
+    <dete_fin>2014-09-11T12:05:47+01:00</dete_fin>
+    <duree>12</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Boulevard de Khouribga, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-11T12:21:11+01:00</Date_Debut>
+    <dete_fin>2014-09-11T17:12:11+01:00</dete_fin>
+    <duree>291</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-11T17:31:06+01:00</Date_Debut>
+    <dete_fin>2014-09-11T17:31:06+01:00</dete_fin>
+    <duree>0</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-11T17:32:06+01:00</Date_Debut>
+    <dete_fin>2014-09-11T17:33:06+01:00</dete_fin>
+    <duree>1</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-11T17:35:38+01:00</Date_Debut>
+    <dete_fin>2014-09-11T17:36:38+01:00</dete_fin>
+    <duree>1</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-11T17:36:28+01:00</Date_Debut>
+    <dete_fin>2014-09-12T06:59:28+01:00</dete_fin>
+    <duree>803</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-12T07:24:38+01:00</Date_Debut>
+    <dete_fin>2014-09-12T17:03:38+01:00</dete_fin>
+    <duree>579</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue M Smiha, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-12T17:12:46+01:00</Date_Debut>
+    <dete_fin>2014-09-12T17:14:46+01:00</dete_fin>
+    <duree>2</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-12T18:04:22+01:00</Date_Debut>
+    <dete_fin>2014-09-12T18:06:22+01:00</dete_fin>
+    <duree>2</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-12T18:14:44+01:00</Date_Debut>
+    <dete_fin>2014-09-12T19:40:44+01:00</dete_fin>
+    <duree>86</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-12T19:56:27+01:00</Date_Debut>
+    <dete_fin>2014-09-12T20:09:27+01:00</dete_fin>
+    <duree>13</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-12T20:43:03+01:00</Date_Debut>
+    <dete_fin>2014-09-13T07:08:03+01:00</dete_fin>
+    <duree>625</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-13T07:25:57+01:00</Date_Debut>
+    <dete_fin>2014-09-13T07:56:57+01:00</dete_fin>
+    <duree>31</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-13T07:56:32+01:00</Date_Debut>
+    <dete_fin>2014-09-13T08:20:32+01:00</dete_fin>
+    <duree>24</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-13T08:20:34+01:00</Date_Debut>
+    <dete_fin>2014-09-13T09:24:34+01:00</dete_fin>
+    <duree>64</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-13T09:40:20+01:00</Date_Debut>
+    <dete_fin>2014-09-13T10:36:20+01:00</dete_fin>
+    <duree>56</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-13T10:52:52+01:00</Date_Debut>
+    <dete_fin>2014-09-13T10:53:52+01:00</dete_fin>
+    <duree>1</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-13T10:54:02+01:00</Date_Debut>
+    <dete_fin>2014-09-14T09:57:02+01:00</dete_fin>
+    <duree>1383</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-14T10:16:43+01:00</Date_Debut>
+    <dete_fin>2014-09-14T11:17:43+01:00</dete_fin>
+    <duree>61</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-14T11:40:50+01:00</Date_Debut>
+    <dete_fin>2014-09-14T13:44:50+01:00</dete_fin>
+    <duree>124</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-14T14:04:41+01:00</Date_Debut>
+    <dete_fin>2014-09-14T14:05:41+01:00</dete_fin>
+    <duree>1</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-14T14:12:02+01:00</Date_Debut>
+    <dete_fin>2014-09-14T16:49:02+01:00</dete_fin>
+    <duree>157</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-14T16:54:15+01:00</Date_Debut>
+    <dete_fin>2014-09-14T17:01:15+01:00</dete_fin>
+    <duree>7</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-14T17:11:58+01:00</Date_Debut>
+    <dete_fin>2014-09-14T17:13:58+01:00</dete_fin>
+    <duree>2</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-14T17:15:38+01:00</Date_Debut>
+    <dete_fin>2014-09-15T16:23:38+01:00</dete_fin>
+    <duree>1388</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-15T16:49:49+01:00</Date_Debut>
+    <dete_fin>2014-09-16T07:08:49+01:00</dete_fin>
+    <duree>859</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Boulevard de Khouribga, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-16T07:34:58+01:00</Date_Debut>
+    <dete_fin>2014-09-16T17:02:58+01:00</dete_fin>
+    <duree>568</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Avenue 10 Mars 1982, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-16T17:21:42+01:00</Date_Debut>
+    <dete_fin>2014-09-17T07:11:42+01:00</dete_fin>
+    <duree>830</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-17T07:15:01+01:00</Date_Debut>
+    <dete_fin>2014-09-17T07:15:01+01:00</dete_fin>
+    <duree>0</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-17T07:16:31+01:00</Date_Debut>
+    <dete_fin>2014-09-17T07:16:31+01:00</dete_fin>
+    <duree>0</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-17T07:22:11+01:00</Date_Debut>
+    <dete_fin>2014-09-17T07:22:11+01:00</dete_fin>
+    <duree>0</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-17T07:30:30+01:00</Date_Debut>
+    <dete_fin>2014-09-17T08:09:30+01:00</dete_fin>
+    <duree>39</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-17T08:15:46+01:00</Date_Debut>
+    <dete_fin>2014-09-17T08:22:46+01:00</dete_fin>
+    <duree>7</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-17T08:22:17+01:00</Date_Debut>
+    <dete_fin>2014-09-17T08:30:17+01:00</dete_fin>
+    <duree>8</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-17T08:43:37+01:00</Date_Debut>
+    <dete_fin>2014-09-17T09:35:37+01:00</dete_fin>
+    <duree>52</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-17T09:43:26+01:00</Date_Debut>
+    <dete_fin>2014-09-17T09:44:26+01:00</dete_fin>
+    <duree>1</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-17T09:46:17+01:00</Date_Debut>
+    <dete_fin>2014-09-17T09:47:17+01:00</dete_fin>
+    <duree>1</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-17T09:48:17+01:00</Date_Debut>
+    <dete_fin>2014-09-17T13:55:17+01:00</dete_fin>
+    <duree>247</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-17T13:56:15+01:00</Date_Debut>
+    <dete_fin>2014-09-17T16:38:15+01:00</dete_fin>
+    <duree>162</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue Aarif Mehdi, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-17T16:39:09+01:00</Date_Debut>
+    <dete_fin>2014-09-17T16:40:09+01:00</dete_fin>
+    <duree>1</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue Aarif Mehdi, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-17T16:41:00+01:00</Date_Debut>
+    <dete_fin>2014-09-17T17:04:00+01:00</dete_fin>
+    <duree>23</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-17T17:28:54+01:00</Date_Debut>
+    <dete_fin>2014-09-18T07:10:54+01:00</dete_fin>
+    <duree>822</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-18T07:30:26+01:00</Date_Debut>
+    <dete_fin>2014-09-18T11:54:26+01:00</dete_fin>
+    <duree>264</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>Rue Aarif Mehdi, Casablanca, Morocco</localiisation>
+    <Date_Debut>2014-09-18T12:10:34+01:00</Date_Debut>
+    <dete_fin>2014-09-18T13:19:34+01:00</dete_fin>
+    <duree>69</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-18T13:29:25+01:00</Date_Debut>
+    <dete_fin>2014-09-18T13:37:25+01:00</dete_fin>
+    <duree>8</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-18T13:43:57+01:00</Date_Debut>
+    <dete_fin>2014-09-18T14:02:57+01:00</dete_fin>
+    <duree>19</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-18T14:14:12+01:00</Date_Debut>
+    <dete_fin>2014-09-18T14:14:12+01:00</dete_fin>
+    <duree>0</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-18T14:15:32+01:00</Date_Debut>
+    <dete_fin>2014-09-18T14:16:32+01:00</dete_fin>
+    <duree>1</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-18T14:18:42+01:00</Date_Debut>
+    <dete_fin>2014-09-18T17:06:42+01:00</dete_fin>
+    <duree>168</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-18T17:29:09+01:00</Date_Debut>
+    <dete_fin>2014-09-18T17:29:09+01:00</dete_fin>
+    <duree>0</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-18T17:29:29+01:00</Date_Debut>
+    <dete_fin>2014-09-19T07:04:29+01:00</dete_fin>
+    <duree>815</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-19T07:26:24+01:00</Date_Debut>
+    <dete_fin>2014-09-19T07:44:24+01:00</dete_fin>
+    <duree>18</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-19T07:44:15+01:00</Date_Debut>
+    <dete_fin>2014-09-19T09:17:15+01:00</dete_fin>
+    <duree>93</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-19T09:41:45+01:00</Date_Debut>
+    <dete_fin>2014-09-19T09:42:45+01:00</dete_fin>
+    <duree>1</duree>
+  </Rapport>
+  <Rapport>
+    <matricule>865565</matricule>
+    <Column1>alami adil</Column1>
+    <localiisation>adresse non trouver</localiisation>
+    <Date_Debut>2014-09-19T09:44:33+01:00</Date_Debut>
+    <dete_fin>2014-09-19T10:33:33+01:00</dete_fin>
+    <duree>49</duree>
+  </Rapport>
+</DocumentElement>

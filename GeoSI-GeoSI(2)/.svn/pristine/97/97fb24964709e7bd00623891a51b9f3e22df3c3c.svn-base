@@ -1,0 +1,411 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
+using System.Web;
+using System.Net;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using GeoSI.Website.Common;
+using Ext.Net;
+using System.Data.SqlClient;
+using System.Data;
+using System.Xml.Linq;
+
+using System.Globalization;
+
+namespace GeoSI.Website.Modules.Historique
+{
+    public partial class LoadHistoriqueTrajet : Page
+    {
+        public String adress = "";
+
+        //Recuperation de la session user
+        protected UserInfo getCurrentUser()
+        {
+
+            UserInfo retVal = null;
+            object o = Session["UserInfo"];
+            if (o != null)
+            {
+                retVal = new UserInfo();
+                retVal = ((UserInfo)Session["UserInfo"]);
+            }
+            return retVal;
+
+
+        }
+
+        protected void FillStore(string sql, Store _store)
+        {
+            using (SqlDataAdapter da = new SqlDataAdapter(sql, _Global.CurrentConnection))
+            {
+                DataSet ds = new DataSet();
+                da.SelectCommand.CommandTimeout = 120;
+                da.Fill(ds);
+                _store.DataSource = ds.Tables[0];
+                _store.DataBind();
+            }
+        }
+        // Accès à la base de Données 
+        protected SqlDataReader Select(string _Requette)
+        {
+            SqlDataReader dr;
+            try
+            {
+                SqlConnection cnx = _Global.CurrentConnection;
+                SqlCommand cmd = new SqlCommand(_Requette, cnx);
+                dr = cmd.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                dr = null;
+                ex.ToString();
+            }
+            return dr;
+        }
+        private string racine = null;
+
+        //Chergement de la page 
+        protected void Page_Load(object sender, EventArgs e)
+        {
+           
+            string _reqVeh = "select * from (select aff.* from ( select  v.matricule ,v.vehiculeid from vehicules v  inner join affectation_vehicule_boitier abv on abv.vehiculeid=v.vehiculeid  inner join boitier b on b.boitierid=abv.boitierid inner join Datatracker d on d.imei=b.imei  inner join groupe_vehicule gv on gv.vehiculeid = v.vehiculeid and gv.actif = '1' where v.clientid =" + this.getCurrentUser().getClientId() + " and v.actif = '1' )aff union select v.matricule, v.vehiculeid from vehicules v  inner join affectation_vehicule_boitier abv on abv.vehiculeid=v.vehiculeid  inner join boitier b on b.boitierid=abv.boitierid inner join Datatracker d on d.imei=b.imei  inner join profil_vehicule gp on gp.vehiculeid =v.vehiculeid and gp.actif = '1' inner join profil p on p.profilid = gp.profilid and p.actif = '1' inner join profil_user pu on pu.actif = '1' and pu.profilid = p.profilid where v.clientid = " + this.getCurrentUser().getClientId() + " and v.actif = '1' and pu.utilisateurid =" + this.getCurrentUser().getUserId() + " ) aff2      ";
+            this.FillStore(_reqVeh, Store2);
+            // txt1.Text = RetrieveFormatedAddress("33.5992364201655", "-7.570799214941417");
+
+        }
+
+
+
+
+        List<Datatracker> List = new List<Datatracker>();
+        List<Htrajet> Listtrajet = new List<Htrajet>();
+        List<Datatracker> Listarret = new List<Datatracker>();
+        Datatracker track = new Datatracker();
+        List<Datatracker> Listtrack;
+
+        int vitesse = 0;
+        int nbrtrajet = 0;
+        string[] color = { "#008000", "#0963fc", "#808a7e", "#fca109", "#e8e727", "#ac1dad", "#158180", "#77f5ac", "#dd6c6c", "#0f0c15" };
+        static int col = 0;
+      
+        [DirectMethod(ShowMask = true, Msg = "Veuillez patienter, traitement en cours...")]
+        protected void HistoriqueTrajet(object sender, EventArgs e)
+        {
+            
+
+            string userDate1 = this.DateField1.Value.ToString();
+            string[] du = userDate1.Split(' ');
+            userDate1 = du[0] + " " + this.TimeField1.Value.ToString();
+
+            string userDate2 = this.DateField2.Value.ToString();
+            string[] du2 = userDate2.Split(' ');
+            userDate2 = du2[0] + " " + this.TimeField2.Value.ToString();
+            string vehiculeid = "";
+            vehiculeid = this.MultiCombo1.SelectedItem.Value;
+            if (vehiculeid == "" || userDate1 == "" || userDate2 == "")
+
+                X.Msg.Show(new MessageBoxConfig
+                {
+                    Title = Resources.Resource.Information,
+                    Message = "Veuillez choisir un véhicule, une date début et une date fin pour consulter les trajets",
+                    Buttons = MessageBox.Button.OK,
+                    Icon = MessageBox.Icon.INFO
+                });
+            else
+            {
+                TimeSpan k = DateTime.ParseExact(userDate2, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture) - DateTime.ParseExact(userDate1, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                if (k.TotalDays <= 0)
+                {
+                    X.Msg.Show(new MessageBoxConfig
+                    {
+                        Title = Resources.Resource.Information,
+                        Message = "La date  début doit être inferieure à la date fin",
+                        Buttons = MessageBox.Button.OK,
+                        Icon = MessageBox.Icon.INFO
+                    });
+                }
+                else
+                {
+                    string _reqTime = "select * from(select top 1 d.RTCDateTime from Datatracker d order by d.datatrackerid desc) a union select * from (select top 1 d.RTCDateTime from Datatracker d order by d.datatrackerid )b ";
+                    SqlDataReader drT = Select(_reqTime);
+
+                    int m = 0;
+                    while (drT.Read())
+                    {
+                        du[m] = drT[0].ToString();
+                        m++;
+                    }
+                    drT.Close();
+                    DateTime dsup = DateTime.ParseExact(du[1], "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                    DateTime dinf = DateTime.ParseExact(du[0], "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                    if (dsup < dinf)
+                    {
+                       dinf= DateTime.ParseExact(du[1], "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                       dsup = DateTime.ParseExact(du[0], "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                    }
+                    
+
+                    if (DateTime.ParseExact(userDate1, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture) < dinf
+                           || DateTime.ParseExact(userDate1, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture) > dsup
+                                || DateTime.ParseExact(userDate2, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture) < dinf
+                                    || DateTime.ParseExact(userDate2, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture) > dsup)
+                    {
+                        X.Msg.Show(new MessageBoxConfig
+                        {
+                            Title = Resources.Resource.Information,
+                            Message = "Les dates début et fin doivent être comprises entre " +dinf + " et " +dsup,
+                            Buttons = MessageBox.Button.OK,
+                            Icon = MessageBox.Icon.INFO
+                        });
+
+                    }
+                    else
+                    {
+                        int Compt = 0;
+                        int vites = 0;
+                        string c = "";
+                        string _reqlist = "select d.GPSDateTime,d.latitude,d.longitude ,p.nom+' '+p.prenom as conducteur,d.speed ,d.contact,d.Odometer,d.adress from Datatracker d inner join boitier b on b.imei=d.imei inner join affectation_vehicule_boitier abv on abv.boitierid=b.boitierid inner join vehicules  v on v.vehiculeid = abv.vehiculeid inner join vehicule_personnel vp on vp.vehiculeid=v.vehiculeid inner join personnel p on p.personnelid=vp.personnelid where  cast(d.GPSDateTime AS datetime) >= '" + userDate1 + "' AND cast(d.GPSDateTime AS datetime) < '" + userDate2 + "' and v.vehiculeid='" + vehiculeid + "'";
+                      SqlDataReader drlist = Select(_reqlist);
+                        int ve = 0;
+                        int tr = 0;
+
+                        while (drlist.Read())
+                        {
+                            Datatracker t = new Datatracker();
+
+                            t.contact = Convert.ToInt32(drlist[5]);
+                            t.GPSDateTime = drlist[0].ToString();
+                            t.latitude = (double)drlist[1];
+                            t.longitude = (double)drlist[2];
+                            t.speed = (int)drlist[4];
+                            c = drlist[3].ToString();
+                            t.Odometer = (int)drlist[6];
+                            t.adress = drlist[7].ToString();
+                            List.Add(t);
+
+
+
+                        }
+
+                        drlist.Close();
+                      
+                            for (int s = 0; s < List.Count; s++)
+                            {
+                                if (List[s].contact == 1)
+                                {
+                                    tr++;
+                                    if (tr == 1)
+                                    {
+                                        Listtrack = new List<Datatracker>();
+                                    }
+                                    Listtrack.Add(List[s]);
+                                    vites += (int)List[s].speed;
+                                    ve = 0;
+                                }
+
+                                if (List[s].contact == 0)
+                                {
+                                    
+                                    ve++;
+                                }
+                                if (ve == 1 && tr!=0 )
+                                {
+                                    Htrajet tt = new Htrajet();
+                                    tt.setposition(Listtrack);
+                                    tt.setConducteur(c);
+                                    tt.Setvehicule(vehiculeid);
+                                    tt.SetDateD(DateTime.ParseExact(tt.position[0].GPSDateTime, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture));
+                                    tt.SetDateF(DateTime.ParseExact(tt.position[tt.position.Count - 1].GPSDateTime, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture));
+                                    tt.vitesse = vites / (tt.position.Count);
+                                    vites = 0;
+                                    tt.setkm((int)(tt.position[tt.position.Count - 1].Odometer - tt.position[0].Odometer) / 10);
+                                    Listtrajet.Add(tt);
+
+                                    tr = 0;
+
+                                }
+                                if (s == List.Count - 1 && ve == 0)
+                                {
+                                    Htrajet tt = new Htrajet();
+                                    tt.setposition(Listtrack);
+                                    tt.setConducteur(c);
+                                    tt.Setvehicule(vehiculeid);
+                                    tt.SetDateD(DateTime.ParseExact(tt.position[0].GPSDateTime, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture));
+                                    tt.SetDateF(DateTime.ParseExact(tt.position[tt.position.Count - 1].GPSDateTime, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture));
+                                    tt.vitesse = vites / (tt.position.Count - 1);
+                                    vites = 0;
+                                    tt.setkm((double)(((double)(tt.position[tt.position.Count - 1].Odometer) - (double)(tt.position[0].Odometer))) / 10);
+                                    Listtrajet.Add(tt);
+                                }
+                            }
+                        
+                        List<object> lo = new List<object>();
+                        if (Listtrajet.Count == 0)
+                        {
+                            X.Msg.Show(new MessageBoxConfig
+                            {
+                                Title = Resources.Resource.Information,
+                                Message = "Aucun trajet n'a été parcouru",
+                                Buttons = MessageBox.Button.OK,
+                                Icon = MessageBox.Icon.INFO
+                            });
+
+
+                        }
+                        else
+                        {
+                            Store1.RemoveAll();
+                            //Store Store1 = this.GridPanelVoyage.GetStore();
+                            DateTime d1 = DateTime.ParseExact(DateTime.Now.ToString("dd'/'MM'/'yyyy HH:mm:ss.fff"), "dd'/'MM'/'yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture);
+                            for (int i = 0; i < Listtrajet.Count; i++)
+                            {
+
+                                if (i % 4 == 0 && i>=4)
+                                {
+                                      System.Threading.Thread.Sleep(1000);
+
+                                    
+                                    //DateTime d2 = DateTime.ParseExact(DateTime.Now.ToString("dd'/'MM'/'yyyy HH:mm:ss.fff"), "dd'/'MM'/'yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture);
+                                    //TimeSpan t = d2 - d1;
+                                    //int ms = (int)t.TotalMilliseconds;
+                                    //if (ms < 999)
+                                    //{
+                                    //    System.Threading.Thread.Sleep((1000 -ms)+5);
+                                    //}
+                                    //d1 = DateTime.ParseExact(DateTime.Now.ToString("dd'/'MM'/'yyyy HH:mm:ss.fff"), "dd'/'MM'/'yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture);
+
+                                }
+                                DateTime d = DateTime.ParseExact(Listtrajet[i].GetDateD().ToString(), "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                                DateTime dd = DateTime.ParseExact(Listtrajet[i].GetDateF().ToString(), "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                                //string lat = Listtrajet[i].position[0].latitude.ToString().Replace(",", ".");
+                                //string lng = Listtrajet[i].position[0].longitude.ToString().Replace(",", ".");
+                                //string adrD,adrF;
+                                //    string adr1 = RetrieveFormatedAddress(lat, lng);
+                                //    if (adr1.Contains("<formatted_address>"))
+                                //    {
+                                //        adr1 = adr1.Replace("<formatted_address>", "*");
+                                //        adr1 = adr1.Replace("</formatted_address>", "*");
+                                //        string[] s = adr1.Split('*');
+                                //         adrD = s[1];
+                                //    }
+                                //    else
+                                //    {
+                                //        adrD = "pas d'adresse";
+                                //    }
+
+                                //    // string adrF = RetrieveFormatedAddress("33.5992364201655", "-7.570799214941417");
+                                //    lat = Listtrajet[i].position[Listtrajet[i].position.Count - 1].latitude.ToString().Replace(",", ".");
+                                //    lng = Listtrajet[i].position[Listtrajet[i].position.Count - 1].longitude.ToString().Replace(",", ".");
+                                //    string adr11 = RetrieveFormatedAddress(lat, lng);
+                                //    if (adr11.Contains("<formatted_address>"))
+                                //    {
+                                //        adr11 = adr11.Replace("<formatted_address>", "*");
+                                //        adr11 = adr11.Replace("</formatted_address>", "*");
+                                //        string[] ss = adr11.Split('*');
+                                //         adrF = ss[1];
+                                //    }
+                                //    else
+                                //    {
+                                //          adrF = "pas d'adresse";
+                                //    }
+
+                                //  Address[] addresses = geoCoder.ReverseGeoCode(38.8976777, -77.036517);
+                                TimeSpan duree = dd - d;
+
+                                string polyline = " ";
+
+                                for (int p = 0; p < Listtrajet[i].position.Count-1; p++)
+                                {
+                                    polyline += "new google.maps.LatLng(" + Listtrajet[i].position[p].latitude.ToString().Replace(",", ".") + "," + Listtrajet[i].position[p].longitude.ToString().Replace(",", ".") + ");";
+
+                                }
+
+                                polyline += "new google.maps.LatLng(" + Listtrajet[i].position[Listtrajet[i].position.Count - 1].latitude.ToString().Replace(",", ".") + "," + Listtrajet[i].position[Listtrajet[i].position.Count - 1].longitude.ToString().Replace(",", ".") + ")";
+                                object[] test = new object[11];
+                                test[0] = c;
+                                test[1] = Listtrajet[i].position[0].adress.ToString();
+                                test[2] = Listtrajet[i].position[0].GPSDateTime;
+                                test[3] = Listtrajet[i].position[Listtrajet[i].position.Count - 1].adress.ToString();
+                                test[4] = Listtrajet[i].position[Listtrajet[i].position.Count - 1].GPSDateTime;
+                                test[5] = duree.ToString();
+                                test[6] = Listtrajet[i].vitesse + " Km/H";
+                                test[7] = polyline;
+                                test[8] = color[col];
+                                test[9] = Listtrajet[i].km + " Km";
+                                //{ c, "adrD", Listtrajet[i].position[0].GPSDateTime, "adrF", Listtrajet[i].position[Listtrajet[i].position.Count - 1].GPSDateTime, duree.ToString(), Listtrajet[i].vitesse + " Km/H", polyline, color[col], Listtrajet[i].km + " Km" };
+                                lo.Add(test);
+                             //   lo.Add(new object[] { c, adrD, Listtrajet[i].position[0].GPSDateTime, adrF, Listtrajet[i].position[Listtrajet[i].position.Count - 1].GPSDateTime, duree.ToString(), Listtrajet[i].vitesse + " Km/H", polyline, color[col], Listtrajet[i].km + " Km" }
+                   // );
+
+                                
+                        //        //Rows[i].Cells[j].Value = image_matric[i, j].monChamp;
+
+                        //        Ext.Net.Column newCol = new Ext.Net.Column
+                        //{ 
+                          
+                        //};
+                        //        newCol.AddCls("background-color :"+color[col]);
+
+                        //        GridPanelVoyage.ColumnModel.Add(newCol);
+
+                                Column11.AddCls("background-color :" + color[col]);
+                                Column11.TdCls = "background-color :" + color[col];
+
+                                if (col == 9)
+                                {
+                                    col = 0;
+                                }
+                                else
+                                { col++; }
+                            }
+
+
+                            Store1.Add(lo);
+                            Store1.CommitChanges();
+
+                        }
+                    }
+                }
+            } 
+        }
+
+        static string baseUri = "http://maps.googleapis.com/maps/api/" + "geocode/xml?latlng={0},{1}&sensor=false";
+
+        public string RetrieveFormatedAddress(string lat, string lng)
+        {
+            string requestUri = string.Format(baseUri, lat, lng);
+            using (WebClient wc = new WebClient())
+            {
+                wc.DownloadStringCompleted += new DownloadStringCompletedEventHandler(wc_DownloadStringCompleted);
+
+        
+                    return wc.DownloadString(new Uri(requestUri));
+
+            }
+        }
+        public void wc_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+            string add = "";
+            var xmlElm = XElement.Parse(e.Result);
+            var status = (from elm in xmlElm.Descendants() where elm.Name == "status" select elm).FirstOrDefault();
+            if (status.Value.ToLower() == "ok")
+            {
+                var res = (from elm in xmlElm.Descendants() where elm.Name == "formatted_address" select elm).FirstOrDefault();
+                add = res.Value;
+
+                // Console.WriteLine(res.Value); 
+            }
+            else
+            {
+                //Console.WriteLine("No Address Found");
+                add = "NOOOOOOO";
+            }
+        }
+
+        
+
+      
+    }
+}

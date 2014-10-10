@@ -1,0 +1,68 @@
+﻿
+
+
+function EditLightbox(upd) {
+    $.colorbox({ width: "80%", height: "80%", iframe: true, href: "GeoForm.aspx?id=" + upd });
+}
+function AddLightbox() {
+    $.colorbox({ width: "80%", height: "80%", iframe: true, href: "GeoForm.aspx?id=0" });
+}
+
+
+function EditLightboxe(upd) {
+    $.colorbox({ width: "80%", height: "80%", iframe: true, href: "conForm.aspx?id=" + upd });
+}
+
+function addPdf(upd) {
+    $.colorbox({ width: "50%", height: "60%", iframe: true, href: "GenererPdf.aspx?id=" + upd });
+}
+
+function AddExcel(upd) {
+    $.colorbox({ width: "50%", height: "60%", iframe: true, href: "GenererExcel.aspx?id=" + upd });
+}
+function AddLight() {
+    $.colorbox({ width: "400px", height: "400px", iframe: true, href: "GeoForm.aspx?id=0" });
+}
+
+function tree_Load() {
+    alert("xxx");
+    X.tree_Load();
+}
+
+
+function HistoriqueTrajet() {
+    X.HistoriqueTrajet();
+}
+
+function UpdateVue(id) {
+    X.UpdateVisibilite(id);
+}
+function GridDelete(id) {
+    X.DeleteRowsBehind(id);
+}
+function GridDesactiver(id) {
+    X.DesactiverRowsBehind(id);
+}
+
+function GridActiver(id) {
+    X.GridActiver(id);
+}
+
+function GridPdf(id) {
+    X.GeneratePDF(id);
+}
+
+function GridExcel() {
+    X.GenerateEXCEL();
+}
+
+
+function GridPdfActiv() {
+
+    X.GeneratePDF();
+}
+
+
+
+
+

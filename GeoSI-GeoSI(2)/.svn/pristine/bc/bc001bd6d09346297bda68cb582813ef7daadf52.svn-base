@@ -1,0 +1,807 @@
+﻿var cont = 0;
+var total = 0;
+var gPositions1 = null;
+var markerGeomtec = null;
+var mPolylinePoints = new Array();
+var mPolylinePointsSuivi = new Array();
+var mPolylinePoints1 = new Array();
+var objetGMAP = new Array();
+var mPolyline = null;
+var animSetup = { speed: 1, play: false };
+var mDownCounter_Init = 10;
+var mDownCounter = mDownCounter_Init;
+var arrylistPointGPS = new Array();
+var mPolylinePointsSuivi2 = new Array;
+function mCountDown() {
+    //  TrajetSuivi();
+    if (mDownCounter < 1) {
+        //  clearOverlays();
+        // LiveTracking(1111, mSetMapPosition, "../../Handler/HandlerLiveTracking.ashx");
+
+        TrajetSuivi(data);
+        mDownCounter = mDownCounter_Init;
+        window.setTimeout("mCountDown()", 1000);
+    }
+    else {
+
+        mDownCounter--;
+        document.getElementById("COUNTDOWNINFO").innerHTML = mDownCounter + " secondes";
+        window.setTimeout("mCountDown()", 1000);
+    }
+
+    //mGetUserPOIs();
+}
+function getAdresse(lat, lon) {
+    var str;
+    var latlng = new google.maps.LatLng(parseFloat(lat), parseFloat(lon));
+
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode(
+        { 'latLng': latlng },
+        function (results, status) {
+            // resultat trouve
+            if (status == google.maps.GeocoderStatus.OK) {
+                // recuperation de la position
+                var oLatLng = results[0].geometry.location;
+
+                // recuperation adresse
+                str = results[0].formatted_address;
+                // création d'une infobulle
+
+                document.getElementById("adresse").innerHTML = str;
+                return str;
+            }
+
+
+        });
+
+    return;
+}
+
+var i = 0;
+function TrajetSuivi(mVar) {
+
+    var objetInfo = {
+        matricule: mVar[0].matricule,
+        typevehicule:mVar[0].typevehiculeid,
+        code: mVar[0].code,
+        date: mVar[0].date,
+        time: mVar[0].time,
+        contact: mVar[0].contact,
+        speed: mVar[0].speed,
+        point: new google.maps.LatLng(parseFloat(mVar[0].latitude), parseFloat(mVar[0].longitude)),
+        adresse: getAdresse(parseFloat(mVar[0].latitude), parseFloat(mVar[0].longitude)),
+        nom: mVar[0].nom,
+        prenom: mVar[0].prenom,
+        permis: mVar[0].permis,
+        imgVehicule: mVar[0].imgVehicule
+        
+    }
+
+    alert(objetInfo.imgVehicule);
+    arrylistPointGPS.push(objetInfo);
+
+    i++;
+
+
+    mSetMapTrajetSuivi();
+
+}
+var position;
+function mSetMapTrajetSuivi() {
+
+    clearOverlays();
+    mPolylinePointsSuivi2 = new Array();
+    gPositions1 = null;
+    var veh;
+    
+    // var dist=google.maps.geometry.spherical.computeDistanceBetween(arrylistPointGPS[arrylistPointGPS.length - 1].point,arrylistPointGPS[arrylistPointGPS.length - 2].point)
+    if (arrylistPointGPS[0].typevehicule == 1)
+        veh = "Cam_";
+    else if (arrylistPointGPS[0].typevehicule == 2)
+        veh = "V_";
+    else if (arrylistPointGPS[0].typevehicule == 3)
+        veh = "Moto_";
+    else if (arrylistPointGPS[0].typevehicule == 4)
+        veh = "B_";
+    if (arrylistPointGPS.length == 1)
+    {
+        var couleur;
+        if (arrylistPointGPS[0].speed==0)
+            couleur = "Bleu";
+            else if (arrylistPointGPS[0].speed <= 60)
+                couleur = "Vert";
+            else if (arrylistPointGPS[0].speed  <= 90)
+                    couleur = "Jaune";
+                         else 
+                couleur = "Rouge";
+     
+           var mEndIcon= new google.maps.MarkerImage("../../Ressources/Images/"+veh+""+couleur+".png",
+           new google.maps.Size(48, 27),
+           new google.maps.Point(0, 0),
+           new google.maps.Point(10, 25));
+
+        var markerGeomtec = new MarkerWithLabel({
+            map: carte,
+            icon: mEndIcon,
+            position: arrylistPointGPS[0].point,
+            labelContent: arrylistPointGPS[0].matricule,
+            labelAnchor: new google.maps.Point(26, 46),
+            labelClass: "labels",
+            labelStyle: { opacity: 0.75 }
+        });
+
+        position = arrylistPointGPS[0].point;
+        objetGMAP.push(markerGeomtec);
+
+        google.maps.event.addListener(markerGeomtec, 'click', function () {
+
+
+            document.getElementById("matricule").innerHTML = arrylistPointGPS[0].matricule;
+            document.getElementById("code").innerHTML = arrylistPointGPS[0].code;
+            document.getElementById("vitesse").innerHTML = parseFloat(arrylistPointGPS[0].speed) + " KM/H";
+            document.getElementById("Date").innerHTML = arrylistPointGPS[0].date;
+            document.getElementById("Heure").innerHTML = arrylistPointGPS[0].time;
+            document.getElementById("adresse").innerHTML = arrylistPointGPS[0].adresse;
+            document.getElementById("nom").innerHTML = arrylistPointGPS[0].nom;
+            document.getElementById("prenom").innerHTML = arrylistPointGPS[0].prenom;
+            document.getElementById("permis").innerHTML = arrylistPointGPS[0].permis;
+            document.getElementById("imgVehicule").innerHTML = arrylistPointGPS[0].imgVehicule;
+
+
+            AfficheCadreDroit();
+
+
+        });
+
+
+        carte.setCenter(arrylistPointGPS[0].point);
+        carte.setZoom(14);
+
+    } else {
+
+        //Debut
+        var mStartIcon = new google.maps.MarkerImage("../../Ressources/Images/Drapeau_Orange.png",
+        new google.maps.Size(44, 30),
+        new google.maps.Point(0, 0),
+        new google.maps.Point(4, 29));
+
+        var couleur;
+        if (arrylistPointGPS[arrylistPointGPS.length-1].speed == 0)
+            couleur = "Bleu";
+        else if (arrylistPointGPS[arrylistPointGPS.length-1].speed <= 60)
+            couleur = "Vert";
+        else if (arrylistPointGPS[arrylistPointGPS.length-1].speed <= 90)
+            couleur = "Jaune";
+        else 
+            couleur = "Rouge";
+     
+        var mEndIcon= new google.maps.MarkerImage("../../Ressources/Images/"+veh+""+couleur+".png",
+       
+           new google.maps.Size(48, 27),
+           new google.maps.Point(0, 0),
+           new google.maps.Point(10, 25));
+
+        gPositions1 = new Array;
+        for (i = 0; i < arrylistPointGPS.length; i++) {
+            gPositions1[i] =
+                    {
+                    };
+            gPositions1[i].speed = arrylistPointGPS[i].speed;
+            gPositions1[i].matricule = arrylistPointGPS[i].matricule;
+            gPositions1[i].code = arrylistPointGPS[i].code;
+            gPositions1[i].contact = arrylistPointGPS[i].contact;
+            gPositions1[i].date = arrylistPointGPS[i].date;
+            gPositions1[i].time = arrylistPointGPS[i].time;
+            gPositions1[i].point = arrylistPointGPS[i].point;
+            gPositions1[i].adresse = arrylistPointGPS[i].adresse;
+            gPositions1[i].nom = arrylistPointGPS[i].nom;
+            gPositions1[i].prenom = arrylistPointGPS[i].prenom;
+            gPositions1[i].permis = arrylistPointGPS[i].permis;
+            gPositions1[i].imgVehicule = arrylistPointGPS[0].imgVehicule;
+            var latlnggg = gPositions1[i].point;
+            var d = new google.maps.geometry.spherical.computeDistanceBetween(gPositions1[i].point, position);
+
+            if (i == 0 && gPositions1[i].point != position) {
+                var mTempMaker = new google.maps.Marker({
+                    position: latlnggg,
+                    map: carte,
+                    icon: mStartIcon
+                });
+                mTempMaker.mid = i;
+                objetGMAP.push(mTempMaker);
+                InfoPosition(mTempMaker, i);
+
+            }
+            else if (i == arrylistPointGPS.length - 1) {
+
+                var mTempMaker = new MarkerWithLabel({
+                    map: carte,
+                    icon: mEndIcon,
+                    position: latlnggg,
+                    labelContent: arrylistPointGPS[i].matricule,
+                    labelAnchor: new google.maps.Point(26, 46),
+                    labelClass: "labels",
+                    labelStyle: { opacity: 0.75 }
+                });
+                mTempMaker.mid = i;
+                objetGMAP.push(mTempMaker);
+                InfoPosition(mTempMaker, i);
+            }
+            else {
+                var mIconn = null;
+                if (arrylistPointGPS[i].speed == 0) {
+                    mIconn = new google.maps.MarkerImage("../../Ressources/Images/ImgTrajet/mm_20_blue.png",
+                      new google.maps.Size(12, 20),
+                      new google.maps.Point(0, 0),
+                      new google.maps.Point(6, 20));
+
+                }
+                else if (arrylistPointGPS[i].speed <= 60) {
+                    mIconn = new google.maps.MarkerImage("../../Ressources/Images/ImgTrajet/mm_20_green.png",
+                    new google.maps.Size(12, 20),
+                    new google.maps.Point(0, 0),
+                    new google.maps.Point(6, 20));
+
+                }
+                else if (arrylistPointGPS[i].speed <= 90) {
+                    mIconn = new google.maps.MarkerImage("../../Ressources/Images/ImgTrajet/mm_20_orange.png",
+                    new google.maps.Size(12, 20),
+                    new google.maps.Point(0, 0),
+                    new google.maps.Point(6, 20));
+                }
+                else {
+                    mIconn = new google.maps.MarkerImage("../../Ressources/Images/ImgTrajet/mm_20_red.png",
+                      new google.maps.Size(12, 20),
+                      new google.maps.Point(0, 0),
+                      new google.maps.Point(6, 20));
+                }
+                var mTempMaker = new google.maps.Marker({
+                    position: latlnggg,
+                    map: carte,
+                    icon: mIconn
+                });
+                mTempMaker.mid = i;
+                objetGMAP.push(mTempMaker);
+                InfoPosition(mTempMaker, i);
+            }
+
+            mPolylinePointsSuivi2.push(latlnggg);
+
+        }
+        var mPolyline2 = new google.maps.Polyline({
+            path: mPolylinePointsSuivi2,
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 5,
+            icons: [{
+                icon: lineSymbol,
+                offset: '0',
+                repeat: '80px'
+            }]
+        });
+
+        mPolyline2.setMap(carte);
+        objetGMAP.push(mPolyline2);
+        carte.setCenter(mTempMaker.position);
+
+        carte.setZoom(14);
+        mPolylinePointsSuivi2 = null;
+
+
+
+
+
+        //Fin
+    }
+
+
+}
+function clearOverlays() {
+    if (typeof (objetGMAP) != 'undefined') {
+        for (var n = 0, objet; objet = objetGMAP[n]; n++) {
+            objet.setMap(null);
+        }
+        objetGMAP = new Array();
+    }
+}
+function FindMarker() {
+    if (typeof (objetGMAP) != 'undefined') {
+        for (var n = 0, objet; objet = objetGMAP[n]; n++) {
+
+            //  objet.setMap(null);
+        }
+        objetGMAP = new Array();
+    }
+}
+
+LiveTracking = function (_Unitid, mFunction, uRl, _dateTime) {
+
+    //  mCountDown();
+
+    $.ajax({
+        //  url: "../../Handler/HandlerLiveTracking.ashx",
+        url: uRl,
+        dataType: 'json',
+        timeout: 30000,
+        data: { Unitid: _Unitid, dateTime: _dateTime },
+        type: 'POST',
+        beforeSend: function () {
+            // $("#loaderDiv").hide();
+
+        },
+        success: function (data) {
+            mFunction(data);
+            //  $("#loaderDiv").show();
+        },
+        error: function (data, status, jqXHR) { alert("FAILED:" + status); }
+    });
+}
+LiveTracking1 = function (_Unitid, uRl, _dateTime) {
+    // var _datetime = $('#name').val();
+    $.ajax({
+        //  url: "../../Handler/HandlerLiveTracking.ashx",
+        url: uRl,
+        dataType: 'json',
+        timeout: 30000,
+        data: { Unitid: _Unitid, dateTime: _dateTime },
+        type: 'POST',
+        beforeSend: function () {
+            // $("#loaderDiv").hide();
+
+        },
+        success: function (data) {
+            //  mFunction(data);
+
+
+
+            //  $("#loaderDiv").show();
+        },
+        error: function (data, status, jqXHR) { alert("FAILED:" + status); }
+    });
+}
+
+LiveGeo = function (uRl) {
+
+    // var _datetime = $('#name').val();
+    $.ajax({
+        //  url: "../../Handler/HandlerLiveTracking.ashx",
+        url: uRl,
+        dataType: 'json',
+        timeout: 30000,
+        type: 'POST',
+        beforeSend: function () {
+            // $("#loaderDiv").hide();
+
+        },
+        success: function (data) {
+            //  mFunction(data);
+
+            alert('ffffffffffffff');
+            //  $("#loaderDiv").show();
+        },
+        error: function (data, status, jqXHR) { alert("FAILED:" + status); }
+    });
+}
+
+function mSetMapPosition(mVar) {
+
+    var icon3 = new google.maps.MarkerImage("../../Ressources/Images/V_Rouge.png",
+              new google.maps.Size(48, 27),
+              new google.maps.Point(0, 0),
+              new google.maps.Point(10, 25));
+
+    var latlng2 = new google.maps.LatLng(parseFloat(mVar[0].latitude), parseFloat(mVar[0].longitude));
+    var markerGeomtec = new MarkerWithLabel({
+        map: carte,
+        position: latlng2,
+        icon: icon3,
+        labelContent: mVar[0].matricule,
+        labelAnchor: new google.maps.Point(26, 46),
+        labelClass: "labels",
+        labelStyle: { opacity: 0.75 }
+    });
+    objetGMAP.push(markerGeomtec);
+    carte.setCenter(latlng2);
+    carte.setZoom(12);
+    document.getElementById("matricule").innerHTML = mVar[0].matricule;
+    document.getElementById("code").innerHTML = mVar[0].code;
+    document.getElementById("vitesse").innerHTML = mVar[0].speed + " KM/H";
+    document.getElementById("Date").innerHTML = mVar[0].date;
+    document.getElementById("Heure").innerHTML = mVar[0].time;
+    // document.getElementById("adresse").innerHTML = getAdresse(mVar[0].latitude,mVar[0].longitude);
+    document.getElementById("nom").innerHTML = mVar[0].nom;
+    document.getElementById("prenom").innerHTML = mVar[0].prenom;
+    document.getElementById("permis").innerHTML = mVar[0].permis;
+    if (mVar[0].contact == 0) {
+        document.getElementById('imgContact').style.backgroundImage = 'url("../../Ressources/Images/contactOff.png")';
+    } else if (mVar[0].contact == 1) {
+        document.getElementById('imgContact').style.backgroundImage = 'url("../../Ressources/Images/contact.png")';
+
+    }
+
+
+
+    google.maps.event.addListener(markerGeomtec, 'click', AfficheCadreDroit);
+
+
+
+}
+
+var objetGMAP = new Array();
+
+function mSetMapTrajet(mVar) {
+    gPositions1 = null;
+
+    var mStartIcon = new google.maps.MarkerImage("../../Ressources/Images/Drapeau_Orange.png",
+    new google.maps.Size(44, 30),
+    new google.maps.Point(0, 0),
+    new google.maps.Point(4, 29));
+
+    var mEndIcon = new google.maps.MarkerImage("../../Ressources/Images/Drapeau_Rouge.png",
+          new google.maps.Size(44, 30),
+          new google.maps.Point(0, 0),
+          new google.maps.Point(4, 29));
+
+    gPositions1 = new Array;
+    for (i = 0; i < mVar.length; i++) {
+        gPositions1[i] =
+				{
+				};
+        gPositions1[i].speed = mVar[i].speed;
+        gPositions1[i].matricule = mVar[i].matricule;
+        gPositions1[i].code = mVar[i].code;
+        gPositions1[i].contact = mVar[i].contact;
+        gPositions1[i].date = mVar[i].date;
+        gPositions1[i].time = mVar[i].time;
+        gPositions1[i].nom = mVar[i].nom;
+        gPositions1[i].permis = mVar[i].prenom;
+        gPositions1[i].permis = mVar[i].permis;
+        gPositions1[i].imgVehicule = mVar[i].imgVehicule;
+      
+        gPositions1[i].point = new google.maps.LatLng(parseFloat(mVar[i].latitude), parseFloat(mVar[i].longitude));
+        // gPositions1[i].adresse = getAdresse(gPositions1[i].point)
+        var latlng = new google.maps.LatLng(parseFloat(mVar[i].latitude), parseFloat(mVar[i].longitude));
+        if (i == 0) {
+            var mTempMaker = new google.maps.Marker({
+                position: latlng,
+                map: carte,
+                icon: mStartIcon
+            });
+            mTempMaker.mid = i;
+            objetGMAP.push(mTempMaker);
+            InfoPosition(mTempMaker, i);
+
+        }
+        else if (i == mVar.length - 1) {
+            var mTempMaker = new google.maps.Marker({
+                position: latlng,
+                map: carte,
+                icon: mEndIcon
+            });
+            mTempMaker.mid = i;
+            objetGMAP.push(mTempMaker);
+            InfoPosition(mTempMaker, i);
+        }
+        else {
+            var mIconn = null;
+            if (mVar[i].speed == 0) {
+                mIconn = new google.maps.MarkerImage("../../Ressources/Images/ImgTrajet/mm_20_red.png",
+                  new google.maps.Size(12, 20),
+                  new google.maps.Point(0, 0),
+                  new google.maps.Point(6, 20));
+
+            }
+            else if (mVar[i].speed <= 60) {
+                mIconn = new google.maps.MarkerImage("../../Ressources/Images/ImgTrajet/mm_20_green.png",
+                new google.maps.Size(12, 20),
+                new google.maps.Point(0, 0),
+                new google.maps.Point(6, 20));
+
+            }
+            else if (mVar[i].speed <= 90) {
+                mIconn = new google.maps.MarkerImage("../../Ressources/Images/ImgTrajet/mm_20_orange.png",
+                new google.maps.Size(12, 20),
+                new google.maps.Point(0, 0),
+                new google.maps.Point(6, 20));
+            }
+            else {
+                mIconn = new google.maps.MarkerImage("../../Ressources/Images/ImgTrajet/mm_20_blue.png",
+                  new google.maps.Size(12, 20),
+                  new google.maps.Point(0, 0),
+                  new google.maps.Point(6, 20));
+            }
+            var mTempMaker = new google.maps.Marker({
+                position: latlng,
+                map: carte,
+                icon: mIconn
+            });
+            mTempMaker.mid = i;
+            objetGMAP.push(mTempMaker);
+            InfoPosition(mTempMaker, i);
+        }
+
+        mPolylinePoints.push(latlng);
+
+    }
+    var mPolyline1 = new google.maps.Polyline({
+        path: mPolylinePoints,
+        //strokeColor: "blue",
+        //strokeWeight: 3,
+        strokeColor: '#FF0000', strokeOpacity: 0.8, strokeWeight: 5,
+        icons: [{
+            icon: lineSymbol,
+            offset: '0',
+            repeat: '80px'
+        }]
+    });
+
+    mPolyline1.setMap(carte);
+    objetGMAP.push(mPolyline1);
+
+    total = mPolylinePoints.length;
+
+}
+
+function mSetMapTrajetAnime() {
+    alert(mPolylinePoints.length);
+
+}
+
+function PlayAnimation() {
+    clearOverlays();
+    mPolyline = new google.maps.Polyline({
+        strokeColor: "blue",
+        strokeWeight: 3,
+        icons: [{
+            icon: lineSymbol,
+            offset: '0',
+            repeat: '80px'
+        }]
+    });
+
+    mPolyline.setMap(carte);
+    mPolylinePoints1.push(mPolylinePoints[0]);
+    Animation();
+
+}
+function InfoPosition(markerVal, number) {
+
+    google.maps.event.addListener(markerVal, 'click', function () {
+
+
+        if (markerVal) {
+
+            if (markerVal.mid == null) {
+
+                return;
+            }
+            var mCurrMarker = markerVal.mid;
+
+            document.getElementById("matricule").innerHTML = gPositions1[parseInt(mCurrMarker)].matricule;
+            document.getElementById("code").innerHTML = gPositions1[parseInt(mCurrMarker)].code;
+            document.getElementById("vitesse").innerHTML = parseFloat(gPositions1[parseInt(mCurrMarker)].speed) + " KM/H";
+            document.getElementById("Date").innerHTML = gPositions1[parseInt(mCurrMarker)].date;
+            document.getElementById("Heure").innerHTML = gPositions1[parseInt(mCurrMarker)].time;
+            document.getElementById("adresse").innerHTML = gPositions1[parseInt(mCurrMarker)].adresse;
+            document.getElementById("nom").innerHTML = gPositions1[parseInt(mCurrMarker)].nom;
+            document.getElementById("prenom").innerHTML = gPositions1[parseInt(mCurrMarker)].prenom;
+            document.getElementById("permis").innerHTML = gPositions1[parseInt(mCurrMarker)].permis;
+            document.getElementById("imgVehicule").innerHTML = gPositions1[parseInt(mCurrMarker)].imgVehicule;
+            AfficheCadreDroit();
+
+            //var mCurrSpeed_Info = parseFloat(gPositions1[parseInt(mCurrMarker)].speed);
+
+            //mCurrSpeed_Info = parseInt(mCurrSpeed_Info * 100);
+            //mCurrSpeed_Info = mCurrSpeed_Info / 100;
+            //var mCurrDuree_Info = gPositions1[parseInt(mCurrMarker)].duree;
+            //var mCurrLAT = gPositions1[parseInt(mCurrMarker)].LAT;
+            //var mCurrLON = gPositions1[parseInt(mCurrMarker)].LON;ffA
+            //var mCurrTimeInfo = gPositions1[parseInt(mCurrMarker)].fullhour;
+            //var mCurrDateInfo = gPositions1[parseInt(mCurrMarker)].fecha;
+            //d.getElementById("mInfo_CurrDate").innerHTML = mCurrDateInfo;
+            //d.getElementById("mInfo_CurrTime").innerHTML = mCurrTimeInfo;
+            //d.getElementById("mInfo_CurrSpeed").innerHTML = mCurrSpeed_Info + " km/h";
+            //d.getElementById("mInfo_CurrDuree").innerHTML = mCurrDuree_Info;
+            //d.getElementById("mInfo_CurrLAT").innerHTML = Math.round(mCurrLAT * 100000000) / 100000000;
+            //d.getElementById("mInfo_CurrLON").innerHTML = Math.round(mCurrLON * 100000000) / 100000000;
+        }
+
+    });
+}
+function getCurrentPoint() {
+    var CurrentPoint = gPositions1[cont];
+    return CurrentPoint;
+}
+function affiche() {
+    var mStartIcon = new google.maps.MarkerImage("../../Ressources/Images/Drapeau_Orange.png",
+new google.maps.Size(44, 30),
+new google.maps.Point(0, 0),
+new google.maps.Point(4, 29));
+
+    var mEndIcon = new google.maps.MarkerImage("../../Ressources/Images/Drapeau_Rouge.png",
+          new google.maps.Size(44, 30),
+          new google.maps.Point(0, 0),
+          new google.maps.Point(4, 29));
+
+    mPolylinePoints1.push(getCurrentPoint().point);
+    var i = cont;
+    if (cont == 0) {
+        var mTempMaker = new google.maps.Marker({
+            position: getCurrentPoint().point,
+            map: carte,
+            icon: mStartIcon
+        });
+        mTempMaker.mid = i;
+        objetGMAP.push(mTempMaker);
+        InfoPosition(mTempMaker, i);
+
+    }
+    else if (cont == total - 1) {
+        var mTempMaker = new google.maps.Marker({
+            position: getCurrentPoint().point,
+            map: carte,
+            icon: mEndIcon
+        });
+        mTempMaker.mid = i;
+        objetGMAP.push(mTempMaker);
+        InfoPosition(mTempMaker, i);
+    }
+    else {
+        var mIconn = null;
+        if (getCurrentPoint().speed == 0) {
+            mIconn = new google.maps.MarkerImage("../../Ressources/Images/ImgTrajet/mm_20_red.png",
+              new google.maps.Size(12, 20),
+              new google.maps.Point(0, 0),
+              new google.maps.Point(6, 20));
+
+        }
+        else if (getCurrentPoint().speed <= 60) {
+            mIconn = new google.maps.MarkerImage("../../Ressources/Images/ImgTrajet/mm_20_green.png",
+            new google.maps.Size(12, 20),
+            new google.maps.Point(0, 0),
+            new google.maps.Point(6, 20));
+
+        }
+        else if (getCurrentPoint().speed <= 90) {
+            mIconn = new google.maps.MarkerImage("../../Ressources/Images/ImgTrajet/mm_20_orange.png",
+            new google.maps.Size(12, 20),
+            new google.maps.Point(0, 0),
+            new google.maps.Point(6, 20));
+        }
+        else {
+            mIconn = new google.maps.MarkerImage("../../Ressources/Images/ImgTrajet/mm_20_blue.png",
+              new google.maps.Size(12, 20),
+              new google.maps.Point(0, 0),
+              new google.maps.Point(6, 20));
+        }
+        var mTempMaker = new google.maps.Marker({
+            position: getCurrentPoint().point,
+            map: carte,
+            icon: mIconn
+        });
+        mTempMaker.mid = i;
+        objetGMAP.push(mTempMaker);
+        InfoPosition(mTempMaker, i);
+    }
+    mPolyline.setPath(mPolylinePoints1);
+
+}
+function existNext() {
+
+    if (cont < total - 1) {
+        cont++;
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+function stopAnim() {
+    animSetup.play = false;
+    document.getElementById('btnplay').style.backgroundImage = 'url("../../Ressources/Images/play.png")';
+}
+function Animation() {
+    if (total == 0) return;
+
+    if (animSetup.play) {
+        stopAnim();
+        return;
+    }
+
+    var AnimSetup = function () {
+
+        if (animSetup.play && existNext()) {
+            affiche();
+            setTimeout(AnimSetup, 1000);
+
+        } else {
+
+            stopAnim();
+        }
+
+    }
+
+    animSetup.play = true;
+    document.getElementById('btnplay').style.backgroundImage = 'url("../../Ressources/Images/pause.png")';
+
+    AnimSetup();
+}
+////resolution des adresse Gps
+
+function GeocodeResponse(mVar) {
+
+    var route = '';
+    var ville = '';
+    var region = '';
+    var pays = '';
+
+    if (mVar['status'] == "OK") {
+
+
+        for (var i = 0; i < 6; i++) {
+
+            if (mVar['results'][0]['address_components'][parseInt(i)]['types'][0] == 'country') {
+
+                pays = mVar['results'][0]['address_components'][parseInt(i)]['long_name'];
+
+            }
+
+        }
+        //for ($i = 0; $i < 6; $i++) {
+
+        //    if (mVar['results'][0]['address_components'][$i]['types'][0] == 'country') {
+        //      //  document.getElementById("COUNTDOWNINFO").innerHTML = mVar['status'] + 'inter ' + $i;
+        //        pays = mVar['results'][0]['address_components'][$i]['long_name'];
+
+        //    }
+        //    //if (mVar['results'][0]['address_components'][$i]['types'][0] == 'administrative_area_level_1') {
+        //    //    region = mVar['results'][0]['address_components'][$i]['long_name'];
+        //    //}
+        //    //if (mVar['results'][0]['address_components'][$i]['types'][0] == 'administrative_area_level_2') {
+        //    //    ville = mVar['results'][0]['address_components'][$i]['long_name'];
+        //    //}
+        //    //if (mVar['results'][0]['address_components'][$i]['types'][0] == 'route') {
+        //    //    route = mVar['results'][0]['address_components'][$i]['long_name'];
+        //    //}
+
+
+        //}
+
+        //    var hhh = route + ',' + ville + ',' + region+'jjjjjhhhhhhhhhhhh';
+        //  //  alert(hhh);
+        //    document.getElementById("COUNTDOWNINFO").innerHTML = hhh;
+        ////    document.getElementById("adresse").innerHTML = hhh;
+        document.getElementById("adresse").innerHTML = pays;
+
+    }
+    else {
+        document.getElementById("COUNTDOWNINFO").innerHTML = 'errrrrrrr';
+    }
+}
+Geocode = function (mFunction, lang, long) {
+
+    var retrundata = "ggg";
+    var route = '';
+    var ville = '';
+    var region = '';
+    var pays = '';
+    var url = "http://maps.googleapis.com/maps/api/geocode/json?address=33.695882,-7.366951&sensor=false";
+    $.ajax({
+        url: url,
+        dataType: 'json',
+        timeout: 30000,
+        data: {},
+        type: 'POST',
+        beforeSend: function () {
+        },
+        success: function (data) {
+            mFunction(data);
+
+        },
+        error: function (data, status, jqXHR) {
+            alert("FAILED:" + status);
+        }
+    });
+
+}

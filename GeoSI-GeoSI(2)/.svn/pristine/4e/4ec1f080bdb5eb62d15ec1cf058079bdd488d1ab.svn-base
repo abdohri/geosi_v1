@@ -1,0 +1,798 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Boitier_Affectation_Courante" xml:space="preserve">
+    <value>Affectation Courante</value>
+  </data>
+  <data name="Boitier_Boitierid" xml:space="preserve">
+    <value>Boitier</value>
+  </data>
+  <data name="Boitier_Carte_Sim" xml:space="preserve">
+    <value>Carte SIM</value>
+  </data>
+  <data name="Boitier_Date_Achat" xml:space="preserve">
+    <value>Date Achat</value>
+  </data>
+  <data name="Boitier_Id" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="Boitier_Imei" xml:space="preserve">
+    <value>Imei</value>
+  </data>
+  <data name="Boitier_Matricule" xml:space="preserve">
+    <value>Matricule</value>
+  </data>
+  <data name="Boitier_Numero_Tel" xml:space="preserve">
+    <value>Numero Tel</value>
+  </data>
+  <data name="Boitier_Periode_garantie" xml:space="preserve">
+    <value>Periode de garantie</value>
+  </data>
+  <data name="Boitier_Type_Boitier" xml:space="preserve">
+    <value>Type Boitier</value>
+  </data>
+  <data name="Boitier_Vehiculeid" xml:space="preserve">
+    <value>Vehicule</value>
+  </data>
+  <data name="BtnConnexion" xml:space="preserve">
+    <value>Connexion</value>
+  </data>
+  <data name="BtnDesaffecter" xml:space="preserve">
+    <value>Desaffecter</value>
+  </data>
+  <data name="BtnSave" xml:space="preserve">
+    <value>Enregister</value>
+  </data>
+  <data name="CarteSim_Boitier" xml:space="preserve">
+    <value>Boitier</value>
+  </data>
+  <data name="CarteSim_Carte_Sim" xml:space="preserve">
+    <value>Carte Sim</value>
+  </data>
+  <data name="CarteSim_Code_PIN" xml:space="preserve">
+    <value>Code PIN</value>
+  </data>
+  <data name="CarteSim_Code_PUK" xml:space="preserve">
+    <value>Code PUK</value>
+  </data>
+  <data name="CarteSim_Date_Affectation" xml:space="preserve">
+    <value>Date Affectation</value>
+  </data>
+  <data name="CarteSim_Id" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="CarteSim_Numero_serie" xml:space="preserve">
+    <value>Numero  série</value>
+  </data>
+  <data name="CarteSim_Numero_tel" xml:space="preserve">
+    <value>Numero tel</value>
+  </data>
+  <data name="CarteSim_OperateurTelecom" xml:space="preserve">
+    <value>Opérateur</value>
+  </data>
+  <data name="Client_Adresse" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="Client_Annee_creation" xml:space="preserve">
+    <value>Année création</value>
+  </data>
+  <data name="Client_Capital" xml:space="preserve">
+    <value>Capital</value>
+  </data>
+  <data name="Client_Carte" xml:space="preserve">
+    <value>Carte par defaut</value>
+  </data>
+  <data name="Client_Clientid" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="Client_Date_Expiration" xml:space="preserve">
+    <value>Date Expiration</value>
+  </data>
+  <data name="Client_Effectif" xml:space="preserve">
+    <value>Effectif</value>
+  </data>
+  <data name="Client_Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Client_Fax" xml:space="preserve">
+    <value>Fax</value>
+  </data>
+  <data name="Client_Forme_juridique" xml:space="preserve">
+    <value>Forme juridique</value>
+  </data>
+  <data name="Client_Id" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="Client_Langue" xml:space="preserve">
+    <value>Langue par defaut</value>
+  </data>
+  <data name="Client_Num_Affiliation_CNSS" xml:space="preserve">
+    <value>N° Affiliation CNSS</value>
+  </data>
+  <data name="Client_Num_Identification_fiscale" xml:space="preserve">
+    <value>N° Identification fiscale</value>
+  </data>
+  <data name="Client_Num_Patente" xml:space="preserve">
+    <value>N° Patente</value>
+  </data>
+  <data name="Client_Patente" xml:space="preserve">
+    <value>Patente</value>
+  </data>
+  <data name="Client_Pays" xml:space="preserve">
+    <value>Pays</value>
+  </data>
+  <data name="Client_Raison_sociale" xml:space="preserve">
+    <value>Raison sociale</value>
+  </data>
+  <data name="Client_Registre_commerce" xml:space="preserve">
+    <value>Registre de commerce</value>
+  </data>
+  <data name="Client_Sigle" xml:space="preserve">
+    <value>Sigle</value>
+  </data>
+  <data name="Client_Site_Web" xml:space="preserve">
+    <value>Site Web</value>
+  </data>
+  <data name="Client_Tel" xml:space="preserve">
+    <value>Tel</value>
+  </data>
+  <data name="Client_Type_Abonnement" xml:space="preserve">
+    <value>Type Abonnement</value>
+  </data>
+  <data name="Client_Type_Client" xml:space="preserve">
+    <value>Profil Client</value>
+  </data>
+  <data name="Client_Ville" xml:space="preserve">
+    <value>Ville</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Codegg</value>
+  </data>
+  <data name="DateInstallatione" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="deleteconfirmNon" xml:space="preserve">
+    <value>Non</value>
+  </data>
+  <data name="deleteconfirmOui" xml:space="preserve">
+    <value>Oui</value>
+  </data>
+  <data name="DeleteFiltre" xml:space="preserve">
+    <value>Effacer les Filtres</value>
+  </data>
+  <data name="deletevalid" xml:space="preserve">
+    <value>La supression a été effectuée avec succès.</value>
+  </data>
+  <data name="description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="GridAdd" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
+  <data name="GridConnecte" xml:space="preserve">
+    <value>Connecté</value>
+  </data>
+  <data name="GridDelete" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="GridEdit" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="libelle" xml:space="preserve">
+    <value>Libelle</value>
+  </data>
+  <data name="login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Login_Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="Login_Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Login_Password" xml:space="preserve">
+    <value>Mot de passe </value>
+  </data>
+  <data name="MarqueVehicule" xml:space="preserve">
+    <value>Marque</value>
+  </data>
+  <data name="MarqueVehicule1" xml:space="preserve">
+    <value>Marque</value>
+  </data>
+  <data name="Matricule" xml:space="preserve">
+    <value>Matricule</value>
+  </data>
+  <data name="Matricule1" xml:space="preserve">
+    <value>Matricule</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="msgDelete1" xml:space="preserve">
+    <value>Etes vous sûre de vouloire effectuer cette opération?</value>
+  </data>
+  <data name="msgDelete2" xml:space="preserve">
+    <value>Cette carte sim est affectée à un boitier etes vous sûre de vouloire effectuer cet opération?</value>
+  </data>
+  <data name="msgDelete3" xml:space="preserve">
+    <value>Veuillez selectionner un enregistrement.</value>
+  </data>
+  <data name="numero_serie" xml:space="preserve">
+    <value>Numero Série</value>
+  </data>
+  <data name="numero_tel" xml:space="preserve">
+    <value>Numero Tel</value>
+  </data>
+  <data name="raison_so" xml:space="preserve">
+    <value>sssds</value>
+  </data>
+  <data name="raison_sociale" xml:space="preserve">
+    <value>Raison Sociale</value>
+  </data>
+  <data name="Revendeur_Adresse" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="Revendeur_Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Revendeur_Id" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="Revendeur_Langue" xml:space="preserve">
+    <value>Langue par defaut</value>
+  </data>
+  <data name="Revendeur_Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Revendeur_Logo" xml:space="preserve">
+    <value>Logo</value>
+  </data>
+  <data name="Revendeur_password" xml:space="preserve">
+    <value>Mot de passe</value>
+  </data>
+  <data name="Revendeur_Pays" xml:space="preserve">
+    <value>Pays</value>
+  </data>
+  <data name="Revendeur_Raison_sociale" xml:space="preserve">
+    <value>Raison sociale</value>
+  </data>
+  <data name="Revendeur_Revendeurid" xml:space="preserve">
+    <value>Revendeur</value>
+  </data>
+  <data name="Revendeur_Sigle" xml:space="preserve">
+    <value>Sigle</value>
+  </data>
+  <data name="Revendeur_Site_Web" xml:space="preserve">
+    <value>Site Web</value>
+  </data>
+  <data name="Revendeur_Ville" xml:space="preserve">
+    <value>Ville</value>
+  </data>
+  <data name="sigle" xml:space="preserve">
+    <value>Sigle</value>
+  </data>
+  <data name="title_Module_Boitier" xml:space="preserve">
+    <value>Boitier</value>
+  </data>
+  <data name="title_Module_CarteSim" xml:space="preserve">
+    <value>Gestion Des Cartes Sim</value>
+  </data>
+  <data name="title_Module_Client" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="Title_Module_Revendeur" xml:space="preserve">
+    <value>Gestion Des Revendeurs</value>
+  </data>
+  <data name="title_Module_Vehicules" xml:space="preserve">
+    <value>Véhicules</value>
+  </data>
+  <data name="TypeVehicule" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Vehicules_Boitier" xml:space="preserve">
+    <value>Boitier</value>
+  </data>
+  <data name="Vehicules_Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="Vehicules_consommation" xml:space="preserve">
+    <value>Consommation </value>
+  </data>
+  <data name="Vehicules_Image" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="Vehicules_Imei" xml:space="preserve">
+    <value>Imei</value>
+  </data>
+  <data name="Vehicules_kilometrage" xml:space="preserve">
+    <value>Kilométrage  de départ</value>
+  </data>
+  <data name="Vehicules_Marque" xml:space="preserve">
+    <value>Marque</value>
+  </data>
+  <data name="Vehicules_Matricule" xml:space="preserve">
+    <value>Matricule</value>
+  </data>
+  <data name="Vehicules_Modèle" xml:space="preserve">
+    <value>Modèle</value>
+  </data>
+  <data name="Vehicules_Numero_chassis" xml:space="preserve">
+    <value>Numero chassis</value>
+  </data>
+  <data name="Vehicules_title_gridpanel1" xml:space="preserve">
+    <value>Gestion Boitier </value>
+  </data>
+  <data name="Vehicules_title_gridpanelmaster" xml:space="preserve">
+    <value>Gestion véhicules</value>
+  </data>
+  <data name="Vehicules_Type_vehicule" xml:space="preserve">
+    <value>Type véhicule</value>
+  </data>
+  <data name="Profil_description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Profil_id" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="Profil_libelle" xml:space="preserve">
+    <value>Libelle</value>
+  </data>
+  <data name="Profil_profil" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="Personnel_Date_Expiration" xml:space="preserve">
+    <value>Date Expiration du permis</value>
+  </data>
+  <data name="Personnel_Remarque" xml:space="preserve">
+    <value>Remarque</value>
+  </data>
+  <data name="Boitier_title_panel1" xml:space="preserve">
+    <value>Boitier</value>
+  </data>
+  <data name="Boitier_title_panel2" xml:space="preserve">
+    <value>Carte SIM désaffectées</value>
+  </data>
+  <data name="Boitier_title_panel4" xml:space="preserve">
+    <value>Véhicules désaffectés</value>
+  </data>
+  <data name="Boitier_Date_Debut_Garantie" xml:space="preserve">
+    <value>Date Début Garantie</value>
+  </data>
+  <data name="Boitier_Date_Fin_Garantie" xml:space="preserve">
+    <value>Date Fin Garantie</value>
+  </data>
+  <data name="Boitier_Marque" xml:space="preserve">
+    <value>Marque du boitier</value>
+  </data>
+  <data name="Client_Societe_Mere" xml:space="preserve">
+    <value>Filiale de</value>
+  </data>
+  <data name="Client_Bourse" xml:space="preserve">
+    <value>Coté en bourse</value>
+  </data>
+  <data name="Client_CarteData" xml:space="preserve">
+    <value>Carte Data</value>
+  </data>
+  <data name="Vehicules_Personnel" xml:space="preserve">
+    <value>Personnel</value>
+  </data>
+  <data name="Boitier_Date_affectation" xml:space="preserve">
+    <value>Date affectation</value>
+  </data>
+  <data name="Boitier_Date_desaffectation" xml:space="preserve">
+    <value>Date désaffectation</value>
+  </data>
+  <data name="title_Module_Profil" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="CarteSim_Date_desaffectation" xml:space="preserve">
+    <value>Date désaffectation</value>
+  </data>
+  <data name="Vehicules_Date_affectation" xml:space="preserve">
+    <value>Date affectation</value>
+  </data>
+  <data name="Vehicules_Date_desaffectation" xml:space="preserve">
+    <value>Date désaffectation</value>
+  </data>
+  <data name="title_Module_Utilisateur" xml:space="preserve">
+    <value>Gestion des Utilisateurs</value>
+  </data>
+  <data name="Utilisateur_Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Utilisateur_Adresse" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="Utilisateur_Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Utilisateur_Nom" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="Utilisateur_Prenom" xml:space="preserve">
+    <value>Prenom</value>
+  </data>
+  <data name="Utilisateur_Tel" xml:space="preserve">
+    <value>Tel</value>
+  </data>
+  <data name="Utilisateur_Password" xml:space="preserve">
+    <value>Mot de passe </value>
+  </data>
+  <data name="Title_Module_UserBackOffice" xml:space="preserve">
+    <value>Gestion des Utlisateurs BackOffice</value>
+  </data>
+  <data name="Vehicules_Boitier_desaffectes" xml:space="preserve">
+    <value>Boitiers désaffectés</value>
+  </data>
+  <data name="Vehicules_Matriculeboitier" xml:space="preserve">
+    <value>Matricule</value>
+  </data>
+  <data name="Vehicules_nom" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="Vehicules_title_panel4" xml:space="preserve">
+    <value>Personnels désaffectés</value>
+  </data>
+  <data name="Groupe_libelle" xml:space="preserve">
+    <value>Nom du groupe</value>
+  </data>
+  <data name="title_Module_Groupe" xml:space="preserve">
+    <value>Groupe</value>
+  </data>
+  <data name="Groupe_Parent" xml:space="preserve">
+    <value>Groupe parent</value>
+  </data>
+  <data name="Groupe_Vehicules" xml:space="preserve">
+    <value>Véhicules</value>
+  </data>
+  <data name="Groupe_Vehicules_selectiones" xml:space="preserve">
+    <value>Véhicules selectionnés</value>
+  </data>
+  <data name="cartsim_msgDelete2" xml:space="preserve">
+    <value>Cette carte sim est affectée à un boitier etes vous sûre de vouloire effectuer cet opération?</value>
+  </data>
+  <data name="vehicule_msgDelete2" xml:space="preserve">
+    <value>Ce véhicule est affecté à un boitier etes vous sûre de vouloire effectuer cet opération?</value>
+  </data>
+  <data name="Utilisateur_Langue" xml:space="preserve">
+    <value>Langue</value>
+  </data>
+  <data name="Utilisateur_Profil" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="Utilisateur_ProfilSelectionne" xml:space="preserve">
+    <value>Profil sélectionné</value>
+  </data>
+  <data name="deleteerror" xml:space="preserve">
+    <value>Une erreur est survenu veuillez réessayer</value>
+  </data>
+  <data name="msgDeleteBoitier1" xml:space="preserve">
+    <value>Ce Boitier est affecté à un vehicule et contient une carte sim êtes vous sûre de vouloire effectuer cet opération?</value>
+  </data>
+  <data name="msgDeleteBoitier2" xml:space="preserve">
+    <value>Ce Boitier contient une carte sim êtes vous sûre de vouloire effectuer cet opération?</value>
+  </data>
+  <data name="msgDeleteBoitier3" xml:space="preserve">
+    <value>Ce Boitier est affecté à un vehicule êtes vous sûre de vouloire effectuer cet opération?</value>
+  </data>
+  <data name="msgDeletepersonnel" xml:space="preserve">
+    <value>Ce personnel est affecté à un vehicule êtes vous sûre de vouloire effectuer cet opération?</value>
+  </data>
+  <data name="msgDesactiver" xml:space="preserve">
+    <value>Etes vous sur de vouloir desactiver ce boitier ?</value>
+  </data>
+  <data name="Personnel_title_panel4" xml:space="preserve">
+    <value>Véhicules désaffectés</value>
+  </data>
+  <data name="title_Module_Personnel" xml:space="preserve">
+    <value>Gestion des Personnels</value>
+  </data>
+  <data name="Personnel_Vehicules" xml:space="preserve">
+    <value>Véhicules</value>
+  </data>
+  <data name="Msg_Delete_Patienter" xml:space="preserve">
+    <value>Veuillez patienter, traitement en cours...</value>
+  </data>
+  <data name="Personnel_Cin" xml:space="preserve">
+    <value>Cin</value>
+  </data>
+  <data name="Personnel_Cnss" xml:space="preserve">
+    <value>Cnss</value>
+  </data>
+  <data name="Personnel_Date_Embauche" xml:space="preserve">
+    <value>Date Embauche</value>
+  </data>
+  <data name="Personnel_Nom" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="Personnel_Permis" xml:space="preserve">
+    <value>N° Permis</value>
+  </data>
+  <data name="Personnel_Prenom" xml:space="preserve">
+    <value>Prenom</value>
+  </data>
+  <data name="Personnel_Typepersonnel" xml:space="preserve">
+    <value>Type Personnel</value>
+  </data>
+  <data name="GridActiver" xml:space="preserve">
+    <value>Activer</value>
+  </data>
+  <data name="ClientActivation" xml:space="preserve">
+    <value>Le client a ete activé avec succès</value>
+  </data>
+  <data name="Profil_Habilitation_selectionnees" xml:space="preserve">
+    <value>Habilitations selectionnées</value>
+  </data>
+  <data name="Profil_Liste_Habilitation" xml:space="preserve">
+    <value>Liste Habilitations</value>
+  </data>
+  <data name="Profil_Groupe_selectionnes" xml:space="preserve">
+    <value>Groupes selectionnés</value>
+  </data>
+  <data name="Profil_Liste_Groupes" xml:space="preserve">
+    <value>Liste Groupes</value>
+  </data>
+  <data name="Profil_Liste_Vehicules" xml:space="preserve">
+    <value>Liste Véhicules</value>
+  </data>
+  <data name="Profil_Vehicule_selectionnes" xml:space="preserve">
+    <value>Véhicules selectionnés</value>
+  </data>
+  <data name="Profil_Alerte_selectionnes" xml:space="preserve">
+    <value>Alertes selectionnées</value>
+  </data>
+  <data name="Profil_Liste_Alertes" xml:space="preserve">
+    <value>Liste Alertes</value>
+  </data>
+  <data name="Profil_Habilitation" xml:space="preserve">
+    <value>Habilitations</value>
+  </data>
+  <data name="Profil_Vehicule" xml:space="preserve">
+    <value>Véhicules</value>
+  </data>
+  <data name="GridDesactiver" xml:space="preserve">
+    <value>Désactiver</value>
+  </data>
+  <data name="Poi_latitude" xml:space="preserve">
+    <value>Latitude</value>
+  </data>
+  <data name="Poi_longitude" xml:space="preserve">
+    <value>Longitude</value>
+  </data>
+  <data name="Poi_Poi" xml:space="preserve">
+    <value>Point d'intérêt</value>
+  </data>
+  <data name="Poi_tolerance" xml:space="preserve">
+    <value>Tolerance</value>
+  </data>
+  <data name="Zone_NonZone" xml:space="preserve">
+    <value>Nom Zone</value>
+  </data>
+  <data name="Poi_Adresse" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="btnsupp" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="btnvider" xml:space="preserve">
+    <value>Vider</value>
+  </data>
+  <data name="btnclearmap" xml:space="preserve">
+    <value>Actualiser la carte</value>
+  </data>
+  <data name="Trajet_Date" xml:space="preserve">
+    <value>Date Trajet</value>
+  </data>
+  <data name="Trajet_Latitude" xml:space="preserve">
+    <value>Latitude</value>
+  </data>
+  <data name="Trajet_Longitude" xml:space="preserve">
+    <value>Longitude</value>
+  </data>
+  <data name="Trajet_Poi" xml:space="preserve">
+    <value>Poi</value>
+  </data>
+  <data name="Trajet_Trajet" xml:space="preserve">
+    <value>Trajet</value>
+  </data>
+  <data name="Trajet_Vehicule" xml:space="preserve">
+    <value>Véhicule</value>
+  </data>
+  <data name="Trajet_AjouterAuTrajet" xml:space="preserve">
+    <value>Ajouter au trajet</value>
+  </data>
+  <data name="Trajet_Position" xml:space="preserve">
+    <value>Ajouter une position </value>
+  </data>
+  <data name="AfficherTrajet" xml:space="preserve">
+    <value>Afficher Trajet</value>
+  </data>
+  <data name="BtnExcel" xml:space="preserve">
+    <value>Un rapport Excel</value>
+  </data>
+  <data name="BtnPdf" xml:space="preserve">
+    <value>Un rapport PDf</value>
+  </data>
+  <data name="GridExcel" xml:space="preserve">
+    <value>Un rapport Excel</value>
+  </data>
+  <data name="GridPdf" xml:space="preserve">
+    <value>Un rapport pdf</value>
+  </data>
+  <data name="Rapport_activite" xml:space="preserve">
+    <value>Activité</value>
+  </data>
+  <data name="Rapport_Conducteur" xml:space="preserve">
+    <value>Conducteur</value>
+  </data>
+  <data name="Rapport_CoutVehicule" xml:space="preserve">
+    <value>Coût du véhicule</value>
+  </data>
+  <data name="Rapport_RatioExpVehicule" xml:space="preserve">
+    <value>Ratio d'exploitation </value>
+  </data>
+  <data name="Rapport_VitesseMax" xml:space="preserve">
+    <value>Vitesse Maximum</value>
+  </data>
+  <data name="Rapport_VitesseMin" xml:space="preserve">
+    <value>VitesseMinimum</value>
+  </data>
+  <data name="Arret_arrets" xml:space="preserve">
+    <value>Obtenir arrêts</value>
+  </data>
+  <data name="Arret_DateLocalisation" xml:space="preserve">
+    <value>Date Localisation</value>
+  </data>
+  <data name="Arret_Duree" xml:space="preserve">
+    <value>Durée</value>
+  </data>
+  <data name="Arret_Localisation" xml:space="preserve">
+    <value>Localisation</value>
+  </data>
+  <data name="Trajet_AdresseDepart" xml:space="preserve">
+    <value>Adresse de départ</value>
+  </data>
+  <data name="Trajet_AjouterAuTrajet1" xml:space="preserve">
+    <value>Ajouter au trajet</value>
+  </data>
+  <data name="Trajet_conducteur" xml:space="preserve">
+    <value>Conducteur</value>
+  </data>
+  <data name="Trajet_DateArivee" xml:space="preserve">
+    <value>Date d'arrivée</value>
+  </data>
+  <data name="Trajet_DateDepart" xml:space="preserve">
+    <value>Date de départ</value>
+  </data>
+  <data name="Trajet_Distance" xml:space="preserve">
+    <value>Distance</value>
+  </data>
+  <data name="Trajet_Duree" xml:space="preserve">
+    <value>Durée</value>
+  </data>
+  <data name="Trajet_trajets" xml:space="preserve">
+    <value>Obtenir Trajets</value>
+  </data>
+  <data name="VehiculeProche_rayon" xml:space="preserve">
+    <value>Rayon</value>
+  </data>
+</root>

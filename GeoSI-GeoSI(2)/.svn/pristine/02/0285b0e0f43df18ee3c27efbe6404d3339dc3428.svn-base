@@ -1,0 +1,335 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
+using System.Web;
+using System.Net;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using GeoSI.Website.Common;
+using Ext.Net;
+using System.Data.SqlClient;
+using System.Data;
+using System.Xml.Linq;
+
+using System.Globalization;
+namespace GeoSI.Website.Modules.HistoriqueArret
+{
+    public partial class LoadHistoriqueArret : Page
+    {
+        public String adress = "";
+
+        //Recuperation de la session user
+        protected UserInfo getCurrentUser()
+        {
+
+            UserInfo retVal = null;
+            object o = Session["UserInfo"];
+            if (o != null)
+            {
+                retVal = new UserInfo();
+                retVal = ((UserInfo)Session["UserInfo"]);
+            }
+            return retVal;
+
+
+        }
+
+        protected void FillStore(string sql, Store _store)
+        {
+            using (SqlDataAdapter da = new SqlDataAdapter(sql, _Global.CurrentConnection))
+            {
+                DataSet ds = new DataSet();
+                da.SelectCommand.CommandTimeout = 120;
+                da.Fill(ds);
+                _store.DataSource = ds.Tables[0];
+                _store.DataBind();
+            }
+        }
+        // Accès à la base de Données 
+        protected SqlDataReader Select(string _Requette)
+        {
+            SqlDataReader dr;
+            try
+            {
+                SqlConnection cnx = _Global.CurrentConnection;
+                SqlCommand cmd = new SqlCommand(_Requette, cnx);
+                dr = cmd.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                dr = null;
+                ex.ToString();
+            }
+            return dr;
+        }
+        private string racine = null;
+
+        //Chergement de la page 
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+            string _reqVeh = "select * from (select aff.* from ( select  v.matricule ,v.vehiculeid from vehicules v  inner join affectation_vehicule_boitier abv on abv.vehiculeid=v.vehiculeid  inner join boitier b on b.boitierid=abv.boitierid inner join Datatracker d on d.imei=b.imei  inner join groupe_vehicule gv on gv.vehiculeid = v.vehiculeid and gv.actif = '1' where v.clientid =" + this.getCurrentUser().getClientId() + " and v.actif = '1' )aff union select v.matricule, v.vehiculeid from vehicules v  inner join affectation_vehicule_boitier abv on abv.vehiculeid=v.vehiculeid  inner join boitier b on b.boitierid=abv.boitierid inner join Datatracker d on d.imei=b.imei  inner join profil_vehicule gp on gp.vehiculeid =v.vehiculeid and gp.actif = '1' inner join profil p on p.profilid = gp.profilid and p.actif = '1' inner join profil_user pu on pu.actif = '1' and pu.profilid = p.profilid where v.clientid = " + this.getCurrentUser().getClientId() + " and v.actif = '1' and pu.utilisateurid =" + this.getCurrentUser().getUserId() + " ) aff2      ";
+            this.FillStore(_reqVeh, Store2);
+            // txt1.Text = RetrieveFormatedAddress("33.5992364201655", "-7.570799214941417");
+
+        }
+
+
+
+
+        List<Arret> list = new List<Arret>();
+        List<Arret> ListArret = new List<Arret>();
+        Datatracker track = new Datatracker();
+         List<Datatracker> Listarret = new List<Datatracker>();
+        List<Datatracker> List=new List<Datatracker>();
+        Arret arret ;
+        int nbrArret=0;
+
+
+        [DirectMethod(ShowMask = true, Msg = "Veuillez patienter, traitement en cours...")]
+
+        protected void HistoriqueArret(object sender, EventArgs e)
+        {
+   string userDate1 = this.DateField1.Value.ToString();
+            string[] du = userDate1.Split(' ');
+            userDate1 = du[0] + " " + this.TimeField1.Value.ToString();
+
+            string userDate2 = this.DateField2.Value.ToString();
+            string[] du2 = userDate1.Split(' ');
+            userDate2 = du2[0] + " " + this.TimeField2.Value.ToString();
+            string vehiculeid = "";
+            vehiculeid = this.MultiCombo1.SelectedItem.Value;
+            if (vehiculeid == "" || userDate1 == "" || userDate2 == "")
+
+                X.Msg.Show(new MessageBoxConfig
+                {
+                    Title = Resources.Resource.Information,
+                    Message = "Veuillez choisir un véhicule, une date début et une date fin pour consulter les trajets",
+                    Buttons = MessageBox.Button.OK,
+                    Icon = MessageBox.Icon.INFO
+                });
+            else
+            {
+                TimeSpan k= DateTime.ParseExact(userDate1, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture)- DateTime.ParseExact(userDate2, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                if (k.TotalDays <= 0)
+                {
+                    X.Msg.Show(new MessageBoxConfig
+                    {
+                        Title = Resources.Resource.Information,
+                        Message = "La date  début doit être inferieure à la date fin",
+                        Buttons = MessageBox.Button.OK,
+                        Icon = MessageBox.Icon.INFO
+                    });
+                }
+                else
+                {
+                    string _reqTime = "select * from(select top 1 d.RTCDateTime from Datatracker d order by d.datatrackerid desc) a union select * from (select top 1 d.RTCDateTime from Datatracker d order by d.datatrackerid )b ";
+                    SqlDataReader drT = Select(_reqTime);
+
+                    int m = 0;
+                    while (drT.Read())
+                    {
+                        du[m] = drT[0].ToString();
+                        m++;
+                    }
+                    drT.Close();
+
+                    if (DateTime.ParseExact(userDate1, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture) < DateTime.ParseExact(du[0], "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture)
+                           || DateTime.ParseExact(userDate1, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture) > DateTime.ParseExact(du[1], "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture)
+                                || DateTime.ParseExact(userDate2, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture) < DateTime.ParseExact(du[0], "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture)
+                                    || DateTime.ParseExact(userDate2, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture) > DateTime.ParseExact(du[1], "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture))
+                    {
+                        X.Msg.Show(new MessageBoxConfig
+                        {
+                            Title = Resources.Resource.Information,
+                            Message = "Les dates début et fin doivent être comprises entre " + du[0] + " et " + du[1],
+                            Buttons = MessageBox.Button.OK,
+                            Icon = MessageBox.Icon.INFO
+                        });
+
+                    }
+                    else
+                    {
+                
+                    int Compt = 0;
+                    int vites = 0;
+                    string c = "";
+                    string _reqlist = "select d.GPSDateTime,d.latitude,d.longitude ,p.nom+' '+p.prenom as conducteur,d.speed ,d.contact from Datatracker d inner join boitier b on b.imei=d.imei inner join affectation_vehicule_boitier abv on abv.boitierid=b.boitierid inner join vehicules  v on v.vehiculeid = abv.vehiculeid inner join vehicule_personnel vp on vp.vehiculeid=v.vehiculeid inner join personnel p on p.personnelid=vp.personnelid where  cast(d.GPSDateTime AS datetime) >= '" + userDate1 + "' AND cast(d.GPSDateTime AS datetime) < '" + userDate2 + "' and v.vehiculeid='" + vehiculeid + "'";
+                    SqlDataReader drlist = Select(_reqlist);
+                    int ve = 0;
+                    int tr = 0;
+                   
+                    //    while (drlist.Read())
+                    //    {
+                    //        Datatracker t = new Datatracker();
+
+                    //        t.contact = Convert.ToInt32(drlist[5]);
+                    //        t.GPSDateTime = drlist[0].ToString();
+                    //        t.latitude = (double)drlist[1];
+                    //        t.longitude = (double)drlist[2];
+
+
+
+                    //        if (t.contact == 0)
+                    //        {
+                    //            tr++;
+                    //            if (tr == 1)
+                    //            {
+                    //                arret = new Arret();
+                    //                arret.SetDateD(DateTime.ParseExact(t.GPSDateTime, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture));
+                    //                arret.setlatitude(t.latitude.ToString());
+                    //                arret.setlongitude(t.longitude.ToString());
+                    //            }
+
+
+
+                    //        }
+
+                    //        if (t.contact == 1 )
+                    //        {
+                    //            if (tr != 0)
+                    //            {
+                    //                arret.SetDateF(DateTime.ParseExact(t.GPSDateTime, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture));
+                    //                ListArret.Add(arret);
+                    //                tr = 0;
+                    //            }
+
+                    //        }
+                          
+
+
+
+
+                    //    }
+                    
+                   
+                    //drlist.Close();
+                    while (drlist.Read())
+                    {
+                        Datatracker t = new Datatracker();
+
+                        t.contact = Convert.ToInt32(drlist[5]);
+                        t.GPSDateTime = drlist[0].ToString();
+                        t.latitude = (double)drlist[1];
+                       t.longitude = (double)drlist[2];
+                       List.Add(t);
+
+                    }
+
+
+                    drlist.Close();
+                    for (int s = 0; s < List.Count; s++)
+                    {
+                        if (List[s].contact == 0)
+                        {
+                            tr++;
+                            if (tr == 1)
+                            {
+                                arret = new Arret();
+                                arret.SetDateD(DateTime.ParseExact(List[s].GPSDateTime, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture));
+                                arret.setlatitude(List[s].latitude.ToString());
+                                arret.setlongitude(List[s].longitude.ToString());
+                            }
+
+
+
+                        }
+
+                        if (List[s].contact == 1 )
+                        {
+                            if (tr != 0)
+                            {
+                                arret.SetDateF(DateTime.ParseExact(List[s].GPSDateTime, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture));
+                                ListArret.Add(arret);
+                                tr = 0;
+                            }
+
+                        }
+                        if (s == List.Count - 1 && List[s].contact == 0)
+                        {
+                            if (tr != 0)
+                            {
+                                arret.SetDateF(DateTime.ParseExact(List[s].GPSDateTime, "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture));
+                                ListArret.Add(arret);
+                                tr = 0;
+                            }
+
+                        }
+                    }
+
+
+            List<object> lo = new List<object>();
+            //Store Store1 = this.GridPanelVoyage.GetStore();
+            for (int i = 0; i < ListArret.Count; i++)
+            {
+            
+                string lat = ListArret[i].latitude.Replace(",",".");
+                string lng = ListArret[i].longitude.Replace(",", ".");
+                string adr1 = RetrieveFormatedAddress(lat, lng);
+                adr1= adr1.Replace("<formatted_address>", "*");
+                adr1 = adr1.Replace("</formatted_address>", "*");
+                string[] s = adr1.Split('*');
+                string adr=s[1];
+                DateTime d = DateTime.ParseExact(ListArret[i].GetDateD().ToString(), "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                DateTime dd = DateTime.ParseExact(ListArret[i].GetDateF().ToString(), "dd'/'MM'/'yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+
+               
+
+                //  Address[] addresses = geoCoder.ReverseGeoCode(38.8976777, -77.036517);
+                TimeSpan duree = dd - d;
+                lo.Add(new object[] { adr, ListArret[i].dateD.ToShortDateString() + " " + ListArret[i].dateD.ToLongTimeString(), duree.ToString(), ListArret[i].latitude, ListArret[i].longitude }
+    );
+
+               
+            }
+
+
+            Store1.Add(lo);
+            Store1.CommitChanges();
+
+                    }
+                }
+            }
+
+        }
+
+        static string baseUri = "http://maps.googleapis.com/maps/api/" + "geocode/xml?latlng={0},{1}&sensor=false";
+
+        public 
+            string RetrieveFormatedAddress(string lat, string lng)
+        {
+            string requestUri = string.Format(baseUri, lat, lng);
+            using (WebClient wc = new WebClient())
+            {
+                wc.DownloadStringCompleted += new DownloadStringCompletedEventHandler(wc_DownloadStringCompleted);
+
+                return wc.DownloadString(new Uri(requestUri));
+
+
+            }
+        }
+        public void wc_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+            string add = "";
+            var xmlElm = XElement.Parse(e.Result);
+            var status = (from elm in xmlElm.Descendants() where elm.Name == "status" select elm).FirstOrDefault();
+            if (status.Value.ToLower() == "ok")
+            {
+                var res = (from elm in xmlElm.Descendants() where elm.Name == "formatted_address" select elm).FirstOrDefault();
+                add = res.Value;
+
+                // Console.WriteLine(res.Value); 
+            }
+            else
+            {
+                //Console.WriteLine("No Address Found");
+                add = "NOOOOOOO";
+            }
+        }
+
+
+
+
+    }
+}

@@ -1,0 +1,604 @@
+﻿#tableapp
+{
+    width: 198px;
+    margin-top: 10px;
+}
+
+.app
+{
+    display: block;
+    width: 60px;
+    padding-top: 35px;
+    font-family: Arial;
+    font-size: 11px;
+    text-decoration: none;
+    color: #404040;
+    margin: auto;
+    margin-top: 10px;
+    background-position: center 0;
+}
+#app1
+{
+    background-image: url(../../Images/deconnexion.png);
+    background-repeat: no-repeat;
+}
+#app2
+{
+    background-image: url(../../Images/aide.png);
+    background-repeat: no-repeat;
+}
+#app3
+{
+    background-image: url(../../Images/info.png);
+    background-repeat: no-repeat;
+}
+#app4
+{
+    background-image: url(../../Images/mail.png);
+    background-repeat: no-repeat;
+}
+#appplus
+{
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin: auto;
+    margin-top: 15px;
+    background-image: url(../../Images/appplus.png);
+    background-repeat: no-repeat;
+}
+#appplus:hover
+{
+    background-image: url(../../Images/appplushover.png);
+    background-repeat: no-repeat;
+}
+.ss_plus
+{
+    display: block; /* on change le type d'élément, les liens deviennent des balises de type block */
+    padding: 0; /* aucune marge intérieure */
+    margin: 0;
+    background: #FFFFFF;
+    border: 1px solid #ccc;
+    list-style: none;
+    position: absolute; /* Position absolue */
+    width: 200px; /* Largeur des sous-listes */
+    height: 160px;
+    margin-left: -130px;
+    left: -999em; /* Hop, on envoie loin du champ de vision */
+    z-index: 9999999;
+    margin-top: 30px;
+    box-shadow: 2px 2px 12px #ccc;
+}
+.ss_plus li:first-child a:after
+{
+    content: '';
+    position: absolute;
+    left: 130px;
+    top: -8px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 8px solid #FFF;
+}
+
+#div_content_haut
+{
+    width: 100%;
+    height: 80px;
+    background: url(../../Images/bckg-haut1.png) repeat-x;
+}
+#logo
+{
+    float: left;
+    width: 12%;
+    height: 80px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#langGeomtec
+{
+    float: left;
+    width: 6%;
+    height: 80px;
+    padding-top: 5px;
+    text-align: center;
+    min-width: 79px;
+}
+
+#div_client
+{
+    float: left;
+    width: 13%;
+    height: 78px;
+    padding-top: 2px;
+    text-align: center;
+}
+#divmenu
+{
+    float: left;
+    width: 67%;
+    height: 80px;
+    padding-top: 8px;
+    min-width: 590px;
+}
+
+
+#menu
+{
+    list-style: none;
+    width: 700px;
+    margin: auto;
+    padding: 0;
+}
+.li_menu_tempreel1
+{
+    float: left;
+    width: 52px;
+    height: 52px;
+    background-image: url(../../Images/icone/tempsreel.png);
+    position: relative;
+}
+.li_menu_tempreel2
+{
+    float: left;
+    width: 52px;
+    height: 52px;
+    background-image: url(../../Images/icone/poi.png);
+    margin-left: 25px;
+    position: relative;
+}
+.li_menu_tempreel3
+{
+    float: left;
+    width: 52px;
+    height: 52px;
+    background-image: url(../../Images/icone/trajet.png);
+    margin-left: 25px;
+    position: relative;
+}
+.li_menu_tempreel4
+{
+    float: left;
+    width: 52px;
+    height: 52px;
+    background-image: url(../../Images/icone/geofencing.png);
+    margin-left: 25px;
+    position: relative;
+}
+.li_menu_tempreel5
+{
+    float: left;
+    width: 52px;
+    height: 52px;
+    background-image: url(../../Images/icone/historique.png);
+    margin-left: 25px;
+    position: relative;
+}
+
+.li_menu_tempreel6
+{
+    float: left;
+    width: 52px;
+    height: 52px;
+    background-image: url(../../Images/icone/rapport.png);
+    margin-left: 25px;
+    position: relative;
+}
+
+.li_menu_tempreel7
+{
+    float: left;
+    width: 52px;
+    height: 52px;
+    background-image: url(../../Images/icone/parametrage.png);
+    margin-left: 25px;
+    position: relative;
+}
+.li_menu_tempreel8
+{
+    float: left;
+    width: 52px;
+    height: 52px;
+    background-image: url(../../Images/icone/Alarm1.png);
+    margin-left: 25px;
+    position: relative;
+}
+
+
+
+.li_menu_tempreel9 .notification
+{
+        float: left;
+    width: 52px;
+    height: 52px;
+    background-image: url(../../Images/icone/alarm.png);
+    margin-left: 25px;
+    position: relative;
+    display: inline;
+    width: 52px;
+    padding-top: 10px;
+    font-family: Arial;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    color: red;
+       
+     
+        
+}
+
+.li_menu_tempreel9 .notif
+{
+        
+    width: 52px;
+    height: 52px;
+    
+    margin-left: 615px;
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    padding-top: 0px;
+    font-family: Arial;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+       
+     
+        
+}
+.a_menu
+{
+    display: block;
+    width: 52px;
+    padding-top: 52px;
+    font-family: Arial;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+    position: relative;
+}
+
+#menu .li_menu_tempreel1:hover > .sous_menuu
+{
+    display: block;
+}
+
+#menu .li_menu_tempreel2:hover > .sous_menu
+{
+    display: block;
+}
+
+#menu .li_menu_tempreel3:hover > .sous_menu
+{
+    display: block;
+}
+
+#menu .li_menu_tempreel4:hover > .sous_menu
+{
+    display: block;
+}
+
+#menu .li_menu_tempreel5:hover > .sous_menu
+{
+    display: block;
+}
+
+#menu .li_menu_tempreel6:hover > .sous_menu
+{
+    display: block;
+}
+
+#menu .li_menu_tempreel7:hover > .sous_menu
+{
+    display: block;
+}
+
+#menu .li_menu_tempreel8:hover > .sous_menu
+{
+    display: block;
+}
+#menu .li_menu_tempreel9:hover > .sous_menu
+{
+    display: block;
+    margin-left: 850px;
+    margin-top:57px;
+}
+
+/* Sous-menu */
+
+#menu .sous_menu
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: none;
+    position: absolute;
+    margin-left: -40px;
+    left: 0;
+    z-index: 99999;
+    background: #25C5C6;
+    background: -moz-linear-gradient(#25C5C6, #29CFCF);
+    background: -webkit-gradient(linear,left bottom,left top,color-stop(0, #29CFCF),color-stop(1, #25C5C6));
+    background: -webkit-linear-gradient(#25C5C6, #29CFCF);
+    background: -o-linear-gradient(#25C5C6, #29CFCF);
+    background: -ms-linear-gradient(#25C5C6, #29CFCF);
+    background: linear-gradient(#25C5C6, #29CFCF);
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#menu .sous_menu .li_ss_menu
+{
+    float: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    -moz-box-shadow: 0 1px 0 #29CFCF, 0 2px 0 #19A3A4;
+    -webkit-box-shadow: 0 1px 0 #29CFCF, 0 2px 0 #19A3A4;
+    box-shadow: 0 1px 0 #29CFCF, 0 2px 0 #19A3A4;
+}
+
+#menu .sous_menu .li_ss_menu:last-child
+{
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#menu .sous_menu .a_ss_menu
+{
+    padding: 10px;
+    height: auto;
+    line-height: 1;
+    display: block;
+    white-space: nowrap;
+    float: none;
+    text-transform: none;
+}
+
+*html #menu .sous_menu .a_ss_menu
+{
+    /* IE6 */
+    height: 10px;
+    width: 150px;
+}
+
+
+#menu .sous_menu .a_ss_menu:hover
+{
+    background: #0186ba;
+    background: -moz-linear-gradient(#04acec,  #0186ba);
+    background: -webkit-gradient(linear, left top, left bottom, from(#04acec), to(#0186ba));
+    background: -webkit-linear-gradient(#04acec,  #0186ba);
+    background: -o-linear-gradient(#04acec,  #0186ba);
+    background: -ms-linear-gradient(#04acec,  #0186ba);
+    background: linear-gradient(#04acec,  #0186ba);
+    -moz-box-shadow: 0 1px 0 #0186ba, 0 2px 0 #19A3A4;
+    -webkit-box-shadow: 0 1px 0 #0186ba, 0 2px 0 #19A3A4;
+    box-shadow: 0 1px 0 #0186ba, 0 2px 0 #19A3A4;
+}
+
+#menu .sous_menu .li_ss_menu:first-child .a_ss_menu
+{
+    -moz-border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+}
+
+#menu .sous_menu .li_ss_menu:first-child .a_ss_menu:after
+{
+    content: '';
+    position: absolute;
+    left: 60px;
+    top: -8px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 8px solid #25C5C6;
+}
+
+#menu .sous_menu .li_ss_menu:first-child .a_ss_menu:hover:after
+{
+    border-bottom-color: #04acec;
+}
+
+#menu .sous_menu .li_ss_menu:last-child .a_ss_menu
+{
+    -moz-border-radius: 0 0 5px 5px;
+    -webkit-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+}
+
+/* Rétablissement du flottement */
+#menu:after
+{
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+* html #menu
+{
+    zoom: 1;
+}
+/* IE6 */
+*:first-child + html #menu
+{
+    zoom: 1;
+}
+/* IE7 */
+.a_ss_menu
+{
+    color: #FFF;
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.a_ss_menuu
+{
+    color: #FFF;
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#menu .sous_menuu
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: none;
+    position: absolute;
+    margin-left: -40px;
+    left: 0;
+    z-index: 99999;
+    background: #1A8FF5;
+    background: -moz-linear-gradient(#1A8FF5, #19D2FB);
+    background: -webkit-gradient(linear,left bottom,left top,color-stop(0, #19D2FB),color-stop(1, #1A8FF5));
+    background: -webkit-linear-gradient(#1A8FF5, #19D2FB);
+    background: -o-linear-gradient(#1A8FF5, #19D2FB);
+    background: -ms-linear-gradient(#1A8FF5, #19D2FB);
+    background: linear-gradient(#1A8FF5, #19D2FB);
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#menu .sous_menuu .li_ss_menuu
+{
+    float: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    -moz-box-shadow: 0 1px 0 #19D2FB, 0 2px 0 #1A8FF5;
+    -webkit-box-shadow: 0 1px 0 19D2FB, 0 2px 0 #1A8FF5;
+    box-shadow: 0 1px 0 #19D2FB, 0 2px 0 #1A8FF5;
+}
+
+#menu .sous_menuu .li_ss_menuu:last-child
+{
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#menu .sous_menuu .a_ss_menuu
+{
+    padding: 10px;
+    height: auto;
+    line-height: 1;
+    display: block;
+    white-space: nowrap;
+    float: none;
+    text-transform: none;
+}
+
+*html #menu .sous_menuu .a_ss_menuu
+{
+    /* IE6 */
+    height: 10px;
+    width: 150px;
+}
+
+
+#menu .sous_menuu .a_ss_menuu:hover
+{
+    background: #0186ba;
+    background: -moz-linear-gradient(#1A8FF5,  #0186ba);
+    background: -webkit-gradient(linear, left top, left bottom, from(#1A8FF5), to(#0186ba));
+    background: -webkit-linear-gradient(#1A8FF5,  #0186ba);
+    background: -o-linear-gradient(#1A8FF5,  #0186ba);
+    background: -ms-linear-gradient(#1A8FF5,  #0186ba);
+    background: linear-gradient(#1A8FF5,  #0186ba);
+    -moz-box-shadow: 0 1px 0 #1A8FF5, 0 2px 0 #19D2FB;
+    -webkit-box-shadow: 0 1px 0 #1A8FF5, 0 2px 0 #19D2FB;
+    box-shadow: 0 1px 0 #1A8FF5, 0 2px 0 #19D2FB;
+}
+
+#menu .sous_menuu .li_ss_menuu:first-child .a_ss_menuu
+{
+    -moz-border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+}
+
+#menu .sous_menuu .li_ss_menuu:first-child .a_ss_menuu:after
+{
+    content: '';
+    position: absolute;
+    left: 60px;
+    top: -8px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 8px solid #1A8FF5;
+}
+
+#menu .sous_menuu .li_ss_menuu:first-child .a_ss_menuu:hover:after
+{
+    border-bottom-color: #198FF3;
+}
+
+#menu .sous_menuu .li_ss_menuu:last-child .a_ss_menuu
+{
+    -moz-border-radius: 0 0 5px 5px;
+    -webkit-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+}
+
+
+#ul_lang
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.li_lang1
+{
+    float: left;
+    width: 20px;
+    height: 20px;
+    background-image: url(../../Images/frlang.png);
+}
+.li_lang2
+{
+    float: left;
+    width: 20px;
+    height: 20px;
+    background-image: url(../../Images/uk.png);
+    margin-left: 10px;
+}
+.li_lang3
+{
+    float: left;
+    width: 20px;
+    height: 20px;
+    background-image: url(../../Images/es.png);
+    margin-left: 8px;
+}
+
+.a_lang
+{
+    display: block;
+    width: 20px;
+    padding-top: 20px;
+}
+
+@media screen and (max-width:1000px)
+{
+    #div_content_haut
+    {
+        width: 1000px;
+    }
+}

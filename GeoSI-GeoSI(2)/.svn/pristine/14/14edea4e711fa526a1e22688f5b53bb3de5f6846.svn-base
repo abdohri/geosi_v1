@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Pour plus d'informations sur la configuration de votre application ASP.NET, consultez
+  http://go.microsoft.com/fwlink/?LinkId=169433
+  -->
+
+<configuration>
+  <configSections>
+    <section name="extnet" type="Ext.Net.GlobalConfig" requirePermission="false" />
+    <section name="RewriterConfig" type="URLRewriter.Config.RewriterConfigSerializerSectionHandler, URLRewriter" />
+  </configSections>
+  <extnet theme="Gray" />
+  <connectionStrings>
+    <add name="SQLConnString" connectionString="Data Source=.;Initial Catalog=Geomtec;Integrated Security=True"
+      providerName="System.Data.SqlClient" />
+    <add name="GeomtecConnectionString" connectionString="Data Source=PC-MERYEM;Initial Catalog=Geomtec;Integrated Security=True"
+      providerName="System.Data.SqlClient" />
+  </connectionStrings>
+  <system.web>
+   <sessionState timeout="180"></sessionState>
+    <httpHandlers>
+      <add path="*/ext.axd" verb="*" type="Ext.Net.ResourceHandler" validate="false" />
+      <add verb="*" path="*.aspx" type="URLRewriter.RewriterFactoryHandler, URLRewriter" />
+      <add verb="GET" path="CaptchaImage.axd" type="MSCaptcha.captchaImageHandler, MSCaptcha" />
+    </httpHandlers>
+    <httpModules>
+      <add name="DirectRequestModule" type="Ext.Net.DirectRequestModule, Ext.Net" />
+      <add type="URLRewriter.ModuleRewriter, URLRewriter" name="ModuleRewriter" />
+    </httpModules>
+    <pages>
+      <controls>
+        <add assembly="Ext.Net" namespace="Ext.Net" tagPrefix="ext" />
+      </controls>
+    </pages>
+    <compilation debug="true" targetFramework="4.0" />
+    <membership>
+      <providers>
+        <clear />
+        <add name="AspNetSqlMembershipProvider" type="System.Web.Security.SqlMembershipProvider" connectionStringName="ApplicationServices" enablePasswordRetrieval="false" enablePasswordReset="true" requiresQuestionAndAnswer="false" requiresUniqueEmail="false" maxInvalidPasswordAttempts="5" minRequiredPasswordLength="6" minRequiredNonalphanumericCharacters="0" passwordAttemptWindow="10" applicationName="/" />
+      </providers>
+    </membership>
+    <profile>
+      <providers>
+        <clear />
+        <add name="AspNetSqlProfileProvider" type="System.Web.Profile.SqlProfileProvider" connectionStringName="ApplicationServices" applicationName="/" />
+      </providers>
+    </profile>
+    <roleManager enabled="false">
+      <providers>
+        <clear />
+        <add name="AspNetSqlRoleProvider" type="System.Web.Security.SqlRoleProvider" connectionStringName="ApplicationServices" applicationName="/" />
+        <add name="AspNetWindowsTokenRoleProvider" type="System.Web.Security.WindowsTokenRoleProvider" applicationName="/" />
+      </providers>
+    </roleManager>
+  </system.web>
+  <system.webServer>
+    <validation validateIntegratedModeConfiguration="false" />
+    <modules>
+      <!--<add name="DirectRequestModule" preCondition="managedHandler" type="Ext.Net.DirectRequestModule, Ext.Net"/>-->
+    </modules>
+    <handlers>
+      <!--<add name="DirectRequestHandler" verb="*" path="*/ext.axd" preCondition="integratedMode" type="Ext.Net.ResourceHandler"/>-->
+      <!--<add name="MSCaptcha.captchaImageHandler" verb="GET" path="CaptchaImage.axd" type="MSCaptcha.captchaImageHandler, MSCaptcha" resourceType="Unspecified" />-->
+      <remove name="ExtensionlessUrlHandler-ISAPI-4.0_32bit" />
+      <remove name="ExtensionlessUrlHandler-ISAPI-4.0_64bit" />
+      <remove name="ExtensionlessUrlHandler-Integrated-4.0" />
+      <add name="ExtensionlessUrlHandler-ISAPI-4.0_32bit" path="*." verb="GET,HEAD,POST,DEBUG,PUT,DELETE,PATCH,OPTIONS" modules="IsapiModule" scriptProcessor="%windir%\Microsoft.NET\Framework\v4.0.30319\aspnet_isapi.dll" preCondition="classicMode,runtimeVersionv4.0,bitness32" responseBufferLimit="0" />
+      <add name="ExtensionlessUrlHandler-ISAPI-4.0_64bit" path="*." verb="GET,HEAD,POST,DEBUG,PUT,DELETE,PATCH,OPTIONS" modules="IsapiModule" scriptProcessor="%windir%\Microsoft.NET\Framework64\v4.0.30319\aspnet_isapi.dll" preCondition="classicMode,runtimeVersionv4.0,bitness64" responseBufferLimit="0" />
+      <add name="ExtensionlessUrlHandler-Integrated-4.0" path="*." verb="GET,HEAD,POST,DEBUG,PUT,DELETE,PATCH,OPTIONS" type="System.Web.Handlers.TransferRequestHandler" preCondition="integratedMode,runtimeVersionv4.0" />
+    </handlers>
+  </system.webServer>
+  <RewriterConfig>
+    <Rules>
+      <RewriterRule>
+        <LookFor>~/Login</LookFor>
+        <SendTo>~/Modules/Login/Login.aspx</SendTo>
+      </RewriterRule>
+      <RewriterRule>
+        <LookFor>~/Karim/test</LookFor>
+        <SendTo>~/Modules/Test/FormProfil2.aspx</SendTo>
+      </RewriterRule>
+      <RewriterRule>
+        <LookFor>~/Client</LookFor>
+        <SendTo>~/Modules/Client/Client.aspx</SendTo>
+      </RewriterRule>
+      <RewriterRule>
+        <LookFor>~/Karim/test</LookFor>
+        <SendTo>~/Modules/Test/FormProfil2.aspx</SendTo>
+      </RewriterRule>
+    </Rules>
+  </RewriterConfig>
+</configuration>

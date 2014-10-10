@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Xml.Linq;
+
+namespace GeoSI.Website
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            var address = "123 something st, somewhere";
+            var requestUri = "http://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&sensor=true";
+
+            string url = "http://maps.googleapis.com/maps/api/geocode/json?sensor=true&address=";
+
+            //dynamic googleResults = new Uri(url + address).GetDynamicJsonObject();
+            //foreach (var result in googleResults.results)
+            //{
+            //    Console.WriteLine("[" + result.geometry.location.lat + "," + result.geometry.location.lng + "] " + result.formatted_address);
+            //}
+
+
+        }
+    }
+}
